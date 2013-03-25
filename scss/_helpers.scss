@@ -1,0 +1,66 @@
+//classes "helpers" qui ne concernent rien en particulier mais qui vont nous aider tout au long du projet
+
+.ir {
+	@include image-replacement; 
+}
+
+.hidden {
+	@include hidden; 
+}
+
+.visuallyhidden {
+	@include visually-hidden; 
+}
+
+.invisible {
+	@include invisible; 
+}
+
+.clearfix {
+	@include micro-clearfix; 
+}
+
+.no-small {
+	@include respond-to(small) {
+		@include hidden;
+	}
+}
+
+.no-medium {
+	@include respond-to(medium) {
+		@include hidden;
+	}
+}
+
+.no-large {
+	@include respond-to(large) {
+		@include hidden;
+	}
+}
+
+.only-small {
+	@include respond-to(medium) {
+		@include hidden;
+	}
+	@include respond-to(large) {
+		@include hidden;
+	}
+}
+
+.only-medium {
+	@include respond-to(small) {
+		@include hidden;
+	}
+	@include respond-to(large) {
+		@include hidden;
+	}
+}
+
+.only-large {
+	@include respond-to(small) {
+		@include hidden;
+	}
+	@include respond-to(medium) {
+		@include hidden;
+	}
+}
