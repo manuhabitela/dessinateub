@@ -7,13 +7,13 @@
 			s.parentNode.insertBefore(g,s)}(document,'script'));
 		</script>
 		<!-- dev : /js/script.js -->
-		<?php $js = PROD ? 'script.min.js?v=58797562341' : 
-			array('jquery.min.js', 'script.js');
+		<?php $js = PROD ? 'script.min.js?v=58797562341' :
+			array('jquery.min.js', 'drawingboard.full.min.js', 'script.js');
 		$t = time();
 		if (is_string($js)): ?>
 		<script src="/js/<?php echo $js ?>"></script>
 		<?php else: foreach ($js as $script): ?>
-		<script src="/js/<?php echo $js ?>?v=<?php echo $t ?>"></script>
+		<script src="/js/<?php echo $script ?>?v=<?php echo $t ?>"></script>
 		<?php endforeach; endif; ?>
 	</body>
 </html>

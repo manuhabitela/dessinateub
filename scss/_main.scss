@@ -1,0 +1,75 @@
+body {
+	background: #ffc47c;
+}
+
+html, body, #container, .teube-add {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#container {
+	min-height: 100%;
+	@include box-sizing(border-box);
+	padding: $base-line-height;
+}
+
+.nav {
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	li {
+		display: inline-block;
+	}
+}
+
+#teuboard {
+	width: 80%;
+	height: 70%;
+	.drawing-board-canvas { cursor: image-url('curseube.png'), pointer; }
+}
+
+%btn {
+	background: rgba(#ff7fbf, .6);
+	border: 2px solid #ff7fbf;
+	border-left-width: 4px;
+	color: white;
+	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
+	border-radius: 0 $base-line-height $base-line-height 0;
+	margin-top: $base-line-height/2;
+	margin-bottom: $base-line-height/2;
+	position: relative;
+	z-index: 5;
+	&:after {
+		content: ' ';
+		position: absolute;
+		right: -$base-line-height/3;
+		top: $base-line-height/2;
+		width: $base-line-height/3;
+		height: $base-line-height/2;
+		border-radius: 0 $base-line-height/5 $base-line-height/5 0;
+		background: rgba(#ff7fbf, 0.6);
+		border: 1px solid #ff7fbf;
+		border-left: none;
+		z-index: 10;
+	}
+}
+
+.teube-add .inputs {
+	label, input[type=text], button {
+		display: block;
+		width: 80%;
+		margin: $base-line-height/4 auto;
+		font-size: xx-large;
+	}
+
+	input[type=text] {
+		padding: $base-line-height/4 $base-line-height/2;
+		color: #777;
+	}
+
+	button {
+		width: auto;
+		@extend %btn;
+	}
+}

@@ -17,8 +17,12 @@
 	</head>
 	<body>
 
-		<!--[if lte IE 7]>
+		<!--[if lte IE 8]>
 			<p class="obsolete-browser">Vous utilisez un navigateur <strong>obsolète</strong>. <a href="http://browsehappy.com/" target="_blank">Mettez-le à jour</a> pour naviguer sur Internet de façon <strong>sécurisée</strong> !</p>
 		<![endif]-->
 
 		<div id="container">
+			<!-- <ul class="nav">
+				<li><a href="<?php echo $app->urlFor('home'); ?>">Dessiner une teu</a></li>
+				<li><a href="<?php echo $app->urlFor('teubes'); ?>">Parcourir les teu</a></li>
+			</ul> -->
