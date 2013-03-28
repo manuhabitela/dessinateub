@@ -23,6 +23,16 @@ html, body, #container, .teube-add {
 	}
 }
 
+.teu {
+	.be {
+		@include transition(opacity 0.25s linear);
+		opacity: 0.1;
+	}
+	&:hover .be, &:focus .be {
+		opacity: 1;
+	}
+}
+
 #teuboard {
 	width: 80%;
 	height: 70%;
