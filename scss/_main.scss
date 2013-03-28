@@ -5,11 +5,9 @@ body {
 html, body, #container, .teube-add {
 	margin: 0;
 	padding: 0;
-	height: 100%;
 }
 
 #container {
-	min-height: 100%;
 	@include box-sizing(border-box);
 	padding: $base-line-height;
 }
@@ -35,7 +33,7 @@ html, body, #container, .teube-add {
 
 #teuboard {
 	width: 80%;
-	height: 70%;
+	height: 500px;
 	.drawing-board-canvas { cursor: image-url('curseube.png'), pointer; }
 }
 
