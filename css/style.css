@@ -95,9 +95,13 @@ body, button, select, input, textarea, label { color: #222222; font-family: Helv
 @media only screen and (max-width: 640px) { .only-large { display: none !important; visibility: hidden; } }
 @media only screen and (min-width: 641px) and (max-width: 979px) { .only-large { display: none !important; visibility: hidden; } }
 
+.preservatif, .teube-add .inputs button { background: #fe9aa3; border: 2px solid #ff7fbf; border-left-width: 4px; color: white; padding: 0.32813em 1.3125em 0.32813em 0.65625em; border-radius: 0 1.3125em 1.3125em 0; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; z-index: 5; -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1); -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.preservatif:after, .teube-add .inputs button:after { content: ' '; position: absolute; right: -0.4375em; top: 0.59375em; width: 0.4375em; height: 0.65625em; border-radius: 0 0.32813em 0.32813em 0; background: #fe9aa3; border: 2px solid #ff7fbf; border-left: none; z-index: 10; }
+.preservatif.long, .teube-add .inputs button.long, .teube-add .inputs button:hover, .teube-add .inputs button:focus { -webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1); -webkit-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); -moz-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); -o-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); padding-right: 5.25em; }
+
 .drawing-board, .drawing-board * { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
 
-.drawing-board-control > button, .drawing-board-control-size .drawing-board-control-inner { overflow: hidden; border: none; background-color: #eee; padding: 4px 8px; border: 1px solid #cccccc; box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); -webkit-box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); font-size: 1.5em; line-height: 1.5em; height: 54px; }
+.drawing-board-control > button, .drawing-board-control-size .drawing-board-control-inner { overflow: hidden; border: none; background-color: #eee; padding: 4px 8px; border: 1px solid #cccccc; box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); -webkit-box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); font-size: 1.5em; line-height: 1.5em; height: 44px; }
 
 .drawing-board-control > button { cursor: pointer; }
 
@@ -119,7 +123,7 @@ body, button, select, input, textarea, label { color: #222222; font-family: Helv
 
 .drawing-board-cursor { position: absolute; top: 0; left: 0; pointer-events: none; border-radius: 50%; background: #ccc; background: rgba(0, 0, 0, 0.2); }
 
-.drawing-board-control-colors { font-size: 0; }
+.drawing-board-control-colors { font-size: 0; line-height: 0; }
 
 .drawing-board-control-colors-current { margin-right: 5px; width: 52px; height: 52px; border: 1px solid #cccccc; cursor: pointer; display: inline-block; }
 
@@ -145,20 +149,20 @@ body, button, select, input, textarea, label { color: #222222; font-family: Helv
 
 .drawing-board-control-size-label { background: #333; display: inline-block; position: absolute; bottom: 4px; left: 8px; opacity: .2; pointer-events: none; z-index: 10; }
 
-body { background: #ffc47c; }
+body { background: #efd0cf; }
 
-html, body, #container, .teube-add { margin: 0; padding: 0; height: 100%; }
+html, body, #container, .teube-add { margin: 0; padding: 0; }
 
-#container { min-height: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 1.3125em; }
+#container { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 1.3125em; }
 
 .nav { margin: 0; padding: 10px; text-align: center; }
 .nav li { display: inline-block; }
 
-#teuboard { width: 80%; height: 70%; }
-#teuboard .drawing-board-canvas { cursor: url('../img/curseube.png?1364427261'), pointer; }
+.teu .be { -webkit-transition: opacity 0.25s linear; -moz-transition: opacity 0.25s linear; -o-transition: opacity 0.25s linear; transition: opacity 0.25s linear; opacity: 0.1; }
+.teu:hover .be, .teu:focus .be { opacity: 1; }
 
-.teube-add .inputs button { background: rgba(255, 127, 191, 0.6); border: 2px solid #ff7fbf; border-left-width: 4px; color: white; padding: 0.32813em 1.3125em 0.32813em 0.65625em; border-radius: 0 1.3125em 1.3125em 0; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; z-index: 5; }
-.teube-add .inputs button:after { content: ' '; position: absolute; right: -0.4375em; top: 0.65625em; width: 0.4375em; height: 0.65625em; border-radius: 0 0.2625em 0.2625em 0; background: rgba(255, 127, 191, 0.6); border: 1px solid #ff7fbf; border-left: none; z-index: 10; }
+#teuboard { width: 80%; height: 500px; }
+#teuboard .drawing-board-canvas { cursor: url('../img/curseube.png?1364427261'), pointer; }
 
 .teube-add .inputs label, .teube-add .inputs input[type=text], .teube-add .inputs button { display: block; width: 80%; margin: 0.32813em auto; font-size: xx-large; }
 .teube-add .inputs input[type=text] { padding: 0.32813em 0.65625em; color: #777; }
