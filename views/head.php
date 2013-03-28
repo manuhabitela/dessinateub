@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="<?php echo $css ?>">
 		<script src="/js/modernizr.custom.js"></script>
 	</head>
-	<body>
+	<body <?php if (!empty($page)) echo 'class="'.$page.'"'?>>
 
 		<!--[if lte IE 8]>
 			<p class="obsolete-browser">Vous utilisez un navigateur <strong>obsolète</strong>. <a href="http://browsehappy.com/" target="_blank">Mettez-le à jour</a> pour naviguer sur Internet de façon <strong>sécurisée</strong> !</p>

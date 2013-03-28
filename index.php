@@ -29,7 +29,7 @@
 	 */
 	$app->get('/', function() use ($app) {
 
-		$app->render('home.php');
+		$app->render('home.php', array('page' => 'home'));
 	})->name('home');
 
 	$app->get('/teubes', function() use ($app) {
