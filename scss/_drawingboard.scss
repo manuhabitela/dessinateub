@@ -1,5 +1,5 @@
 .drawing-board, .drawing-board * { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
-.drawing-board-control > button, .drawing-board-control-size .drawing-board-control-inner { overflow: hidden; border: none; background-color: #eee; padding: 4px 8px; border: 1px solid #cccccc; box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); -webkit-box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); font-size: 1.5em; line-height: 1.5em; height: 54px; }
+.drawing-board-control > button, .drawing-board-control-size .drawing-board-control-inner { overflow: hidden; border: none; background-color: #eee; padding: 4px 8px; border: 1px solid #cccccc; box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); -webkit-box-shadow: 0 1px 3px -2px #121212, inset 0 2px 5px 0 rgba(255, 255, 255, 0.3); font-size: 1.5em; line-height: 1.5em; height: 44px; }
 
 .drawing-board-control > button { cursor: pointer; }
 .drawing-board-control > button:hover { background-color: #ddd; }
@@ -19,7 +19,7 @@
 
 .drawing-board-cursor { position: absolute; top: 0; left: 0; pointer-events: none; border-radius: 50%; background: #ccc; background: rgba(0, 0, 0, 0.2); }
 
-.drawing-board-control-colors { font-size: 0; }
+.drawing-board-control-colors { font-size: 0; line-height: 0; }
 
 .drawing-board-control-colors-current { margin-right: 5px; width: 52px; height: 52px; border: 1px solid #cccccc; cursor: pointer; display: inline-block; }
 
