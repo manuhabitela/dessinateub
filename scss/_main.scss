@@ -1,5 +1,5 @@
 body {
-	background: #ffc47c;
+	background: rgb(239, 208, 207);
 }
 
 html, body, #container, .teube-add {
@@ -29,32 +29,6 @@ html, body, #container, .teube-add {
 	.drawing-board-canvas { cursor: image-url('curseube.png'), pointer; }
 }
 
-%btn {
-	background: rgba(#ff7fbf, .6);
-	border: 2px solid #ff7fbf;
-	border-left-width: 4px;
-	color: white;
-	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
-	border-radius: 0 $base-line-height $base-line-height 0;
-	margin-top: $base-line-height/2;
-	margin-bottom: $base-line-height/2;
-	position: relative;
-	z-index: 5;
-	&:after {
-		content: ' ';
-		position: absolute;
-		right: -$base-line-height/3;
-		top: $base-line-height/2;
-		width: $base-line-height/3;
-		height: $base-line-height/2;
-		border-radius: 0 $base-line-height/5 $base-line-height/5 0;
-		background: rgba(#ff7fbf, 0.6);
-		border: 1px solid #ff7fbf;
-		border-left: none;
-		z-index: 10;
-	}
-}
-
 .teube-add .inputs {
 	label, input[type=text], button {
 		display: block;
@@ -70,6 +44,9 @@ html, body, #container, .teube-add {
 
 	button {
 		width: auto;
-		@extend %btn;
+		@extend .preservatif;
+		&:hover, &:focus {
+			@extend .preservatif.long;
+		}
 	}
 }

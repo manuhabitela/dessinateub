@@ -1,0 +1,35 @@
+.preservatif {
+	background: #fe9aa3;
+	border: 2px solid #ff7fbf;
+	border-left-width: 4px;
+	color: white;
+	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
+	border-radius: 0 $base-line-height $base-line-height 0;
+	margin-top: $base-line-height/2;
+	margin-bottom: $base-line-height/2;
+	position: relative;
+	z-index: 5;
+
+	&:after {
+		content: ' ';
+		position: absolute;
+		right: -$base-line-height/3;
+		top: $base-line-height/2 - em(1px);
+		width: $base-line-height/3;
+		height: $base-line-height/2;
+		border-radius: 0 $base-line-height/4 $base-line-height/4 0;
+		background: #fe9aa3;
+		border: 2px solid #ff7fbf;
+		border-left: none;
+		z-index: 10;
+	}
+	
+	-webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
+	@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
+
+	&.long {
+		-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
+		@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
+		padding-right: $base-line-height*4;
+	}
+}
