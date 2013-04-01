@@ -64,7 +64,7 @@ textarea { overflow: auto; vertical-align: top; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 
-body, button, select, input, textarea, label { color: #222222; font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif; line-height: 1.3125em; }
+body, button, select, input, textarea, label { color: #222222; font-family: "Chewy", Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif; line-height: 1.3125em; }
 
 .ir { border: 0; overflow: hidden; *text-indent: -9999px; }
 .ir:before { content: ""; display: block; width: 0; height: 100%; }
