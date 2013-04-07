@@ -6,13 +6,13 @@
 			$(window).height() - $('#container').outerHeight()
 		);
 		$teuboard.removeClass('hidden');
-		var board = new DrawingBoard.Board('teuboard', {
-			controls: [{ Color: {defaultColor: "rgba(255, 191, 127, 1)"}}, 'Size', 'Navigation']
+		window.teuboard = new DrawingBoard.Board('teuboard', {
+			color: "rgba(255, 191, 127, 1)",
+			size: 5
 		});
 	}
 
 	$('.teu').each(function(key, item) {
-		console.log(item.innerHTML);
-		item.innerHTML = item.innerHTML.replace(/teube/, 'teu<span class="be">be</span>');
+		item.innerHTML = item.innerHTML.replace(/teube/, 'teu<span class="point">.</span>b<span class="be">e</span>');
 	});
 })();

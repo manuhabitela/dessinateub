@@ -108,8 +108,10 @@ html, body, #container, .teube-add { margin: 0; padding: 0; }
 .nav { margin: 0; padding: 10px; text-align: center; }
 .nav li { display: inline-block; }
 
-.teu .be { -webkit-transition: opacity 0.25s linear; -moz-transition: opacity 0.25s linear; -o-transition: opacity 0.25s linear; transition: opacity 0.25s linear; opacity: 0.1; }
-.teu:hover .be, .teu:focus .be { opacity: 1; }
+.teu .be { -webkit-transition: opacity 0.25s ease; -moz-transition: opacity 0.25s ease; -o-transition: opacity 0.25s ease; transition: opacity 0.25s ease; opacity: 0.05; }
+.teu .point { -webkit-transition-property: letter-spacing, opacity; -moz-transition-property: letter-spacing, opacity; -o-transition-property: letter-spacing, opacity; transition-property: letter-spacing opacity; -webkit-transition-duration: 0.25s; -moz-transition-duration: 0.25s; -o-transition-duration: 0.25s; transition-duration: 0.25s; letter-spacing: -10px; opacity: 0.05; }
+.teu:hover .be, .teu:focus .be, .teu:hover .point, .teu:focus .point { opacity: 1; }
+.teu:hover .point, .teu:focus .point { letter-spacing: normal; }
 
 #teuboard { width: 80%; height: 500px; }
 #teuboard .drawing-board-canvas { cursor: url('../img/curseube.png?1364427261'), pointer; }

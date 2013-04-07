@@ -23,11 +23,20 @@ html, body, #container, .teube-add {
 
 .teu {
 	.be {
-		@include transition(opacity 0.25s linear);
-		opacity: 0.1;
+		@include transition(opacity 0.25s ease);
+		opacity: 0.05;
 	}
-	&:hover .be, &:focus .be {
+	.point {
+		@include transition-property(letter-spacing opacity);
+		@include transition-duration(0.25s);
+		letter-spacing: -10px;
+		opacity: 0.05;
+	}
+	&:hover .be, &:focus .be, &:hover .point, &:focus .point {
 		opacity: 1;
+	}
+	&:hover .point, &:focus .point {
+		letter-spacing: normal;
 	}
 }
 
