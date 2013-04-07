@@ -14,6 +14,7 @@
 		<!-- dev : /css/style.css -->
 		<?php $css = PROD ? '/css/style.min.css?v=957465612021901' : '/css/style.css?v='.time() ?>
 		<link rel="stylesheet" href="<?php echo $css ?>">
+		<link rel="stylesheet" href="/components/drawingboard.js/dist/drawingboard.css">
 		<script src="/js/modernizr.custom.js"></script>
 	</head>
 	<body <?php if (!empty($page)) echo 'class="'.$page.'"'?>>
