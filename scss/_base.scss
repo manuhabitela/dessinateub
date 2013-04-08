@@ -32,6 +32,14 @@ body {
 	height: 100%;
 }
 
+a, a:active, a:hover:active {
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
+}
+
 a:focus {
 	outline: thin dotted;
 }

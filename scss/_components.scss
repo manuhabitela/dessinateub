@@ -9,7 +9,6 @@
 	margin-bottom: $base-line-height/2;
 	position: relative;
 	z-index: 5;
-
 	&:after {
 		content: ' ';
 		position: absolute;
@@ -23,7 +22,7 @@
 		border-left: none;
 		z-index: 10;
 	}
-	
+
 	-webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
 	@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
 

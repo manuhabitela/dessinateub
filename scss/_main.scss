@@ -9,33 +9,33 @@ html, body, #container, .teube-add {
 
 #container {
 	@include box-sizing(border-box);
-	padding: $base-line-height;
 }
 
 .nav {
-	margin: 0;
-	padding: 10px;
+	margin: $base-line-height/2 0;
+	padding: $base-line-height/2;
 	text-align: center;
+	background: rgba(white, 0.5);
 	li {
 		display: inline-block;
+		margin: 0 $base-line-height*2;
+		min-width: 150px;
+		text-align: center;
+		a {
+			color: black;
+		}
 	}
 }
 
 .teu {
-	.be {
-		@include transition(opacity 0.25s ease);
-		opacity: 0.05;
-	}
-	.point {
+	.pointbe {
 		@include transition-property(letter-spacing opacity);
 		@include transition-duration(0.25s);
 		letter-spacing: -10px;
-		opacity: 0.05;
+		opacity: 0.01;
 	}
-	&:hover .be, &:focus .be, &:hover .point, &:focus .point {
+	&:hover .pointbe, &:focus .pointbe {
 		opacity: 1;
-	}
-	&:hover .point, &:focus .point {
 		letter-spacing: normal;
 	}
 }
@@ -46,24 +46,27 @@ html, body, #container, .teube-add {
 	.drawing-board-canvas { cursor: image-url('curseube.png'), pointer; }
 }
 
-.teube-add .inputs {
-	label, input[type=text], button {
-		display: block;
-		width: 80%;
-		margin: $base-line-height/4 auto;
-		font-size: xx-large;
-	}
+.teube-add {
+	padding: $base-line-height;
+	.inputs {
+		label, input[type=text], button {
+			display: block;
+			width: 80%;
+			margin: $base-line-height/4 auto;
+			font-size: xx-large;
+		}
 
-	input[type=text] {
-		padding: $base-line-height/4 $base-line-height/2;
-		color: #777;
-	}
+		input[type=text] {
+			padding: $base-line-height/4 $base-line-height/2;
+			color: #777;
+		}
 
-	button {
-		width: auto;
-		@extend .preservatif;
-		&:hover, &:focus {
-			@extend .preservatif.long;
+		button {
+			width: auto;
+			@extend .preservatif;
+			&:hover, &:focus {
+				@extend .preservatif.long;
+			}
 		}
 	}
 }

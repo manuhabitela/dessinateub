@@ -1,4 +1,4 @@
-<form class="teube-add" action="<?php echo $app->urlFor('add'); ?>" method="post">
+<form class="teube-add" action="<?php echo $app->urlFor('draw'); ?>" method="post">
 	<div id="teuboard">
 
 	</div>

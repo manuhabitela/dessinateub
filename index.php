@@ -1,7 +1,7 @@
 <?php
 	session_cache_limiter(false);
 	session_start();
-	
+
 	require 'config/app.php';
 
 	define('PROD', (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], APP_SERVER) !== false));
@@ -32,22 +32,30 @@
 		$app->render('home.php', array('page' => 'home'));
 	})->name('home');
 
+	/**
+	 *
+	 *
+	 */
 	$app->get('/teubes', function() use ($app) {
 
 		$app->render('home.php');
 	})->name('teubes');
 
+	/**
+	 *
+	 *
+	 */
 	$app->get('/etjelemontre', function() use ($app) {
 
-		$app->render('home.php');
-	})->name('add');
+		$app->render('draw.php');
+	})->name('draw');
 
 	/**
 	 *
 	 *
 	 */
 	$app->post('/vote', function() use($app) {
-		
+
 	});
 
 	/**

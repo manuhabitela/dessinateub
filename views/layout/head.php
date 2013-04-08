@@ -24,7 +24,8 @@
 		<![endif]-->
 
 		<div id="container">
-			<!-- <ul class="nav">
-				<li><a href="<?php echo $app->urlFor('home'); ?>">Dessiner une teu</a></li>
-				<li><a href="<?php echo $app->urlFor('teubes'); ?>">Parcourir les teu</a></li>
-			</ul> -->
+			<ul class="nav">
+				<li><a href="<?php echo $app->urlFor('home'); ?>" class="teu">Accueil</a></li>
+				<li><a href="<?php echo $app->urlFor('draw'); ?>" class="teu">Dessiner une teube</a></li>
+				<li><a href="<?php echo $app->urlFor('teubes'); ?>" class="teu">Voir les teubes</a></li>
+			</ul>
