@@ -4,9 +4,12 @@
 
 	require 'config/app.php';
 
-	define('PROD', (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], APP_SERVER) !== false));
+	// define('PROD', (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], APP_SERVER) !== false));
+	define('PROD', false);
 	if (PROD)
 		error_reporting(0);
+	else
+		error_reporting(E_ALL);
 
 	require 'config/database.php';
 	require 'vendor/autoload.php';
@@ -38,7 +41,7 @@
 	 */
 	$app->get('/teubes', function() use ($app) {
 
-		$app->render('home.php');
+		$app->render('view.php', array('teube' => array('name' => "azdazd")));
 	})->name('teubes');
 
 	/**
@@ -49,6 +52,14 @@
 
 		$app->render('draw.php');
 	})->name('draw');
+
+	/**
+	 *
+	 *
+	 */
+	$app->post('/etjelemontre', function() use ($app) {
+		print_r($_POST);
+	})->name('draw-post');
 
 	/**
 	 *

@@ -33,3 +33,34 @@
 		padding-right: $base-line-height*3;
 	}
 }
+
+@mixin preservatif($color: #fe9aa3, $border: false) {
+	@if $border == false {
+		$border: adjust-hue($color, 030deg);
+	}
+	@extend .preservatif;
+	&, &:after {
+		background: $color;
+		border: 2px solid $border;
+	}
+	&:after {
+		border-left: none;
+	}
+}
+
+.facebook {
+	display: inline-block;
+	@include preservatif(#3b5998);
+}
+
+.twitter {
+	display: inline-block;
+	@include preservatif(#00aced);
+}
+
+.facebook, .twitter {
+	&:hover, &:focus {
+		text-decoration: none;
+		@extend .preservatif.long;
+	}
+}

@@ -122,6 +122,12 @@ button, select {
 	text-transform: none;
 }
 
+input[type=text] {
+	font-size: x-large;
+	padding: $base-line-height/4 $base-line-height/2;
+	color: #777;
+}
+
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
 	-webkit-appearance: button;
 	cursor: pointer;

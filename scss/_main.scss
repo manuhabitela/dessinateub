@@ -65,35 +65,43 @@ $board-height: $board-width;
 	}
 }
 
-.teube-add {
+.teube-container {
 	padding: $base-line-height;
 
 	@include respond-to(shrunken) {
 		padding: $base-line-height/4;
 	}
 
-	.inputs {
+	.teube-info {
 		width: $board-width;
 		margin: 0 auto;
 		overflow: visible;
+		font-size: xx-large;
 
-		label, input[type=text], button {
+		.teube-field, .teube-button {
 			display: block;
 			margin: $base-line-height/4 0;
-			font-size: xx-large;
+			line-height: $base-line-height;
+			font-weight: normal;
 			width: 100%;
 		}
 
-		input[type=text] {
-			padding: $base-line-height/4 $base-line-height/2;
-			font-size: x-large;
-			color: #777;
+		.teube-name {
+
 		}
 
-		button {
+		.teube-name-input {
+			font-size: x-large;
+		}
+
+		.teube-button {
+			display: inline-block;
 			width: auto;
 			margin-left: auto;
 			margin-right: auto;
+		}
+
+		.teube-submit {
 			@extend .preservatif;
 			&:hover, &:focus {
 				@extend .preservatif.long;
@@ -101,20 +109,20 @@ $board-height: $board-width;
 		}
 
 		@include respond-to(large) {
-			margin: -9px 0 0 ($board-width + 20px);
+			margin: 30px 0 0 ($board-width + 20px);
 			width: auto;
 			@include micro-clearfix;
 
-			label {
+			.teube-name {
 				margin: 0;
 				height: $base-line-height;
 			}
 
-			input[type=text] {
+			.teube-name-input {
 				margin-top: 0;
 			}
 
-			button {
+			.teube-button {
 				margin-left: 0;
 				margin-right: 0;
 			}
