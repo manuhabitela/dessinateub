@@ -9,6 +9,7 @@
 	margin-bottom: $base-line-height/2;
 	position: relative;
 	z-index: 5;
+	white-space: nowrap;
 	&:after {
 		content: ' ';
 		position: absolute;
@@ -29,6 +30,6 @@
 	&.long {
 		-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
 		@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
-		padding-right: $base-line-height*4;
+		padding-right: $base-line-height*3;
 	}
 }
