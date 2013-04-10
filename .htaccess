@@ -13,8 +13,8 @@ SetEnv PHP_VER 5_3
   RewriteRule ^index\.php$ http://mon.site/ [R=301,L]
 
   #slim
-	#RewriteCond %{REQUEST_FILENAME} !-f
-	#RewriteRule ^ index.php [QSA,L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^ index.php [QSA,L]
 </IfModule>
 
 <IfModule mod_deflate.c>
