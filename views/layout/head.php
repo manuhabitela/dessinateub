@@ -23,9 +23,10 @@
 			<p class="obsolete-browser">Vous utilisez un navigateur <strong>obsolète</strong>. <a href="http://browsehappy.com/" target="_blank">Mettez-le à jour</a> pour naviguer sur Internet de façon <strong>sécurisée</strong> !</p>
 		<![endif]-->
 
+		<ul class="nav">
+			<li><a href="<?php echo $app->urlFor('home'); ?>" class="teu">Accueil</a></li>
+			<li><a href="<?php echo $app->urlFor('draw'); ?>" class="teu">Dessiner une teube</a></li>
+			<li><a href="<?php echo $app->urlFor('teubes'); ?>" class="teu">Voir les teubes</a></li>
+		</ul>
+
 		<div id="container">
-			<ul class="nav">
-				<li><a href="<?php echo $app->urlFor('home'); ?>" class="teu">Accueil</a></li>
-				<li><a href="<?php echo $app->urlFor('draw'); ?>" class="teu">Dessiner une teube</a></li>
-				<li><a href="<?php echo $app->urlFor('teubes'); ?>" class="teu">Voir les teubes</a></li>
-			</ul>
