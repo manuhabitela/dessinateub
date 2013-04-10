@@ -1,5 +1,6 @@
 		</div>
 
+		<p class="credits">Dessiner c'est gagner avec <a href="https://github.com/Leimi/drawingboard.js" target="_blank">drawingboard.js</a></p>
 		<script>
 			var _gaq=[['_setAccount','<?php echo APP_ANALYTICS ?>'],['_trackPageview']];
 			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

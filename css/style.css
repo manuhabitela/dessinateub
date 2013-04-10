@@ -146,3 +146,5 @@ html, body, #container, .teube-add { margin: 0; padding: 0; }
   .teube-container .teube-info .teube-name { margin: 0; height: 1.3125em; }
   .teube-container .teube-info .teube-name-input { margin-top: 0; }
   .teube-container .teube-info .teube-button { margin-left: 0; margin-right: 0; } }
+
+.credits { margin-top: 200px; font-family: sans-serif; font-size: small; opacity: 0.7; text-align: center; }
