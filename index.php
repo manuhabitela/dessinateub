@@ -6,16 +6,20 @@
 
 	// define('PROD', (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], APP_SERVER) !== false));
 	define('PROD', false);
-	if (PROD)
+	if (PROD) {
 		error_reporting(0);
-	else
+	} else {
 		error_reporting(E_ALL);
+	}
 
 	require 'config/database.php';
 	require 'vendor/autoload.php';
+	use RedBean_Facade as R;
 	require 'lib/helpers.php';
 
-	//$pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME."", DB_USER, DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+	R::setup("mysql:host=".DB_HOST.";dbname=".DB_NAME."", DB_USER, DB_PASSWORD);
+	R::$writer->setUseCache(true);
+
 	$app = new \Slim\Slim(array(
 		'templates.path' => './views',
 		'debug' => intval(!PROD)
@@ -58,15 +62,22 @@
 	 *
 	 */
 	$app->post('/etjelemontre', function() use ($app) {
-		print_r($_POST);
+		$teube = R::dispense('teube');
+		$teube->slug = base_convert($teube->id, 10, 16);
+		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+		$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
+		$teube->votes = 0;
 	})->name('draw-post');
 
 	/**
 	 *
 	 *
 	 */
-	$app->post('/vote', function() use($app) {
-
+	$app->post('/regarder/:slug', function($slug) use($app) {
+		$slug = filter_var($slug, FILTER_SANITIZE_STRING);
+		$teube = R::findOne('teube', ' slug = ? ', array($slug) );
+		if (!empty($teube))
+			return false;
 	});
 
 	/**
