@@ -16,6 +16,7 @@
 	require 'vendor/autoload.php';
 	use RedBean_Facade as R;
 	require 'lib/helpers.php';
+	require 'lib/Model_Teube.php';
 
 	R::setup("mysql:host=".DB_HOST.";dbname=".DB_NAME."", DB_USER, DB_PASSWORD);
 	R::$writer->setUseCache(true);
