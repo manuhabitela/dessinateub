@@ -1,6 +1,9 @@
 		</div>
 
-		<p class="credits">Dessiner c'est gagner avec <a href="https://github.com/Leimi/drawingboard.js" target="_blank">drawingboard.js</a></p>
+		<p class="credits">
+			Fait avec de l'amour et de <a href="http://www.la-rache.com/" target="_blank">la rache</a> par <a href="http://manu.habite.la" target="_blank">Leimi</a> - Dessiner c'est gagner avec <a href="https://github.com/Leimi/drawingboard.js" target="_blank">drawingboard.js</a>.
+		</p>
+
 		<script>
 			var _gaq=[['_setAccount','<?php echo APP_ANALYTICS ?>'],['_trackPageview']];
 			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
