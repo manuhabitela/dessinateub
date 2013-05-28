@@ -31,3 +31,8 @@
 		</ul>
 
 		<div id="container">
+			<?php if (!empty($flash)): ?>
+			<?php foreach ($flash as $type => $message): ?>
+				<p class="flash flash-<?php echo $type ?>"><?php echo $message ?></p>
+			<?php endforeach ?>
+			<?php endif ?>

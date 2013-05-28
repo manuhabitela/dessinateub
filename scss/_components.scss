@@ -90,4 +90,12 @@
 		@extend .preservatif.long;
 	}
 }
+
+.flash {
+	@extend %base-bouton;
+}
+
+.flash-error {
+	background: $red;
+	border-color: rgba($red, 0.8);
 }
