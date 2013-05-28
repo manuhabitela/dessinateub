@@ -53,8 +53,7 @@
 	 *
 	 */
 	$app->get('/etjelemontre', function() use ($app) {
-
-		$app->render('draw.php');
+		$app->render('draw.php', array('page' => 'draw'));
 	})->name('draw');
 
 	/**
