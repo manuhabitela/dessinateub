@@ -41,14 +41,24 @@
 		$app->render('home.php', array('page' => 'home'));
 	})->name('home');
 
+
 	/**
-	 *
+	 * LISTE
 	 *
 	 */
-	$app->get('/teubes', function() use ($app) {
+	function teubes($page = '') {
+		$app = \Slim\Slim::getInstance();
+		if (empty($page) || !is_numeric($page) || $page <= 0)
+			$page = 1;
+		$itemsNb = 50;
+		$limit = ($page - 1)*$itemsNb;
+		$teubes = R::findAll('teube', ' LIMIT ?,?', array($limit, $itemsNb));
+		$app->render('list.php', array('page' => 'list', 'teubes' => $teubes));
+	}
 
-		$app->render('view.php', array('teube' => array('name' => "azdazd")));
-	})->name('teubes');
+	$app->get('/teubes', 'teubes')->name('teubes');
+	$app->get('/teubes/:page', 'teubes');
+
 
 	/**
 	 * CREATION
