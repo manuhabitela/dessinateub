@@ -9,11 +9,6 @@ audio, canvas, video {
 	display: inline-block;
 }
 
-audio:not([controls]) {
-	display: none;
-	height: 0;
-}
-
 [hidden] {
 	display: none;
 }
@@ -26,6 +21,7 @@ html {
 
 body {
 	margin: 0;
+	background: rgb(239, 208, 207);
 }
 
 a, a:active, a:hover:active {
@@ -55,57 +51,6 @@ abbr[title] {
 
 b, strong {
 	font-weight: bold;
-}
-
-code, kbd, pre, samp {
-	font-family: monospace, serif;
-	font-size: 1em;
-}
-
-pre {
-	white-space: pre-wrap;
-}
-
-q {
-	quotes: "\201C" "\201D" "\2018" "\2019";
-}
-
-small {
-	font-size: 80%;
-}
-
-sub, sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sup {
-	top: -0.5em;
-}
-
-sub {
-	bottom: -0.25em;
-}
-
-img {
-	border: 0;
-}
-
-svg:not(:root) {
-	overflow: hidden;
-}
-
-fieldset {
-	border: 1px solid #c0c0c0;
-	margin: 0 2px;
-	padding: 0.35em 0.625em 0.75em;
-}
-
-legend {
-	border: 0;
-	padding: 0;
 }
 
 button, input, select, textarea {
@@ -142,17 +87,6 @@ input[type="checkbox"], input[type="radio"] {
 	padding: 0;
 }
 
-input[type="search"] {
-	-webkit-appearance: textfield;
-	-moz-box-sizing: content-box;
-	-webkit-box-sizing: content-box;
-	box-sizing: content-box;
-}
-
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
-	-webkit-appearance: none;
-}
-
 button::-moz-focus-inner, input::-moz-focus-inner {
 	border: 0;
 	padding: 0;
@@ -161,11 +95,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 textarea {
 	overflow: auto;
 	vertical-align: top;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
 }
 
 body, button, select, input, textarea, label {
