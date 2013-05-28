@@ -25,6 +25,7 @@
 		'debug' => intval(!PROD)
 	));
 	define('HOST', $app->request()->getUrl());
+	define('CURRENT', $app->request()->getPath());
 
 	$app->hook('slim.before.dispatch', function() use ($app) {
 		$app->view()->setData('app', $app);

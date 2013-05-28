@@ -25,9 +25,9 @@
 		<![endif]-->
 
 		<ul class="nav">
-			<li><a href="<?php echo $app->urlFor('home'); ?>" class="teu">Accueil</a></li>
-			<li><a href="<?php echo $app->urlFor('draw'); ?>" class="teu">Dessiner une teube</a></li>
-			<li><a href="<?php echo $app->urlFor('teubes'); ?>" class="teu">Voir les teubes</a></li>
+			<li class="<?php if (CURRENT == $app->urlFor('home')) echo 'active' ?>" ><a href="<?php echo $app->urlFor('home'); ?>">Accueil</a></li>
+			<li class="<?php if (CURRENT == $app->urlFor('draw')) echo 'active' ?>" ><a href="<?php echo $app->urlFor('draw'); ?>">Dessiner</a></li>
+			<li class="<?php if (CURRENT == $app->urlFor('teubes')) echo 'active' ?>"><a href="<?php echo $app->urlFor('teubes'); ?>">Mater</a></li>
 		</ul>
 
 		<div id="container">
