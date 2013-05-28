@@ -1,15 +1,37 @@
-.preservatif {
-	background: #fe9aa3;
-	border: 2px solid #ff7fbf;
-	border-left-width: 4px;
+%base-bouton {
+	background: $rose;
+	border: 2px solid darken(rgba($rose, 0.8), 1%);
 	color: white;
-	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
-	border-radius: 0 $base-line-height $base-line-height 0;
+	padding: $base-line-height/4 $base-line-height;
 	margin-top: $base-line-height/2;
 	margin-bottom: $base-line-height/2;
 	position: relative;
-	z-index: 5;
 	white-space: nowrap;
+	&:focus, &:hover {
+		&, &:after {
+			border-color: darken(rgba($rose, 0.8), 5%);
+			text-decoration: none;
+		}
+	}
+}
+
+.bouton {
+	@extend %base-bouton;
+	border-radius: 50px;
+	padding-left: $base-line-height /2;
+	padding-right: $base-line-height /2;
+	&:active {
+		box-shadow: inset 0 0 20px 0 darken(rgba($rose, 0.8), 5%);
+		-webkit-box-shadow: inset 0 0 20px 0 darken(rgba($rose, 0.8), 5%);
+	}
+}
+
+.preservatif {
+	@extend %base-bouton;
+	border-left-width: 4px;
+	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
+	border-radius: 0 $base-line-height $base-line-height 0;
+	z-index: 5;
 	&:after {
 		content: ' ';
 		position: absolute;
@@ -18,8 +40,8 @@
 		width: $base-line-height/3;
 		height: $base-line-height/2;
 		border-radius: 0 $base-line-height/4 $base-line-height/4 0;
-		background: #fe9aa3;
-		border: 2px solid #ff7fbf;
+		background: $rose;
+		border: 2px solid rgba($rose, 0.8);
 		border-left: none;
 		z-index: 10;
 	}
@@ -32,9 +54,13 @@
 		@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
 		padding-right: $base-line-height*3;
 	}
+
+	&.rocco {
+		padding-right: $base-line-height*4;
+	}
 }
 
-@mixin preservatif($color: #fe9aa3, $border: false) {
+@mixin preservatif($color: $rose, $border: false) {
 	@if $border == false {
 		$border: adjust-hue($color, 030deg);
 	}
@@ -63,4 +89,5 @@
 		text-decoration: none;
 		@extend .preservatif.long;
 	}
+}
 }
