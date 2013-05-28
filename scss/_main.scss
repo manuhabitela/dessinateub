@@ -1,7 +1,3 @@
-body {
-	background: rgb(239, 208, 207);
-}
-
 html, body, #container, .teube-add {
 	margin: 0;
 	padding: 0;
@@ -44,94 +40,12 @@ html, body, #container, .teube-add {
 	.pointbe {
 		@include transition-property(letter-spacing opacity);
 		@include transition-duration(0.25s);
-		letter-spacing: -10px;
+		letter-spacing: -1em;
 		opacity: 0.01;
 	}
 	&:hover .pointbe, &:focus .pointbe {
 		opacity: 1;
 		letter-spacing: normal;
-	}
-}
-
-$board-width: 600px;
-$board-height: $board-width;
-#teuboard {
-	width: $board-width;
-	height: $board-height;
-	margin: 0 auto;
-
-	.drawing-board-canvas {
-		cursor: image-url('curseube.png'), pointer;
-	}
-
-	@include respond-to(large) {
-		margin: 0;
-		float: left;
-	}
-}
-
-.teube-container {
-	padding: $base-line-height;
-
-	@include respond-to(shrunken) {
-		padding: $base-line-height/4;
-	}
-
-	.teube-info {
-		width: $board-width;
-		margin: 0 auto;
-		overflow: visible;
-		font-size: xx-large;
-
-		.teube-field, .teube-button {
-			display: block;
-			margin: $base-line-height/4 0;
-			line-height: $base-line-height;
-			font-weight: normal;
-			width: 100%;
-		}
-
-		.teube-name {
-
-		}
-
-		.teube-name-input {
-			font-size: x-large;
-		}
-
-		.teube-button {
-			display: inline-block;
-			width: auto;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.teube-submit {
-			@extend .preservatif;
-			&:hover, &:focus {
-				@extend .preservatif.long;
-			}
-		}
-
-		@include respond-to(large) {
-			margin: 30px 0 0 ($board-width + 20px);
-			width: auto;
-			@include micro-clearfix;
-
-			.teube-name {
-				margin: 0;
-				height: $base-line-height;
-			}
-
-			.teube-name-input {
-				margin-top: 0;
-			}
-
-			.teube-button {
-				margin-left: 0;
-				margin-right: 0;
-			}
-		}
 	}
 }
 
