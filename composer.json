@@ -2,5 +2,8 @@
 	"require": {
 		"slim/slim": "2.*",
 		"gabordemooij/redbean": "dev-master"
+	},
+	"config": {
+		"vendor-dir": "app/vendor"
 	}
 }

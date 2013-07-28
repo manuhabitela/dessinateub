@@ -1,4 +1,4 @@
-http_path = "/"
+http_path = "/public_html/"
 css_dir = "css"
 sass_dir = "scss"
 images_dir = "img"

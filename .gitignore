@@ -1,13 +1,17 @@
+/.htpasswd
 .sass-cache
 .livereload
 *en conflit*
 *.sublime-*
 
-.htpasswd
-config/database.php
+app/.htaccess
+app/.htpasswd
+app/config/database.php
 
-vendor
+app/vendor
 composer.lock
 composer.phar
 
-components
+public_html/components
+
+sftp-config*.json
