@@ -12,6 +12,7 @@ app/vendor
 composer.lock
 composer.phar
 
-public_html/components
+public/components
 
 sftp-config*.json
+sftp-config.json
