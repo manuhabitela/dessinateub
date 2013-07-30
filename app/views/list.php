@@ -4,7 +4,7 @@
 <?php foreach ($teubes as $teube): ?>
 	<div class="teube-list-item">
 		<a href="<?php echo $app->urlFor('regarder', array('slug' => $teube->id)) ?>">
-			<img src="<?php echo IMGS_FOLDER . $teube->id . '.png' ?>" alt="<?php echo $teube->name ?>">
+			<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
 			<p><?php echo $teube->name ?></p>
 		</a>
 	</div>

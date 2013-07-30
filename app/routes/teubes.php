@@ -1,6 +1,6 @@
 <?php
-define('IMGS_FOLDER', '/drawings/');
 use RedBean_Facade as R;
+
 /**
  * LISTE
  *
@@ -45,20 +45,6 @@ $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 })->name('draw-edit');
 
 
-function saveTeubImg($URI, $teubeId) {
-	if (empty($URI) || empty($teubeId)) return false;
-	//http://j-query.blogspot.fr/2011/02/save-base64-encoded-canvas-image-to-png.html
-	$img = str_replace(' ', '+', str_replace('data:image/png;base64,', '', $URI));
-	$data = base64_decode($img);
-	$file = dirname(__FILE__). IMGS_FOLDER . $teubeId . '.png';
-	return file_put_contents($file, $data);
-}
-
-function deleteTeubImg($teubeId) {
-	if (empty($teubeId)) return false;
-	return unlink(dirname(__FILE__). IMGS_FOLDER . $teubeId . '.png');
-}
-
 /**
  * CREATION (POST)
  *
@@ -71,7 +57,6 @@ $app->post('/etjelemontre', function() use ($app) {
 	$teube->active = 0;
 	if (!empty($teube->name) && !empty($teube->image)) {
 		$teubeId = R::store($teube);
-		saveTeubImg($teube->image, $teubeId);
 		if (isset($_SESSION['ids']))
 			$_SESSION['ids'][]= $teubeId;
 		else
@@ -96,7 +81,6 @@ $app->put('/etjelemontre/:slug', function() use($app) {
 		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 		$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
 		R::store($teube);
-		saveTeubImg($teube->image, $teube->id);
 		$app->flash('success', "Teube modifiée !");
 	} else {
 		$app->flash('info', "Impossible de modifier cette teub");
