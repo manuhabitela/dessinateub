@@ -42,6 +42,16 @@
 			teuboard.setImg(existingImg);
 		}
 		$('#teube-url').on('click', function(e) { $(this).select(); });
+
+		$('input[name="teube-vote"]').on('change', function(e) {
+			$.ajax({
+				url: '/a-voter/' + $('.teube-vote input[name="teube-id"]').val(),
+				method: 'POST',
+				data: {
+					value: $(this).val()
+				}
+			})
+		});
 	}
 
 	//page de liste de teubes

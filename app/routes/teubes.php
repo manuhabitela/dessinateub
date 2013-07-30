@@ -98,3 +98,35 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 	$isEditable = (!empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids']));
 	$app->render('view.php', array('page' => 'view', 'teube' => $teube, 'isEditable' => $isEditable));
 })->name('regarder');
+
+
+$app->post('/a-voter/:slug', function($slug) use ($app) {
+	$error = false;
+
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$teube = R::load('teube', $slug);
+	if (empty($teube))
+		$error = true;
+	else {
+
+		$vote = R::dispense('voteub');
+		$vote->ua = $_SERVER['HTTP_USER_AGENT'];
+		$vote->ip = $_SERVER['REMOTE_ADDR'];
+		$vote->created = time();
+		$vote->value = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_NUMBER_INT);
+		$vote->teube = $teube;
+		$voteId = R::store($vote);
+
+		if (empty($voteId))
+			$error = true;
+
+	}
+
+
+	$res = $app->response();
+	$res['Content-Type'] = 'application/json';
+	$response = $error ?
+		array('message' => 'Erreur lors du vote...', 'status' => 'error') :
+		array('message' => 'A voté !', 'status' => 'success');
+	echo json_encode($response);
+})->name('a-voter');

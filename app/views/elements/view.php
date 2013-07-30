@@ -20,5 +20,9 @@
 			<!-- <a class="facebook teube-button" href="http://www.facebook.com/sharer/sharer.php?u=&amp;t=jaiunegrosseteu.be" target="_blank">Facebook</a> -->
 			<a class="facebook teube-button" href="#" target="_blank">Facebook</a>
 		</div>
+
+		<div>
+			<?php include (__DIR__ . '/vote.php'); ?>
+		</div>
 	</div>
 </div>
