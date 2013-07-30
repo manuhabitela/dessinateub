@@ -43,4 +43,11 @@
 		}
 		$('#teube-url').on('click', function(e) { $(this).select(); });
 	}
+
+	//page de liste de teubes
+	if ($('html.list').length) {
+		$('.teube-list-item img').on('error', function(e) {
+			$(this).closest('.teube-list-item').addClass('hidden');
+		})
+	}
 })();

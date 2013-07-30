@@ -1,23 +1,23 @@
 //classes "helpers" qui ne concernent rien en particulier mais qui vont nous aider tout au long du projet
 
 .ir {
-	@include image-replacement; 
+	@include image-replacement;
 }
 
 .hidden {
-	@include hidden; 
+	@include hidden;
 }
 
 .visuallyhidden {
-	@include visually-hidden; 
+	@include visually-hidden;
 }
 
 .invisible {
-	@include invisible; 
+	@include invisible;
 }
 
-.clearfix {
-	@include micro-clearfix; 
+.clearfix, .cf {
+	@include micro-clearfix;
 }
 
 .no-small {

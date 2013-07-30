@@ -1,6 +1,11 @@
 $teube-item-size: 200px;
+
+.teubes-list {
+	@extend .cf;
+}
+
 .teube-list-item {
-	display: inline-block;
+	float: left;
 	width: $teube-item-size;
 	height: $teube-item-size;
 	margin: $base-line-height/2;
@@ -16,13 +21,11 @@ $teube-item-size: 200px;
 		@include transition(opacity 0.25s);
 	}
 	img {
-		width: auto;
-		max-width: 100%;
+		width: 100%;
 		position: relative;
 		z-index: 10;
 		border-radius: $teube-item-size/2;
 		border: 2px solid darken(rgba($rose, 0.8), 1%);
-		opacity: 0.6;
 	}
 	p {
 		position: absolute;

@@ -52,9 +52,9 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 
 .invisible { visibility: hidden; }
 
-.clearfix:before, .clearfix:after { content: " "; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after, .cf:before, .teubes-list:before, .cf:after, .teubes-list:after { content: " "; display: table; }
+.clearfix:after, .cf:after, .teubes-list:after { clear: both; }
+.clearfix, .cf, .teubes-list { *zoom: 1; }
 
 @media only screen and (max-width: 640px) { .no-small { display: none !important; visibility: hidden; } }
 
@@ -120,10 +120,10 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
   .teube-container .teube-info .teube-name-input { margin-top: 0; }
   .teube-container .teube-info .teube-button { margin-left: 0; margin-right: 0; } }
 
-.teube-list-item { display: inline-block; width: 200px; height: 200px; margin: 0.65625em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; position: relative; }
+.teube-list-item { float: left; width: 200px; height: 200px; margin: 0.65625em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; position: relative; }
 .teube-list-item a { display: block; color: white; }
 .teube-list-item p, .teube-list-item img { -webkit-transition: opacity 0.25s; -moz-transition: opacity 0.25s; -o-transition: opacity 0.25s; transition: opacity 0.25s; }
-.teube-list-item img { width: auto; max-width: 100%; position: relative; z-index: 10; border-radius: 100px; border: 2px solid rgba(254, 149, 158, 0.8); opacity: 0.6; }
+.teube-list-item img { width: 100%; position: relative; z-index: 10; border-radius: 100px; border: 2px solid rgba(254, 149, 158, 0.8); }
 .teube-list-item p { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; opacity: 0; }
 .teube-list-item:hover p, .teube-list-item:hover img { opacity: 1; }
 
