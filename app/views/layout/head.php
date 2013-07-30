@@ -21,11 +21,10 @@
 	<body>
 
 		<!--[if lte IE 8]>
-			<p class="obsolete-browser">Vous utilisez un navigateur <strong>obsolète</strong>. <a href="http://browsehappy.com/" target="_blank">Mettez-le à jour</a> pour naviguer sur Internet de façon <strong>sécurisée</strong> !</p>
+			<p class="obsolete-browser">Vous utilisez un navigateur <strong>obsolète</strong>. <a href="http://browsehappy.com/" target="_blank">Mettez-le à jour</a> pour naviguer sur Internet de façon <strong>sécurisée</strong> ! Et accessoirement, pour pouvoir dessiner des teubs.</p>
 		<![endif]-->
 
 		<ul class="nav">
-			<li class="<?php if (CURRENT == $app->urlFor('home')) echo 'active' ?>" ><a href="<?php echo $app->urlFor('home'); ?>">Accueil</a></li>
 			<li class="<?php if (CURRENT == $app->urlFor('draw')) echo 'active' ?>" ><a href="<?php echo $app->urlFor('draw'); ?>">Dessiner</a></li>
 			<li class="<?php if (CURRENT == $app->urlFor('teubes')) echo 'active' ?>"><a href="<?php echo $app->urlFor('teubes'); ?>">Mater</a></li>
 		</ul>
