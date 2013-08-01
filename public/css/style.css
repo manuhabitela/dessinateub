@@ -135,6 +135,8 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 .teube-vote input:checked + label:hover, .teube-vote input:checked + label:hover ~ label, .teube-vote input:checked ~ label:hover, .teube-vote input:checked ~ label:hover ~ label, .teube-vote label:hover ~ input:checked ~ label { color: #ea0; text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
 .teube-vote label:active { position: relative; top: 2px; left: 2px; }
 
+.disqus-container { margin: 20px 0; padding: 20px; background: white; background: rgba(255, 255, 255, 0.5); width: 600px; }
+
 .teube-list-item { float: left; width: 200px; height: 200px; margin: 0.65625em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; position: relative; }
 .teube-list-item a { display: block; color: white; }
 .teube-list-item p, .teube-list-item img { -webkit-transition: opacity 0.25s; -moz-transition: opacity 0.25s; -o-transition: opacity 0.25s; transition: opacity 0.25s; }

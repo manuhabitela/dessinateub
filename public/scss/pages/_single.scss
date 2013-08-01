@@ -169,3 +169,12 @@ $vote-size: 32px;
 		left:2px;
 	}
 }
+
+.disqus-container {
+	margin: 20px 0;
+	padding: 20px;
+	background: white;
+	background: rgba(white, 0.5);
+	// border-radius: 0 0 20px 20px;
+	width: $board-width;
+}

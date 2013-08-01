@@ -60,4 +60,14 @@
 			$(this).closest('.teube-list-item').addClass('hidden');
 		})
 	}
+
+	//activation de disqus sur toutes les pages qui doivent l'afficher
+	if ($('#disqus_thread').length) {
+		var disqus_shortname = 'jaiunegrosseteu';
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	}
 })();
