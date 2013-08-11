@@ -5,7 +5,7 @@ use RedBean_Facade as R;
  * LISTE
  *
  */
-$app->get('/teubes', function() use ($app) {
+$app->get('/mater', function() use ($app) {
 	$app = \Slim\Slim::getInstance();
 
 	$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);

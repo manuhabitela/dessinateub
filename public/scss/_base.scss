@@ -21,7 +21,7 @@ html {
 
 body {
 	margin: 0;
-	background: rgb(239, 208, 207);
+	background: rgba($blue, 0.2);
 }
 
 a {
@@ -78,7 +78,6 @@ button, select {
 input[type=text] {
 	font-size: x-large;
 	padding: $base-line-height/4 $base-line-height/2;
-	color: #777;
 }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] {

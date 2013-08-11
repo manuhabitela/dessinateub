@@ -7,7 +7,9 @@ audio, canvas, video { display: inline-block; }
 
 html { font-family: sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
-body { margin: 0; background: #efd0cf; }
+body { margin: 0; background: rgba(103, 169, 203, 0.2); }
+
+a { color: #4193be; }
 
 a, a:active, a:hover:active { text-decoration: none; }
 
@@ -16,6 +18,8 @@ a:hover, a:focus { text-decoration: underline; }
 a:focus { outline: thin dotted; }
 
 a:active, a:hover { outline: 0; }
+
+a:visited { color: #4193be; }
 
 h1 { font-size: 2em; margin: 0.67em 0; }
 
@@ -29,7 +33,7 @@ button, input { line-height: normal; }
 
 button, select { text-transform: none; }
 
-input[type=text] { font-size: x-large; padding: 0.32813em 0.65625em; color: #777; }
+input[type=text] { font-size: x-large; padding: 0.32813em 0.65625em; }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance: button; cursor: pointer; }
 
@@ -72,11 +76,12 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 @media only screen and (max-width: 640px) { .only-large { display: none !important; visibility: hidden; } }
 @media only screen and (min-width: 641px) and (max-width: 1199px) { .only-large { display: none !important; visibility: hidden; } }
 
-.bouton, .teube-preview p, .teube .teube__edit-link, .nav li.active a, .preservatif, .facebook, .twitter, .teube .teube__info .teube__button--submit, .flash { background: #fe9aa3; border: 2px solid rgba(254, 149, 158, 0.8); color: white; padding: 0.32813em 1.3125em; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; white-space: nowrap; }
-.bouton:focus, .teube-preview p:focus, .teube .teube__edit-link:focus, .nav li.active a:focus, .preservatif:focus, .facebook:focus, .twitter:focus, .teube .teube__info .teube__button--submit:focus, .flash:focus, .bouton:focus:after, .teube-preview p:focus:after, .teube .teube__edit-link:focus:after, .nav li.active a:focus:after, .preservatif:focus:after, .facebook:focus:after, .twitter:focus:after, .teube .teube__info .teube__button--submit:focus:after, .flash:focus:after, .bouton:hover, .teube-preview p:hover, .teube .teube__edit-link:hover, .nav li.active a:hover, .preservatif:hover, .facebook:hover, .twitter:hover, .teube .teube__info .teube__button--submit:hover, .flash:hover, .bouton:hover:after, .teube-preview p:hover:after, .teube .teube__edit-link:hover:after, .nav li.active a:hover:after, .preservatif:hover:after, .facebook:hover:after, .twitter:hover:after, .teube .teube__info .teube__button--submit:hover:after, .flash:hover:after { border-color: rgba(254, 129, 140, 0.8); text-decoration: none; }
+.bouton, .teube-preview p, .teube .teube__edit-link, .preservatif, .facebook, .twitter, .teube .teube__info .teube__button--submit, .flash { background: #fe9aa3; border: 2px solid rgba(254, 149, 158, 0.8); padding: 0.32813em 1.3125em; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; white-space: nowrap; }
+.bouton, .teube-preview p, .teube .teube__edit-link, .preservatif, .facebook, .twitter, .teube .teube__info .teube__button--submit, .flash, .bouton:visited, .teube-preview p:visited, .teube .teube__edit-link:visited, .preservatif:visited, .facebook:visited, .twitter:visited, .teube .teube__info .teube__button--submit:visited, .flash:visited { color: white; }
+.bouton:focus, .teube-preview p:focus, .teube .teube__edit-link:focus, .preservatif:focus, .facebook:focus, .twitter:focus, .teube .teube__info .teube__button--submit:focus, .flash:focus, .bouton:focus:after, .teube-preview p:focus:after, .teube .teube__edit-link:focus:after, .preservatif:focus:after, .facebook:focus:after, .twitter:focus:after, .teube .teube__info .teube__button--submit:focus:after, .flash:focus:after, .bouton:hover, .teube-preview p:hover, .teube .teube__edit-link:hover, .preservatif:hover, .facebook:hover, .twitter:hover, .teube .teube__info .teube__button--submit:hover, .flash:hover, .bouton:hover:after, .teube-preview p:hover:after, .teube .teube__edit-link:hover:after, .preservatif:hover:after, .facebook:hover:after, .twitter:hover:after, .teube .teube__info .teube__button--submit:hover:after, .flash:hover:after { border-color: rgba(254, 129, 140, 0.8); text-decoration: none; }
 
-.bouton, .teube-preview p, .teube .teube__edit-link, .nav li.active a { border-radius: 50px; padding-left: 0.65625em; padding-right: 0.65625em; }
-.bouton:active, .teube-preview p:active, .teube .teube__edit-link:active, .nav li.active a:active { box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); -webkit-box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); }
+.bouton, .teube-preview p, .teube .teube__edit-link { border-radius: 50px; padding-left: 0.65625em; padding-right: 0.65625em; }
+.bouton:active, .teube-preview p:active, .teube .teube__edit-link:active { box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); -webkit-box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); }
 
 .preservatif, .facebook, .twitter, .teube .teube__info .teube__button--submit { border-left-width: 4px; padding: 0.32813em 1.3125em 0.32813em 0.65625em; border-radius: 0 1.3125em 1.3125em 0; z-index: 5; -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1); -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .preservatif:after, .facebook:after, .twitter:after, .teube .teube__info .teube__button--submit:after { content: ' '; position: absolute; right: -0.4375em; top: 0.59375em; width: 0.4375em; height: 0.65625em; border-radius: 0 0.32813em 0.32813em 0; background: #fe9aa3; border: 2px solid rgba(254, 154, 163, 0.8); border-left: none; z-index: 10; }
@@ -95,14 +100,14 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 .twitter:after { border-left: none; }
 .twitter:focus, .twitter:focus:after, .twitter:hover, .twitter:hover:after { border-color: #6e8eff; text-decoration: none; }
 
-.flash--error { background: #d31f2f; border-color: rgba(211, 31, 47, 0.8); }
+.flash--error { background: #fe4e5e; border-color: rgba(254, 78, 94, 0.8); }
 
 .teube-preview { width: 200px; height: 200px; margin: 0.65625em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; position: relative; }
 .teube-preview a { display: block; color: white; }
-.teube-preview p, .teube-preview img { -webkit-transition: opacity 0.25s; -moz-transition: opacity 0.25s; -o-transition: opacity 0.25s; transition: opacity 0.25s; }
-.teube-preview img { width: 100%; position: relative; z-index: 10; border-radius: 100px; border: 2px solid rgba(254, 149, 158, 0.8); }
-.teube-preview p { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; opacity: 0; }
-.teube-preview:hover p, .teube-preview:hover img { opacity: 1; }
+.teube-preview img { background: white; width: 100%; position: relative; z-index: 10; border-radius: 100px; border: 2px solid rgba(254, 149, 158, 0.8); -webkit-transition: border-radius 0.25s; -moz-transition: border-radius 0.25s; -o-transition: border-radius 0.25s; transition: border-radius 0.25s; }
+.teube-preview p { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; -webkit-transition: all 0.25s; -moz-transition: all 0.25s; -o-transition: all 0.25s; transition: all 0.25s; }
+.teube-preview:hover img { border-radius: 8px; }
+.teube-preview:hover p { bottom: 0; border-radius: 0 0 8px 8px; }
 
 .page--home, .page--home body, .page--home #container { height: 100%; }
 .page--home .nav, .page--home .credits { display: none; }
@@ -110,7 +115,7 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 
 .home-part { height: 50%; text-align: center; display: table-row; }
 .home-part h1 { display: table-cell; font-size: 3em; vertical-align: middle; font-weight: normal; }
-.home-part h1 .bouton, .home-part h1 .teube-preview p, .teube-preview .home-part h1 p, .home-part h1 .teube .teube__edit-link, .teube .home-part h1 .teube__edit-link, .home-part h1 .nav li.active a, .nav li.active .home-part h1 a { border-width: 4px; }
+.home-part h1 .bouton, .home-part h1 .teube-preview p, .teube-preview .home-part h1 p, .home-part h1 .teube .teube__edit-link, .teube .home-part h1 .teube__edit-link { border-width: 4px; }
 
 .drawing-board { width: 600px; height: 600px; margin: 0 auto; }
 .drawing-board .drawing-board-canvas { cursor: url('../img/curseube.png?1364427261'), pointer; }
@@ -133,7 +138,7 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 .teube__vote { padding: 0; list-style-type: none; }
 .teube__vote li { float: left; display: block; width: 32px; height: 32px; border-right: 1px solid yellow; background: green; font-size: 0; }
 
-.teube__vote { /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t  follow these rules. Every browser that supports :checked also supports :not(), so it doesn’t make the test unnecessarily selective */ }
+.teube__vote { /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t follow these rules. Every browser that supports :checked also supports :not(), so it doesn’t make the test unnecessarily selective */ }
 .teube__vote fieldset { border-style: none; }
 .teube__vote, .teube__vote legend { float: left; }
 .teube__vote:not(:checked) input { position: absolute; top: -9999px; clip: rect(0, 0, 0, 0); }
@@ -146,14 +151,19 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 
 .disqus-container { margin: 20px 0; padding: 20px; background: white; background: rgba(255, 255, 255, 0.5); width: 600px; }
 
+.teubes-list-sorter p { display: inline-block; }
+.teubes-list-sorter ul { display: inline-block; list-style-type: none; padding: 0; }
+.teubes-list-sorter li { display: inline; position: relative; }
+
 .teubes-list__item { float: left; }
 
 html, body, #container, .teube-add { margin: 0; padding: 0; }
 
-.nav { margin: 0.65625em 0; padding: 0.65625em; text-align: center; background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(255, 255, 255, 0.25); border-left: 0; border-right: 0; }
-.nav li { display: inline-block; margin: 0; min-width: 150px; text-align: center; }
-.nav li a { color: black; }
-.nav li.active a { display: inline-block; margin: 0; }
+.nav { margin: 0.65625em 0; padding: 0.32813em; text-align: center; background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(255, 255, 255, 0.25); border-left: 0; border-right: 0; }
+.nav li { display: inline-block; margin: 0 1.3125em; text-align: center; }
+.nav a { display: block; }
+.nav a.current { text-decoration: underline; }
+.nav a.bouton, .nav .teube a.teube__edit-link, .teube .nav a.teube__edit-link, .nav a { margin: 0; }
 @media only screen and (max-height: 780px) { .nav { margin: 0 0 0.65625em; } }
 
 #container { max-width: 1200px; margin: 0 auto; }
@@ -161,4 +171,5 @@ html, body, #container, .teube-add { margin: 0; padding: 0; }
 .teu .pointbe { -webkit-transition-property: letter-spacing, opacity; -moz-transition-property: letter-spacing, opacity; -o-transition-property: letter-spacing, opacity; transition-property: letter-spacing opacity; -webkit-transition-duration: 0.25s; -moz-transition-duration: 0.25s; -o-transition-duration: 0.25s; transition-duration: 0.25s; letter-spacing: -1em; opacity: 0.01; }
 .teu:hover .pointbe, .teu:focus .pointbe, .teu.active .pointbe { opacity: 1; letter-spacing: normal; }
 
-.credits { margin-top: 200px; font-family: sans-serif; font-size: small; opacity: 0.7; text-align: center; }
+.credits { margin-top: 150px; font-family: sans-serif; font-size: small; opacity: 0.9; text-align: center; }
+.credits a { font-weight: bold; }

@@ -120,11 +120,12 @@
 		@include transition(all 0.25s);
 	}
 	&:hover {
-		img, p {
-			border-radius: 0;
+		img {
+			border-radius: 8px;
 		}
 		p {
 			bottom: 0;
+			border-radius: 0 0 8px 8px;
 		}
 	}
 }

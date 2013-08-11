@@ -25,9 +25,17 @@
 		<![endif]-->
 
 		<ul class="nav">
-			<li class="<?php if (CURRENT == $app->urlFor('draw')) echo 'active' ?>" ><a href="<?php echo $app->urlFor('draw'); ?>">Dessiner</a></li>
-			<li class="<?php if (CURRENT == $app->urlFor('teubes')) echo 'active' ?>"><a href="<?php echo $app->urlFor('teubes'); ?>">Mater</a></li>
-			<li><a href="<?php echo $app->urlFor('random'); ?>">Au pif</a></li>
+			<li>
+				<a href="<?php echo $app->urlFor('teubes'); ?>">Les dernières créations</a>
+				<a href="/mater?ordre=anciennes" class="dropdown hidden">Les plus anciennes</a>
+			</li>
+			<li>
+				<a href="/mater?ordre=belles">Les mieux notées</a>
+				<a href="/mater?ordre=moches" class="dropdown hidden">Les moins bien notées</a>
+			</li>
+			<li><a href="/mater?ordre=kamoulox">Les plus commentées</a></li>
+			<li><a href="<?php echo $app->urlFor('draw'); ?>" class="bouton">Dessiner</a></li>
+			<li><a href="<?php echo $app->urlFor('random'); ?>">J'ai de la chance</a></li>
 		</ul>
 
 		<div id="container">

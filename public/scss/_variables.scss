@@ -1,13 +1,18 @@
 //variables du projet
 
 //couleurs
-$base-color: #222;
+$dark-gray: #222;
+$light-gray: #eee;
 $rose: #fe9aa3;
-$green: #45A331;
-$red: #D31F2F;
+$blue: #67A9CB;
+$yellow: #FEFCB4;
+$green: #48B161;
+$red: #FE4E5E;
 
-$link-color: $green;
-$link-color--visited: lighten($link-color, 5%);
+$base-color: $dark-gray;
+
+$link-color: darken($blue, 10%);
+$link-color--visited: $link-color;
 
 //fonts
 $serif: unquote("Georgia, 'DejaVu Serif', Norasi, serif");
