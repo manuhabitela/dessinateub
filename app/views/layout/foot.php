@@ -1,7 +1,8 @@
 		</div>
 
-		<p class="credits">
-			Fait avec de l'amour et de <a href="http://www.la-rache.com/" target="_blank">la rache</a> par <a href="http://manu.habite.la" target="_blank">Leimi</a> - Dessiner c'est gagner avec <a href="https://github.com/Leimi/drawingboard.js" target="_blank">drawingboard.js</a>.
+		<p class="credits teu">
+			Dessine et regarde les plus belles teubs de l'interwebz.<br>
+			Fait avec amour par <a href="http://manu.habite.la" target="_blank">Leimi</a>.
 		</p>
 
 		<script>
