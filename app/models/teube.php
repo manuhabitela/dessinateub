@@ -8,6 +8,9 @@ class Model_Teube extends RedBean_SimpleModel
 	}
 
 	public function update() {
+		if (empty($this->id)) {
+			$this->created = date('Y-m-d H:i:s');
+		}
 	}
 
 	public function after_update() {
