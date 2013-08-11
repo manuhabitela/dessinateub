@@ -77,7 +77,7 @@ $app->post('/etjelemontre', function() use ($app) {
 $app->put('/etjelemontre/:slug', function() use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
-	if (!empty($teube) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids'])) {
+	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids'])) {
 		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 		$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
 		R::store($teube);
