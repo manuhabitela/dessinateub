@@ -128,6 +128,15 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 	$app->render('view.php', array('page' => 'view', 'teube' => $teube, 'isEditable' => $isEditable));
 })->name('regarder');
 
+/**
+ * RANDOM
+ */
+$app->get('/balancebalancebalancebalancetoi', function() use($app) {
+	$max = R::getCell('SELECT id FROM teube ORDER BY id DESC limit 1');
+	$app->redirect('/regarder/'. mt_rand(1, $max));
+})->name('random');
+
+
 
 /**
  * VOTER
