@@ -53,9 +53,9 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 
 .invisible { visibility: hidden; }
 
-.clearfix:before, .clearfix:after, .cf:before, .teube-vote:before, .teubes-list:before, .cf:after, .teube-vote:after, .teubes-list:after { content: " "; display: table; }
-.clearfix:after, .cf:after, .teube-vote:after, .teubes-list:after { clear: both; }
-.clearfix, .cf, .teube-vote, .teubes-list { *zoom: 1; }
+.clearfix:before, .clearfix:after, .cf:before, .teube__vote:before, .teubes-list:before, .cf:after, .teube__vote:after, .teubes-list:after { content: " "; display: table; }
+.clearfix:after, .cf:after, .teube__vote:after, .teubes-list:after { clear: both; }
+.clearfix, .cf, .teube__vote, .teubes-list { *zoom: 1; }
 
 @media only screen and (max-width: 640px) { .no-small { display: none !important; visibility: hidden; } }
 
@@ -72,77 +72,81 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 @media only screen and (max-width: 640px) { .only-large { display: none !important; visibility: hidden; } }
 @media only screen and (min-width: 641px) and (max-width: 1199px) { .only-large { display: none !important; visibility: hidden; } }
 
-.bouton, .teube-container .teube-edit-link, .teube-list-item p, .nav li.active a, .preservatif, .facebook, .twitter, .teube-container .teube-info .teube-submit, .flash { background: #fe9aa3; border: 2px solid rgba(254, 149, 158, 0.8); color: white; padding: 0.32813em 1.3125em; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; white-space: nowrap; }
-.bouton:focus, .teube-container .teube-edit-link:focus, .teube-list-item p:focus, .nav li.active a:focus, .preservatif:focus, .facebook:focus, .twitter:focus, .teube-container .teube-info .teube-submit:focus, .flash:focus, .bouton:focus:after, .teube-container .teube-edit-link:focus:after, .teube-list-item p:focus:after, .nav li.active a:focus:after, .preservatif:focus:after, .facebook:focus:after, .twitter:focus:after, .teube-container .teube-info .teube-submit:focus:after, .flash:focus:after, .bouton:hover, .teube-container .teube-edit-link:hover, .teube-list-item p:hover, .nav li.active a:hover, .preservatif:hover, .facebook:hover, .twitter:hover, .teube-container .teube-info .teube-submit:hover, .flash:hover, .bouton:hover:after, .teube-container .teube-edit-link:hover:after, .teube-list-item p:hover:after, .nav li.active a:hover:after, .preservatif:hover:after, .facebook:hover:after, .twitter:hover:after, .teube-container .teube-info .teube-submit:hover:after, .flash:hover:after { border-color: rgba(254, 129, 140, 0.8); text-decoration: none; }
+.bouton, .teube-preview p, .teube .teube__edit-link, .nav li.active a, .preservatif, .facebook, .twitter, .teube .teube__info .teube__button--submit, .flash { background: #fe9aa3; border: 2px solid rgba(254, 149, 158, 0.8); color: white; padding: 0.32813em 1.3125em; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; white-space: nowrap; }
+.bouton:focus, .teube-preview p:focus, .teube .teube__edit-link:focus, .nav li.active a:focus, .preservatif:focus, .facebook:focus, .twitter:focus, .teube .teube__info .teube__button--submit:focus, .flash:focus, .bouton:focus:after, .teube-preview p:focus:after, .teube .teube__edit-link:focus:after, .nav li.active a:focus:after, .preservatif:focus:after, .facebook:focus:after, .twitter:focus:after, .teube .teube__info .teube__button--submit:focus:after, .flash:focus:after, .bouton:hover, .teube-preview p:hover, .teube .teube__edit-link:hover, .nav li.active a:hover, .preservatif:hover, .facebook:hover, .twitter:hover, .teube .teube__info .teube__button--submit:hover, .flash:hover, .bouton:hover:after, .teube-preview p:hover:after, .teube .teube__edit-link:hover:after, .nav li.active a:hover:after, .preservatif:hover:after, .facebook:hover:after, .twitter:hover:after, .teube .teube__info .teube__button--submit:hover:after, .flash:hover:after { border-color: rgba(254, 129, 140, 0.8); text-decoration: none; }
 
-.bouton, .teube-container .teube-edit-link, .teube-list-item p, .nav li.active a { border-radius: 50px; padding-left: 0.65625em; padding-right: 0.65625em; }
-.bouton:active, .teube-container .teube-edit-link:active, .teube-list-item p:active, .nav li.active a:active { box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); -webkit-box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); }
+.bouton, .teube-preview p, .teube .teube__edit-link, .nav li.active a { border-radius: 50px; padding-left: 0.65625em; padding-right: 0.65625em; }
+.bouton:active, .teube-preview p:active, .teube .teube__edit-link:active, .nav li.active a:active { box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); -webkit-box-shadow: inset 0 0 20px 0 rgba(254, 129, 140, 0.8); }
 
-.preservatif, .facebook, .twitter, .teube-container .teube-info .teube-submit { border-left-width: 4px; padding: 0.32813em 1.3125em 0.32813em 0.65625em; border-radius: 0 1.3125em 1.3125em 0; z-index: 5; -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1); -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.preservatif:after, .facebook:after, .twitter:after, .teube-container .teube-info .teube-submit:after { content: ' '; position: absolute; right: -0.4375em; top: 0.59375em; width: 0.4375em; height: 0.65625em; border-radius: 0 0.32813em 0.32813em 0; background: #fe9aa3; border: 2px solid rgba(254, 154, 163, 0.8); border-left: none; z-index: 10; }
-.preservatif.long, .long.facebook, .long.twitter, .facebook:hover, .facebook:focus, .twitter:hover, .twitter:focus, .teube-container .teube-info .long.teube-submit, .teube-container .teube-info .teube-submit:hover, .teube-container .teube-info .teube-submit:focus { -webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1); -webkit-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); -moz-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); -o-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); padding-right: 3.9375em; }
-.preservatif.rocco, .rocco.facebook, .rocco.twitter, .teube-container .teube-info .rocco.teube-submit, .teube-container .teube-info .teube-submit:active { padding-right: 5.25em; }
+.preservatif, .facebook, .twitter, .teube .teube__info .teube__button--submit { border-left-width: 4px; padding: 0.32813em 1.3125em 0.32813em 0.65625em; border-radius: 0 1.3125em 1.3125em 0; z-index: 5; -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1); -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.preservatif:after, .facebook:after, .twitter:after, .teube .teube__info .teube__button--submit:after { content: ' '; position: absolute; right: -0.4375em; top: 0.59375em; width: 0.4375em; height: 0.65625em; border-radius: 0 0.32813em 0.32813em 0; background: #fe9aa3; border: 2px solid rgba(254, 154, 163, 0.8); border-left: none; z-index: 10; }
+
+.preservatif--long, .facebook:hover, .facebook:focus, .twitter:hover, .twitter:focus, .teube .teube__info .teube__button--submit:hover, .teube .teube__info .teube__button--submit:focus { -webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1); -webkit-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); -moz-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); -o-transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); transition: padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55); padding-right: 3.9375em; }
+
+.preservatif--rocco, .teube .teube__info .teube__button--submit:active { padding-right: 5.25em; }
 
 .facebook { display: inline-block; }
 .facebook, .facebook:after { background: #3b5998; border: 2px solid #4b3b98; }
 .facebook:after { border-left: none; }
+.facebook:focus, .facebook:focus:after, .facebook:hover, .facebook:hover:after { border-color: #9183cf; text-decoration: none; }
 
 .twitter { display: inline-block; }
 .twitter, .twitter:after { background: #00aced; border: 2px solid #0035ed; }
 .twitter:after { border-left: none; }
+.twitter:focus, .twitter:focus:after, .twitter:hover, .twitter:hover:after { border-color: #6e8eff; text-decoration: none; }
 
-.facebook:hover, .facebook:focus, .twitter:hover, .twitter:focus { text-decoration: none; }
+.flash--error { background: #d31f2f; border-color: rgba(211, 31, 47, 0.8); }
 
-.flash-error { background: #d31f2f; border-color: rgba(211, 31, 47, 0.8); }
+.teube-preview { width: 200px; height: 200px; margin: 0.65625em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; position: relative; }
+.teube-preview a { display: block; color: white; }
+.teube-preview p, .teube-preview img { -webkit-transition: opacity 0.25s; -moz-transition: opacity 0.25s; -o-transition: opacity 0.25s; transition: opacity 0.25s; }
+.teube-preview img { width: 100%; position: relative; z-index: 10; border-radius: 100px; border: 2px solid rgba(254, 149, 158, 0.8); }
+.teube-preview p { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; opacity: 0; }
+.teube-preview:hover p, .teube-preview:hover img { opacity: 1; }
 
-.home, .home body, .home #container { height: 100%; }
-.home .nav, .home .credits { display: none; }
-.home #container { display: table; }
+.page--home, .page--home body, .page--home #container { height: 100%; }
+.page--home .nav, .page--home .credits { display: none; }
+.page--home #container { display: table; }
 
 .home-part { height: 50%; text-align: center; display: table-row; }
 .home-part h1 { display: table-cell; font-size: 3em; vertical-align: middle; font-weight: normal; }
-.home-part h1 .bouton, .home-part h1 .teube-container .teube-edit-link, .teube-container .home-part h1 .teube-edit-link, .home-part h1 .teube-list-item p, .teube-list-item .home-part h1 p, .home-part h1 .nav li.active a, .nav li.active .home-part h1 a { border-width: 4px; }
+.home-part h1 .bouton, .home-part h1 .teube-preview p, .teube-preview .home-part h1 p, .home-part h1 .teube .teube__edit-link, .teube .home-part h1 .teube__edit-link, .home-part h1 .nav li.active a, .nav li.active .home-part h1 a { border-width: 4px; }
 
 .drawing-board { width: 600px; height: 600px; margin: 0 auto; }
 .drawing-board .drawing-board-canvas { cursor: url('../img/curseube.png?1364427261'), pointer; }
 @media only screen and (min-width: 1200px) { .drawing-board { margin: 0; float: left; } }
 
-.teube-container { padding: 1.3125em; }
-@media only screen and (max-height: 780px) { .teube-container { padding: 0.32813em; } }
-.teube-container .teube-info { width: 600px; margin: 0 auto; overflow: visible; font-size: xx-large; }
-.teube-container .teube-info .teube-field, .teube-container .teube-info .teube-button { display: block; margin: 0.32813em 0; line-height: 1.3125em; font-weight: normal; width: 100%; }
-.teube-container .teube-info .teube-name-input { font-size: x-large; }
-.teube-container .teube-info .teube-button { display: inline-block; width: auto; margin-left: auto; margin-right: auto; }
-@media only screen and (min-width: 1200px) { .teube-container .teube-info { margin: 30px 0 0 620px; width: auto; }
-  .teube-container .teube-info:before, .teube-container .teube-info:after { content: " "; display: table; }
-  .teube-container .teube-info:after { clear: both; }
-  .teube-container .teube-info { *zoom: 1; }
-  .teube-container .teube-info .teube-name { margin: 0; height: 1.3125em; }
-  .teube-container .teube-info .teube-name-input { margin-top: 0; }
-  .teube-container .teube-info .teube-button { margin-left: 0; margin-right: 0; } }
+.teube { padding: 1.3125em; }
+@media only screen and (max-height: 780px) { .teube { padding: 0.32813em; } }
+.teube .teube__info { width: 600px; margin: 0 auto; overflow: visible; font-size: xx-large; }
+.teube .teube__info .teube__field, .teube .teube__info .teube__button, .teube .teube__info .teube__label { display: block; margin: 0.32813em 0; line-height: 1.3125em; font-weight: normal; width: 100%; }
+.teube .teube__info .teube__field--name { font-size: x-large; }
+.teube .teube__info .teube__button { display: inline-block; width: auto; margin-left: auto; margin-right: auto; }
+@media only screen and (min-width: 1200px) { .teube .teube__info { margin: 30px 0 0 620px; width: auto; }
+  .teube .teube__info:before, .teube .teube__info:after { content: " "; display: table; }
+  .teube .teube__info:after { clear: both; }
+  .teube .teube__info { *zoom: 1; }
+  .teube .teube__info .teube__label--name { margin: 0; height: 1.3125em; }
+  .teube .teube__info .teube__field--name { margin-top: 0; }
+  .teube .teube__info .teube__button { margin-left: 0; margin-right: 0; } }
 
-.teube-vote { padding: 0; list-style-type: none; }
-.teube-vote li { float: left; display: block; width: 32px; height: 32px; border-right: 1px solid yellow; background: green; font-size: 0; }
+.teube__vote { padding: 0; list-style-type: none; }
+.teube__vote li { float: left; display: block; width: 32px; height: 32px; border-right: 1px solid yellow; background: green; font-size: 0; }
 
-.teube-vote { /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t  follow these rules. Every browser that supports :checked also supports :not(), so it doesn’t make the test unnecessarily selective */ }
-.teube-vote fieldset { border-style: none; }
-.teube-vote, .teube-vote legend { float: left; }
-.teube-vote:not(:checked) input { position: absolute; top: -9999px; clip: rect(0, 0, 0, 0); }
-.teube-vote:not(:checked) label { float: right; width: 1em; padding: 0 0.1em; overflow: hidden; white-space: nowrap; cursor: pointer; font-size: 200%; line-height: 1.2; color: #ddd; text-shadow: 1px 1px #bbbbbb, 2px 2px #666666, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
-.teube-vote:not(:checked) label:before { content: '★ '; }
-.teube-vote:not(:checked) label:hover, .teube-vote:not(:checked) label:hover ~ label { color: gold; text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
-.teube-vote input:checked ~ label { color: #f70; text-shadow: 1px 1px #cc6600, 2px 2px #994400, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
-.teube-vote input:checked + label:hover, .teube-vote input:checked + label:hover ~ label, .teube-vote input:checked ~ label:hover, .teube-vote input:checked ~ label:hover ~ label, .teube-vote label:hover ~ input:checked ~ label { color: #ea0; text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
-.teube-vote label:active { position: relative; top: 2px; left: 2px; }
+.teube__vote { /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t  follow these rules. Every browser that supports :checked also supports :not(), so it doesn’t make the test unnecessarily selective */ }
+.teube__vote fieldset { border-style: none; }
+.teube__vote, .teube__vote legend { float: left; }
+.teube__vote:not(:checked) input { position: absolute; top: -9999px; clip: rect(0, 0, 0, 0); }
+.teube__vote:not(:checked) label { float: right; width: 1em; padding: 0 .1em; overflow: hidden; white-space: nowrap; cursor: pointer; font-size: 200%; line-height: 1.2; color: #ddd; text-shadow: 1px 1px #bbbbbb, 2px 2px #666666, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
+.teube__vote:not(:checked) label:before { content: '★ '; }
+.teube__vote:not(:checked) label:hover, .teube__vote:not(:checked) label:hover ~ label { color: gold; text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
+.teube__vote input:checked ~ label { color: #f70; text-shadow: 1px 1px #cc6600, 2px 2px #994400, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
+.teube__vote input:checked + label:hover, .teube__vote input:checked + label:hover ~ label, .teube__vote input:checked ~ label:hover, .teube__vote input:checked ~ label:hover ~ label, .teube__vote label:hover ~ input:checked ~ label { color: #ea0; text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
+.teube__vote label:active { position: relative; top: 2px; left: 2px; }
 
 .disqus-container { margin: 20px 0; padding: 20px; background: white; background: rgba(255, 255, 255, 0.5); width: 600px; }
 
-.teube-list-item { float: left; width: 200px; height: 200px; margin: 0.65625em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; position: relative; }
-.teube-list-item a { display: block; color: white; }
-.teube-list-item p, .teube-list-item img { -webkit-transition: opacity 0.25s; -moz-transition: opacity 0.25s; -o-transition: opacity 0.25s; transition: opacity 0.25s; }
-.teube-list-item img { width: 100%; position: relative; z-index: 10; border-radius: 100px; border: 2px solid rgba(254, 149, 158, 0.8); }
-.teube-list-item p { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; opacity: 0; }
-.teube-list-item:hover p, .teube-list-item:hover img { opacity: 1; }
+.teubes-list__item { float: left; }
 
 html, body, #container, .teube-add { margin: 0; padding: 0; }
 
@@ -155,6 +159,6 @@ html, body, #container, .teube-add { margin: 0; padding: 0; }
 #container { max-width: 1200px; margin: 0 auto; }
 
 .teu .pointbe { -webkit-transition-property: letter-spacing, opacity; -moz-transition-property: letter-spacing, opacity; -o-transition-property: letter-spacing, opacity; transition-property: letter-spacing opacity; -webkit-transition-duration: 0.25s; -moz-transition-duration: 0.25s; -o-transition-duration: 0.25s; transition-duration: 0.25s; letter-spacing: -1em; opacity: 0.01; }
-.teu:hover .pointbe, .teu:focus .pointbe { opacity: 1; letter-spacing: normal; }
+.teu:hover .pointbe, .teu:focus .pointbe, .teu.active .pointbe { opacity: 1; letter-spacing: normal; }
 
 .credits { margin-top: 200px; font-family: sans-serif; font-size: small; opacity: 0.7; text-align: center; }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php $page = !empty($page) ? $page.' ' : ''; ?>
+<?php $page = !empty($page) ? "page--".$page.' ' : ''; ?>
 <!--[if lt IE 7]>      <html lang="fr" class="<?php echo $page ?>no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="fr" class="<?php echo $page ?>no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="fr" class="<?php echo $page ?>no-js lt-ie9"> <![endif]-->
@@ -32,6 +32,6 @@
 		<div id="container">
 			<?php if (!empty($flash)): ?>
 			<?php foreach ($flash as $type => $message): ?>
-				<p class="flash flash-<?php echo $type ?>"><?php echo $message ?></p>
+				<p class="flash flash--<?php echo $type ?>"><?php echo $message ?></p>
 			<?php endforeach ?>
 			<?php endif ?>

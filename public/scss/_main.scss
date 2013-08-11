@@ -43,7 +43,7 @@ html, body, #container, .teube-add {
 		letter-spacing: -1em;
 		opacity: 0.01;
 	}
-	&:hover .pointbe, &:focus .pointbe {
+	&:hover .pointbe, &:focus .pointbe, &.active .pointbe {
 		opacity: 1;
 		letter-spacing: normal;
 	}

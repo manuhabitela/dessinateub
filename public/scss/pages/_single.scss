@@ -1,5 +1,6 @@
 $board-width: 600px;
 $board-height: $board-width;
+
 .drawing-board {
 	width: $board-width;
 	height: $board-height;
@@ -15,24 +16,24 @@ $board-height: $board-width;
 	}
 }
 
-.teube-container {
+.teube {
 	padding: $base-line-height;
 
 	@include respond-to(shrunken) {
 		padding: $base-line-height/4;
 	}
 
-	.teube-edit-link {
+	.teube__edit-link {
 		@extend .bouton;
 	}
 
-	.teube-info {
+	.teube__info {
 		width: $board-width;
 		margin: 0 auto;
 		overflow: visible;
 		font-size: xx-large;
 
-		.teube-field, .teube-button {
+		.teube__field, .teube__button, .teube__label {
 			display: block;
 			margin: $base-line-height/4 0;
 			line-height: $base-line-height;
@@ -40,28 +41,24 @@ $board-height: $board-width;
 			width: 100%;
 		}
 
-		.teube-name {
-
-		}
-
-		.teube-name-input {
+		.teube__field--name {
 			font-size: x-large;
 		}
 
-		.teube-button {
+		.teube__button {
 			display: inline-block;
 			width: auto;
 			margin-left: auto;
 			margin-right: auto;
 		}
 
-		.teube-submit {
+		.teube__button--submit {
 			@extend .preservatif;
 			&:hover, &:focus {
-				@extend .preservatif.long;
+				@extend .preservatif--long;
 			}
 			&:active {
-				@extend .preservatif.rocco;
+				@extend .preservatif--rocco;
 			}
 		}
 
@@ -70,16 +67,16 @@ $board-height: $board-width;
 			width: auto;
 			@include micro-clearfix;
 
-			.teube-name {
+			.teube__label--name {
 				margin: 0;
 				height: $base-line-height;
 			}
 
-			.teube-name-input {
+			.teube__field--name {
 				margin-top: 0;
 			}
 
-			.teube-button {
+			.teube__button {
 				margin-left: 0;
 				margin-right: 0;
 			}
@@ -88,7 +85,7 @@ $board-height: $board-width;
 }
 
 $vote-size: 32px;
-.teube-vote {
+.teube__vote {
 	@extend .cf;
 	padding: 0;
 	list-style-type: none;
@@ -104,7 +101,7 @@ $vote-size: 32px;
 }
 
 //LEA ON T'AIME http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/
-.teube-vote {
+.teube__vote {
 
 	fieldset {
 		border-style: none;

@@ -48,16 +48,16 @@
 
 	-webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
 	@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
+}
 
-	&.long {
-		-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
-		@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
-		padding-right: $base-line-height*3;
-	}
+.preservatif--long {
+	-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
+	@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
+	padding-right: $base-line-height*3;
+}
 
-	&.rocco {
-		padding-right: $base-line-height*4;
-	}
+.preservatif--rocco {
+	padding-right: $base-line-height*4;
 }
 
 @mixin preservatif($color: $rose, $border: false) {
@@ -71,6 +71,12 @@
 	}
 	&:after {
 		border-left: none;
+	}
+	&:focus, &:hover {
+		&, &:after {
+			border-color: lighten($border, 25%);
+			text-decoration: none;
+		}
 	}
 }
 
@@ -86,8 +92,7 @@
 
 .facebook, .twitter {
 	&:hover, &:focus {
-		text-decoration: none;
-		@extend .preservatif.long;
+		@extend .preservatif--long;
 	}
 }
 
@@ -95,7 +100,47 @@
 	@extend %base-bouton;
 }
 
-.flash-error {
+.flash--error {
 	background: $red;
 	border-color: rgba($red, 0.8);
+}
+
+.teube-preview {
+	width: $teube-preview-size;
+	height: $teube-preview-size;
+	margin: $base-line-height/2;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	position: relative;
+	a {
+		display: block;
+		color: white;
+	}
+	p, img {
+		@include transition(opacity 0.25s);
+	}
+	img {
+		width: 100%;
+		position: relative;
+		z-index: 10;
+		border-radius: $teube-preview-size/2;
+		border: 2px solid darken(rgba($rose, 0.8), 1%);
+	}
+	p {
+		position: absolute;
+		margin: 0;
+		left: 0;
+		right: 0;
+		bottom: 10%;
+		@extend .bouton;
+		z-index: 20;
+		text-align: center;
+		opacity: 0;
+	}
+	&:hover {
+		p, img {
+			opacity: 1;
+		}
+	}
 }
