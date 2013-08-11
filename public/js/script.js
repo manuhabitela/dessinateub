@@ -13,6 +13,14 @@
 		item.innerHTML = item.innerHTML.replace(/teub(s|)/, 'teu<span class="pointbe">.</span>b<span class="pointbe">e</span>$1');
 	});
 
+	//ajout d'une classe current sur tous les liens concernant la page actuelle
+	//ouais, la flemme de faire ça côté serveur
+	$('a').each(function(key, item) {
+		var $item = $(item);
+		if (isCurrentURL($item.attr('href')))
+			$item.addClass('current').attr('title', 'Vous êtes actuellement sur cette page');
+	});
+
 	//activation de disqus sur toutes les pages qui doivent l'afficher
 	if ($('#disqus_thread').length) {
 		(function() {
@@ -111,10 +119,25 @@
 			$(this).closest('.teube-list__item').addClass('hidden');
 		});
 
+		$('.teubes-list-sorter a').each(function(key, item) {
+			var $item = $(item);
+			if (isCurrentURL($item.attr('href')))
+				$item.parent('li').addClass('hidden');
+		});
+
 		(function () {
 			var s = document.createElement('script'); s.async = true; s.type = 'text/javascript';
 			s.src = 'http://jaiunegrosseteu.disqus.com/count.js';
 			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
 		}());
+	}
+
+
+	/**
+	 * helpers
+	 */
+	function isCurrentURL(url) {
+		return (url.toLowerCase() === (window.location.pathname + window.location.search).toLowerCase()) ||
+				(url.toLowerCase() === window.location.href.toLowerCase());
 	}
 })();
