@@ -25,11 +25,14 @@
 	var teuboard = null;
 	//activation du drawingboard sur toutes les pages qui doivent l'afficher
 	if ($('#teuboard').length) {
-		teuboard = new DrawingBoard.Board('teuboard', {
+		var teubopts = {
 			color: "rgba(255, 191, 127, 1)",
 			size: 5,
 			errorMessage: "<p>Votre navigateur est obsolète : mettez-le à jour pour pouvoir dessiner des teubs.</p>"
-		});
+		};
+		if (html.hasClass('page--view'))
+			teubopts.webStorage = false;
+		teuboard = new DrawingBoard.Board('teuboard', teubopts);
 	}
 
 
@@ -43,6 +46,7 @@
 			var img = teuboard.getImg();
 			var imgInput = (teuboard.blankCanvas == img) ? '' : img;
 			$(this).find('input[name=image]').val( imgInput );
+			teuboard.clearWebStorage();
 		});
 	}
 
@@ -56,6 +60,13 @@
 		var existingImg = $('.teube--view') ? $('.teube--view').attr('data-url') : null;
 		if (existingImg)
 			teuboard.setImg(existingImg);
+
+		$('.teube__delete-link').on('click', function(e) {
+			if (confirm("T'es sûr ?"))
+				teuboard.clearWebStorage();
+			else
+				e.preventDefault();
+		});
 
 		$('#teube-url')
 			.on('click', function(e) {
