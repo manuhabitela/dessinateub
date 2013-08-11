@@ -6,20 +6,27 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		concat: {
-			src: [
-				'public_html/js/script.js'
-			],
-			dest: 'public_html/dist/scripts.js'
+			dist: {
+				src: [
+					'public/components/jquery/jquery.js',
+					'public/components/drawingboard.js/dist/drawingboard.js',
+					'public/js/fingerprint.js',
+					'public/js/script.js'
+				],
+				dest: 'public/dist/scripts.js'
+			}
 		},
 		uglify: {
-			files: {
-				'public_html/dist/scripts.min.js': ['public_html/dist/scripts.js']
+			dist: {
+				files: {
+					'public/dist/scripts.min.js': ['public/dist/scripts.js']
+				}
 			}
 		},
 		cssmin: {
 			dist: {
 				files: {
-					'public_html/dist/styles.min.css': ['public_html/css/style.css']
+					'public/dist/styles.min.css': ['public/components/drawingboard.js/dist/drawingboard.css', 'public/css/style.css']
 				}
 			}
 		}

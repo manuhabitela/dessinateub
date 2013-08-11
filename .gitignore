@@ -16,3 +16,5 @@ public/components
 
 sftp-config*.json
 sftp-config.json
+
+node_modules
