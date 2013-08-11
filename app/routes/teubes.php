@@ -73,7 +73,7 @@ $app->post('/etjelemontre', function() use ($app) {
 			$_SESSION['ids'][]= $teubeId;
 		else
 			$_SESSION['ids'] = array($teubeId);
-		$app->flash('success', "Teube ajoutée ! Tu peux la modifier ou la supprimer pendant encore quelques minutes.");
+		$app->flash('success', "Teub ajoutée ! Tu peux la modifier ou la supprimer pendant encore quelques minutes.");
 	}
 	else {
 		$app->flash('error', "Erreur : êtes-vous sûr d'avoir bien dessiné et nommé votre teub ?");
@@ -86,7 +86,7 @@ $app->post('/etjelemontre', function() use ($app) {
 /**
  * EDITION (PUT)
  */
-$app->put('/etjelemontre/:slug', function() use($app) {
+$app->put('/etjelemontre/:slug', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
 	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids'])) {
@@ -95,10 +95,26 @@ $app->put('/etjelemontre/:slug', function() use($app) {
 		R::store($teube);
 		$app->flash('success', "Teube modifiée !");
 	} else {
-		$app->flash('info', "Impossible de modifier cette teub");
+		$app->flash('info', "Impossible de modifier cette teube");
 		$app->redirect('/etjelemontre');
 	}
 })->name('draw-put');
+
+
+/**
+ * SUPPRESSION
+ */
+$app->delete('/etjelemontre/:slug', function($slug) use($app) {
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$teube = R::load('teube', $slug);
+	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids'])) {
+		R::trash($teube);
+		$app->flash('success', "Teub supprimée !");
+	} else {
+		$app->flash('info', "Impossible de supprimer cette teub");
+	}
+	$app->redirect('/etjelemontre');
+})->name('draw-delete');
 
 
 /**

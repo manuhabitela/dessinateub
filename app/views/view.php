@@ -9,6 +9,10 @@
 	<div class="teube__info">
 		<?php if ($isEditable): ?>
 		<a class="teube__edit-link" href="<?php echo $app->urlFor('draw-edit', array('slug' => $teube->id)) ?>">Modifier cette teube</a>
+		<form action="<?php echo $app->urlFor('draw-delete', array('slug' => $teube->id)) ?>" method="post">
+			<input type="hidden" name="_METHOD" value="DELETE">
+			<button class="teube__delete-link">Supprimer cette teube</button>
+		</form>
 		<?php endif ?>
 		<h2 class="teube__label teube__label--name"><?php echo $teube->name ?></h2>
 

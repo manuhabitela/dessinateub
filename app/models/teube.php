@@ -17,7 +17,7 @@ class Model_Teube extends RedBean_SimpleModel
 		$this->createDrawingFile();
 	}
 
-	public function after_delete() {
+	public function delete() {
 		$this->deleteDrawingFile();
 	}
 
