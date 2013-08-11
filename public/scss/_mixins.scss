@@ -1,6 +1,26 @@
 //mixins communs au projet : aucun code n'est généré depuis ce projet, c'est une collection de mixins
 //certains mixins sont tirés des classes helpers du h5bp http://html5boilerplate.com/
 
+@mixin preservatif($color: $rose, $border: false) {
+	@if $border == false {
+		$border: adjust-hue($color, 030deg);
+	}
+	@extend .preservatif;
+	&, &:after {
+		background: $color;
+		border: 2px solid $border;
+	}
+	&:after {
+		border-left: none;
+	}
+	&:focus, &:hover {
+		&, &:after {
+			border-color: lighten($border, 25%);
+			text-decoration: none;
+		}
+	}
+}
+
 @mixin respond-to($media) {
 	$break-small: 640px;
 	$break-large: 1200px;

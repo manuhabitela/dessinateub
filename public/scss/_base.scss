@@ -24,6 +24,10 @@ body {
 	background: rgb(239, 208, 207);
 }
 
+a {
+	color: $link-color;
+}
+
 a, a:active, a:hover:active {
 	text-decoration: none;
 }
@@ -38,6 +42,10 @@ a:focus {
 
 a:active, a:hover {
 	outline: 0;
+}
+
+a:visited {
+	color: $link-color--visited;
 }
 
 h1 {

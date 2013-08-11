@@ -3,7 +3,11 @@
 //couleurs
 $base-color: #222;
 $rose: #fe9aa3;
+$green: #45A331;
 $red: #D31F2F;
+
+$link-color: $green;
+$link-color--visited: lighten($link-color, 5%);
 
 //fonts
 $serif: unquote("Georgia, 'DejaVu Serif', Norasi, serif");

@@ -1,7 +1,9 @@
 %base-bouton {
 	background: $rose;
 	border: 2px solid darken(rgba($rose, 0.8), 1%);
-	color: white;
+	&, &:visited {
+		color: white;
+	}
 	padding: $base-line-height/4 $base-line-height;
 	margin-top: $base-line-height/2;
 	margin-bottom: $base-line-height/2;
@@ -60,26 +62,6 @@
 	padding-right: $base-line-height*4;
 }
 
-@mixin preservatif($color: $rose, $border: false) {
-	@if $border == false {
-		$border: adjust-hue($color, 030deg);
-	}
-	@extend .preservatif;
-	&, &:after {
-		background: $color;
-		border: 2px solid $border;
-	}
-	&:after {
-		border-left: none;
-	}
-	&:focus, &:hover {
-		&, &:after {
-			border-color: lighten($border, 25%);
-			text-decoration: none;
-		}
-	}
-}
-
 .facebook {
 	display: inline-block;
 	@include preservatif(#3b5998);
@@ -117,15 +99,14 @@
 		display: block;
 		color: white;
 	}
-	p, img {
-		@include transition(opacity 0.25s);
-	}
 	img {
+		background: white;
 		width: 100%;
 		position: relative;
 		z-index: 10;
 		border-radius: $teube-preview-size/2;
 		border: 2px solid darken(rgba($rose, 0.8), 1%);
+		@include transition(border-radius 0.25s);
 	}
 	p {
 		position: absolute;
@@ -136,11 +117,14 @@
 		@extend .bouton;
 		z-index: 20;
 		text-align: center;
-		opacity: 0;
+		@include transition(all 0.25s);
 	}
 	&:hover {
-		p, img {
-			opacity: 1;
+		img, p {
+			border-radius: 0;
+		}
+		p {
+			bottom: 0;
 		}
 	}
 }
