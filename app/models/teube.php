@@ -3,18 +3,11 @@ use RedBean_Facade as R;
 class Model_Teube extends RedBean_SimpleModel
 {
 	public function open() {
-		$this->userVote = $this->getUserVote();
-
 		if (!file_exists($this->getDrawingPath()))
 			$this->createDrawingFile();
 	}
 
 	public function update() {
-		// on ne sauvegarde pas le uservote
-		foreach (array('user_vote', 'user_vote_id') as $field) {
-			if (!empty($this->bean->{$field}))
-				unset($this->bean->{$field});
-		}
 	}
 
 	public function after_update() {
