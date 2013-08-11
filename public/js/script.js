@@ -109,7 +109,7 @@
 	if (html.hasClass('page--list')) {
 		$('.teube-list__item img').on('error', function(e) {
 			$(this).closest('.teube-list__item').addClass('hidden');
-		})
+		});
 
 		(function () {
 			var s = document.createElement('script'); s.async = true; s.type = 'text/javascript';
