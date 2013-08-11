@@ -3,11 +3,18 @@ use RedBean_Facade as R;
 class Model_Teube extends RedBean_SimpleModel
 {
 	public function open() {
+		$this->userVote = $this->getUserVote();
 
 		if (!file_exists($this->getDrawingPath()))
 			$this->createDrawingFile();
 	}
 
+	public function update() {
+		// on ne sauvegarde pas le uservote
+		foreach (array('user_vote', 'user_vote_id') as $field) {
+			if (!empty($this->bean->{$field}))
+				unset($this->bean->{$field});
+		}
 	}
 
 	public function after_update() {
@@ -16,6 +23,19 @@ class Model_Teube extends RedBean_SimpleModel
 
 	public function after_delete() {
 		$this->deleteDrawingFile();
+	}
+
+	public function getVotes() {
+		$votes = R::find('voteub', 'teube_id = ? AND active = 1 ORDER BY created DESC', array($this->id));
+		return $votes;
+	}
+
+	public function getUserVote($fingerprint = false) {
+		$query = 'active = 1 AND teube_id = ? AND ip = ? AND (ua = ? '.($fingerprint ? ' OR fingerprint = ?)' : ')');
+		$bindings = array($this->id, $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
+		if ($fingerprint) $bindings[]= $fingerprint;
+		$vote = R::findOne('voteub', $query, $bindings);
+		return !empty($vote->id) ? $vote : null;
 	}
 
 	public function getDrawingPath() {
