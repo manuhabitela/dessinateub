@@ -5,18 +5,30 @@ use RedBean_Facade as R;
  * LISTE
  *
  */
-function teubes($page = '') {
+$app->get('/teubes', function() use ($app) {
 	$app = \Slim\Slim::getInstance();
+
+	$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
+	$sort = filter_input(INPUT_GET, 'ordre', FILTER_SANITIZE_STRING);
+
 	if (empty($page) || !is_numeric($page) || $page <= 0)
 		$page = 1;
+
+	switch ($sort) {
+		case 'anciennes': $order = "created ASC"; break;
+		case 'belles': $order = "rating DESC"; break;
+		case 'moches': $order = "rating ASC"; break;
+		case 'kamoulox': $order = "comments_count DESC"; break;
+		case 'nouvelles':
+		default: $order = "created DESC"; break;
+	}
+
 	$itemsNb = 50;
 	$limit = ($page - 1)*$itemsNb;
-	$teubes = R::findAll('teube', ' LIMIT ?,?', array($limit, $itemsNb));
-	$app->render('list.php', array('page' => 'list', 'teubes' => $teubes));
-}
 
-$app->get('/teubes', 'teubes')->name('teubes');
-$app->get('/teubes/:page', 'teubes');
+	$teubes = R::findAll('teube', ' ORDER BY '.$order.' LIMIT '.$limit.','.$itemsNb);
+	$app->render('list.php', array('page' => 'list', 'teubes' => $teubes));
+})->name('teubes');
 
 
 /**
