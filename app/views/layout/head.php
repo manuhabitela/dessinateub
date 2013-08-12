@@ -25,6 +25,7 @@
 		<![endif]-->
 
 		<ul class="nav">
+			<li><h1 class="nav__title teu">Dessine et regarde les plus belles teubs de l'interwebz</h1></li>
 			<li>
 				<a href="<?php echo $app->urlFor('home'); ?>">Les dernières créations</a>
 				<a href="/mater?ordre=anciennes" class="dropdown hidden">Les plus anciennes</a>

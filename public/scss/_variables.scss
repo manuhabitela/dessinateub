@@ -7,12 +7,12 @@ $rose: #fe9aa3;
 $blue: #67A9CB;
 $yellow: #FEFCB4;
 $green: #48B161;
+$flat-green: darken(#2ecc71, 2.5%);
 $red: #FE4E5E;
 
 $base-color: $dark-gray;
 
-$link-color: darken($blue, 10%);
-$link-color--visited: $link-color;
+$link-color: $flat-green;
 
 //fonts
 $serif: unquote("Georgia, 'DejaVu Serif', Norasi, serif");

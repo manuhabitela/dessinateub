@@ -6,7 +6,6 @@
 		</div>
 
 		<p class="credits teu">
-			Dessine et regarde les plus belles teubs de l'interwebz.<br>
 			Fait avec amour par <a href="http://manu.habite.la" target="_blank">Leimi</a>.
 		</p>
 

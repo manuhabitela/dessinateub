@@ -11,6 +11,20 @@ html, body, #container, .teube-add {
 	border: 2px solid rgba(white, 0.25);
 	border-left: 0;
 	border-right: 0;
+	position: relative;
+	.nav__title {
+		position: absolute;
+		top: $base-line-height/4;
+		bottom: $base-line-height/4;
+		left: $base-line-height/4;
+		font-size: .8em;
+		margin: 0;
+		font-weight: normal;
+		line-height: 1.4;
+		opacity: 0.9;
+		width: 170px;
+		color: rgba(darken($rose, 20%), 0.6);
+	}
 	li {
 		display: inline-block;
 		margin: 0 $base-line-height;
@@ -29,10 +43,15 @@ html, body, #container, .teube-add {
 	@include respond-to(shrunken) {
 		margin: 0 0 $base-line-height/2;
 	}
+
+	@include respond-to(not-large) {
+		padding-left: 200px;
+		text-align: left;
+	}
 }
 
 #container {
-	max-width: 1200px;
+	max-width: 1105px;
 	margin: 0 auto;
 }
 

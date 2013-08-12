@@ -55,6 +55,9 @@
 	@else if $media == large {
 		@media only screen and (min-width: $break-large) { @content; }
 	}
+	@else if $media == not-large {
+		@media only screen and (max-width: $break-large) { @content; }
+	}
 	@else if $media == shrunken {
 		@media only screen and (max-height: $break-small-height) { @content; }
 	}
