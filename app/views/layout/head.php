@@ -34,13 +34,13 @@
 				<a href="/mater?ordre=moches" class="dropdown hidden">Les moins bien notées</a>
 			</li>
 			<li><a href="/mater?ordre=kamoulox">Les plus commentées</a></li>
-			<li><a href="<?php echo $app->urlFor('draw'); ?>" class="bouton">Dessiner</a></li>
+			<li><a href="<?php echo $app->urlFor('draw'); ?>" class="button">Dessiner</a></li>
 			<li><a href="<?php echo $app->urlFor('random'); ?>">J'ai de la chance</a></li>
 		</ul>
 
 		<div id="container">
 			<?php if (!empty($flash)): ?>
 			<?php foreach ($flash as $type => $message): ?>
-				<p class="flash flash--<?php echo $type ?>"><?php echo $message ?></p>
+				<p class="button flash flash--<?php echo $type ?>"><?php echo $message ?></p>
 			<?php endforeach ?>
 			<?php endif ?>

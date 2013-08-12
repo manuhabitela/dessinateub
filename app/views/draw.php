@@ -10,7 +10,7 @@
 
 		<input type="text" id="teube-name-input" class="teube__field teube__field--name" name="name" required>
 
-		<button class="teube__button--submit teube__button">Je valide</button>
+		<button class="teube__button teube__button--submit condom condom--expandable">Je valide</button>
 
 		<input type="hidden" name="image" value="">
 	</div>

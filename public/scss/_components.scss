@@ -1,35 +1,14 @@
-%base-bouton {
-	background: $rose;
-	border: 2px solid darken(rgba($rose, 0.8), 1%);
-	&, &:visited {
-		color: white;
-	}
-	padding: $base-line-height/4 $base-line-height;
+%base-button {
+	padding: $base-line-height/4 $base-line-height/2;
 	margin-top: $base-line-height/2;
 	margin-bottom: $base-line-height/2;
 	position: relative;
 	white-space: nowrap;
-	&:focus, &:hover {
-		&, &:after {
-			border-color: darken(rgba($rose, 0.8), 5%);
-			text-decoration: none;
-		}
-	}
-}
-
-.bouton {
-	@extend %base-bouton;
 	border-radius: 50px;
-	padding-left: $base-line-height /2;
-	padding-right: $base-line-height /2;
-	&:active {
-		box-shadow: inset 0 0 20px 0 darken(rgba($rose, 0.8), 5%);
-		-webkit-box-shadow: inset 0 0 20px 0 darken(rgba($rose, 0.8), 5%);
-	}
 }
 
-.preservatif {
-	@extend %base-bouton;
+%base-condom {
+	@extend %base-button;
 	border-left-width: 4px;
 	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
 	border-radius: 0 $base-line-height $base-line-height 0;
@@ -42,44 +21,51 @@
 		width: $base-line-height/3;
 		height: $base-line-height/2;
 		border-radius: 0 $base-line-height/4 $base-line-height/4 0;
-		background: $rose;
-		border: 2px solid rgba($rose, 0.8);
 		border-left: none;
 		z-index: 10;
 	}
-
 	-webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
 	@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
 }
 
-.preservatif--long {
+.button {
+	@include button;
+}
+
+.blue-button {
+	@include button($blue);
+}
+
+.condom {
+	@include condom;
+}
+
+.condom--long {
 	-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
 	@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
 	padding-right: $base-line-height*3;
 }
 
-.preservatif--rocco {
+.condom--rocco {
 	padding-right: $base-line-height*4;
 }
 
-.facebook {
-	display: inline-block;
-	@include preservatif(#3b5998);
-}
-
-.twitter {
-	display: inline-block;
-	@include preservatif(#00aced);
-}
-
-.facebook, .twitter {
+.condom--expandable {
 	&:hover, &:focus {
-		@extend .preservatif--long;
+		@extend .condom--long;
 	}
 }
 
-.flash {
-	@extend %base-bouton;
+.facebook {
+	@include condom(#3b5998);
+}
+
+.twitter {
+	@include condom(#00aced);
+}
+
+.facebook, .twitter {
+	display: inline-block;
 }
 
 .flash--error {
@@ -105,7 +91,7 @@
 		position: relative;
 		z-index: 10;
 		border-radius: $teube-preview-size/2;
-		border: 2px solid darken(rgba($rose, 0.8), 1%);
+		border: 2px solid darken(rgba($blue, 0.8), 1%);
 		@include transition(border-radius 0.25s);
 	}
 	p {
@@ -114,7 +100,6 @@
 		left: 0;
 		right: 0;
 		bottom: 10%;
-		@extend .bouton;
 		z-index: 20;
 		text-align: center;
 		@include transition(all 0.25s);

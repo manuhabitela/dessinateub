@@ -1,13 +1,34 @@
 //mixins communs au projet : aucun code n'est généré depuis ce projet, c'est une collection de mixins
 //certains mixins sont tirés des classes helpers du h5bp http://html5boilerplate.com/
 
-@mixin preservatif($color: $rose, $border: false) {
-	@if $border == false {
-		$border: adjust-hue($color, 030deg);
+@mixin button($bg: $rose, $color: white) {
+	@extend %base-button;
+	background: $bg;
+	border: 2px solid darken(rgba($bg, 0.8), 1%);
+	&, &:visited {
+		color: $color;
 	}
-	@extend .preservatif;
+	&:focus, &:hover {
+		border-color: darken(rgba($bg, 0.8), 5%);
+		text-decoration: none;
+	}
+	&:active {
+		box-shadow: inset 0 0 20px 0 darken(rgba($bg, 0.8), 5%);
+		-webkit-box-shadow: inset 0 0 20px 0 darken(rgba($bg, 0.8), 5%);
+	}
+}
+
+@mixin condom($bg: $rose, $color: white, $border: false) {
+	@if $border == false {
+		$border: adjust-hue($bg, 030deg);
+	}
+	@extend %base-condom;
+	color: $color;
+	&:visited {
+		color: $color;
+	}
 	&, &:after {
-		background: $color;
+		background: $bg;
 		border: 2px solid $border;
 	}
 	&:after {

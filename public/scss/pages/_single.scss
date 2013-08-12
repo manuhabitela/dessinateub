@@ -23,10 +23,6 @@ $board-height: $board-width;
 		padding: $base-line-height/4;
 	}
 
-	.teube__edit-link {
-		@extend .bouton;
-	}
-
 	.teube__info {
 		width: $board-width;
 		margin: 0 auto;
@@ -50,16 +46,6 @@ $board-height: $board-width;
 			width: auto;
 			margin-left: auto;
 			margin-right: auto;
-		}
-
-		.teube__button--submit {
-			@extend .preservatif;
-			&:hover, &:focus {
-				@extend .preservatif--long;
-			}
-			&:active {
-				@extend .preservatif--rocco;
-			}
 		}
 
 		@include respond-to(large) {
@@ -86,7 +72,6 @@ $board-height: $board-width;
 
 $vote-size: 32px;
 .teube__vote {
-	@extend .cf;
 	padding: 0;
 	list-style-type: none;
 	li {
