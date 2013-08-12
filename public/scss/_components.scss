@@ -28,6 +28,26 @@
 	@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
 }
 
+%data-icon {
+	font-family: 'fontawesome';
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+[data-icon-before]:before {
+	@extend %data-icon;
+	content: attr(data-icon-before);
+}
+
+[data-icon-after]:after {
+	@extend %data-icon;
+	content: attr(data-icon-after);
+}
+
 .button {
 	@include button;
 }
@@ -71,46 +91,4 @@
 .flash--error {
 	background: $red;
 	border-color: rgba($red, 0.8);
-}
-
-.teube-preview {
-	width: $teube-preview-size;
-	height: $teube-preview-size;
-	margin: $base-line-height/2;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	position: relative;
-	a {
-		display: block;
-		color: white;
-	}
-	img {
-		background: white;
-		width: 100%;
-		position: relative;
-		z-index: 10;
-		border-radius: $teube-preview-size/2;
-		border: 2px solid darken(rgba($blue, 0.8), 1%);
-		@include transition(border-radius 0.25s);
-	}
-	p {
-		position: absolute;
-		margin: 0;
-		left: 0;
-		right: 0;
-		bottom: 10%;
-		z-index: 20;
-		text-align: center;
-		@include transition(all 0.25s);
-	}
-	&:hover {
-		img {
-			border-radius: 8px;
-		}
-		p {
-			bottom: 0;
-			border-radius: 0 0 8px 8px;
-		}
-	}
 }

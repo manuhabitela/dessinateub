@@ -1,7 +1,14 @@
 <div class="teube-preview">
-	<a class="teube-preview__link" href="<?php echo $app->urlFor('regarder', array('slug' => $teube->id)) ?>">
-		<img class="teube-preview__img" src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
-		<p class="teube-preview__title blue-button"><?php echo $teube->name ?></p>
+	<a class="teube-preview__link" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)) ?>">
+		<div class="teube-preview__img">
+			<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
+		</div>
+		<p class="teube-preview__title"><?php echo $teube->name ?></p>
 	</a>
-	<a class="teubes-list__comment-count" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)) ?>#disqus_thread"></a>
+	<a data-icon-after="b" class="teube-preview__comment-count" title="Nombre de commentaires" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)) ?>#disqus_thread"></a>
+	<?php if (!empty($teube->rating)): ?>
+	<span data-icon-before="s" class="teube-preview__rating" title="Note : <?php echo $teube->rating ?> sur 5"> <?php echo $teube->rating ?></span>
+	<?php else: ?>
+	<span data-icon-before="s" class="teube-preview__rating" title="Aucune note pour le moment !" data-rating="NA"> -</span>
+	<?php endif ?>
 </div>
