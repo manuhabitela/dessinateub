@@ -1,3 +1,8 @@
+		<?php if (CURRENT === "/"): ?>
+			<div class="justdoit">
+				<a href="<?php echo $app->urlFor('draw'); ?>" class="teu button">Je dessine ma teub</a>
+			</div>
+		<?php endif ?>
 		</div>
 
 		<p class="credits teu">

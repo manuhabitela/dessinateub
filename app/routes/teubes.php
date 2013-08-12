@@ -5,7 +5,7 @@ use RedBean_Facade as R;
  * LISTE
  *
  */
-$app->get('/mater', function() use ($app) {
+function listTeubes() {
 	$app = \Slim\Slim::getInstance();
 
 	$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
@@ -23,12 +23,16 @@ $app->get('/mater', function() use ($app) {
 		default: $order = "created DESC"; break;
 	}
 
+	if ($page === 1 && $order === "created DESC" && CURRENT !== "/")
+		$app->redirect('/');
+
 	$itemsNb = 50;
 	$limit = ($page - 1)*$itemsNb;
 
 	$teubes = R::findAll('teube', ' ORDER BY '.$order.' LIMIT '.$limit.','.$itemsNb);
 	$app->render('list.php', array('page' => 'list', 'teubes' => $teubes));
-})->name('teubes');
+}
+$app->get('/mater', 'listTeubes')->name('teubes');
 
 
 /**

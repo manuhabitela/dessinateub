@@ -26,7 +26,7 @@
 
 		<ul class="nav">
 			<li>
-				<a href="<?php echo $app->urlFor('teubes'); ?>">Les dernières créations</a>
+				<a href="<?php echo $app->urlFor('home'); ?>">Les dernières créations</a>
 				<a href="/mater?ordre=anciennes" class="dropdown hidden">Les plus anciennes</a>
 			</li>
 			<li>

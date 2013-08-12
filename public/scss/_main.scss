@@ -49,6 +49,14 @@ html, body, #container, .teube-add {
 	}
 }
 
+.justdoit {
+	text-align: center;
+	a {
+		font-size: $base-font-size*3;
+		line-height: $base-line-height*3;
+	}
+}
+
 .credits {
 	margin-top: 150px;
 	font-family: sans-serif;
