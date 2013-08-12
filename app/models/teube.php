@@ -5,6 +5,8 @@ class Model_Teube extends RedBean_SimpleModel
 	public function open() {
 		if (!file_exists($this->getDrawingPath()))
 			$this->createDrawingFile();
+		if ($this->rating)
+			$this->rating = round($this->rating, 1);
 	}
 
 	public function update() {
