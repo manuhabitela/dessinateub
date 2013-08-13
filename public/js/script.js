@@ -67,6 +67,7 @@
 
 	if (html.hasClass('page--view')) {
 		var existingImg = $('.teube--view') ? $('.teube--view').attr('data-url') : null;
+		window.disqus_identifier = $('.teube--view') ? 'teube-' + $('.teube--view').attr('data-id') : null;
 		if (existingImg)
 			teuboard.setImg(existingImg);
 

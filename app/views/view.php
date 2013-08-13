@@ -1,6 +1,6 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<div class="teube teube--view" data-url="<?php echo Halp::drawing($teube, true) ?>">
+<div class="teube teube--view" data-id="<?php echo $teube->id ?>" data-url="<?php echo Halp::drawing($teube, true) ?>">
 
 	<div id="teuboard">
 
