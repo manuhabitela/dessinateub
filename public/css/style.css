@@ -76,7 +76,7 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 @media only screen and (max-width: 640px) { .only-large { display: none !important; visibility: hidden; } }
 @media only screen and (min-width: 641px) and (max-width: 1199px) { .only-large { display: none !important; visibility: hidden; } }
 
-.condom, .facebook, .twitter, .button, .blue-button, .teube-preview__title { padding: 0.32813em 0.65625em; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; white-space: nowrap; border-radius: 50px; }
+.condom, .facebook, .twitter, .button, .blue-button, .teube-preview__title, .nav .dropdown a { padding: 0.32813em 0.65625em; margin-top: 0.65625em; margin-bottom: 0.65625em; position: relative; white-space: nowrap; border-radius: 50px; }
 
 .condom, .facebook, .twitter { border-left-width: 4px; padding: 0.32813em 1.3125em 0.32813em 0.65625em; border-radius: 0 1.3125em 1.3125em 0; z-index: 5; -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1); -webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .condom:after, .facebook:after, .twitter:after { content: ' '; position: absolute; right: -0.4375em; top: 0.59375em; width: 0.4375em; height: 0.65625em; border-radius: 0 0.32813em 0.32813em 0; border-left: none; z-index: 10; }
@@ -196,13 +196,17 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 
 html, body, #container, .teube-add { margin: 0; padding: 0; }
 
-.nav { margin: 0.65625em 0 1.96875em; padding: 0.32813em; text-align: center; background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(255, 255, 255, 0.25); border-left: 0; border-right: 0; position: relative; }
+.nav { margin: 0.65625em 0 1.96875em; padding: 0.32813em; text-align: center; background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(255, 255, 255, 0.25); border-left: 0; border-right: 0; position: relative; z-index: 100; }
 .nav .nav__title { position: absolute; top: 0.32813em; bottom: 0.32813em; left: 0.32813em; font-size: .8em; margin: 0; font-weight: normal; line-height: 1.4; opacity: 0.9; width: 170px; color: rgba(253, 53, 71, 0.6); }
-.nav li { display: inline-block; margin: 0 1.3125em; text-align: center; }
+.nav li { display: inline-block; margin: 0 1.3125em; text-align: center; position: relative; }
+.nav li:first-child { position: static; }
 .nav a { display: block; }
 .nav a.current { text-decoration: underline; }
 .nav a.button, .nav a { margin: 0; }
-@media only screen and (max-height: 780px) { .nav { margin: 0 0 0.65625em; } }
+.nav a:hover + .dropdown { display: block; }
+.nav .dropdown { display: none; position: absolute; left: 0; right: 0; padding-top: 1.3125em; }
+.nav .dropdown:hover { display: block; }
+.nav .dropdown a { margin: 0; white-space: normal; background: rgba(255, 255, 255, 0.6); }
 @media only screen and (max-width: 1200px) { .nav { padding-left: 200px; text-align: left; } }
 
 #container { max-width: 1105px; margin: 0 auto; }

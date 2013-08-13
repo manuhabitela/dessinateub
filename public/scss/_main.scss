@@ -12,6 +12,7 @@ html, body, #container, .teube-add {
 	border-left: 0;
 	border-right: 0;
 	position: relative;
+	z-index: 100;
 	.nav__title {
 		position: absolute;
 		top: $base-line-height/4;
@@ -29,6 +30,10 @@ html, body, #container, .teube-add {
 		display: inline-block;
 		margin: 0 $base-line-height;
 		text-align: center;
+		position: relative;
+		&:first-child {
+			position: static;
+		}
 	}
 	a {
 		display: block;
@@ -38,10 +43,25 @@ html, body, #container, .teube-add {
 		&.button, & {
 			margin: 0;
 		}
+		&:hover + .dropdown {
+			display: block;
+		}
 	}
-
-	@include respond-to(shrunken) {
-		margin: 0 0 $base-line-height/2;
+	.dropdown {
+		display: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		padding-top: $base-line-height;
+		&:hover {
+			display: block;
+		}
+		a {
+			@extend %base-button;
+			margin: 0;
+			white-space: normal;
+			background: rgba(white, 0.6);
+		}
 	}
 
 	@include respond-to(not-large) {
