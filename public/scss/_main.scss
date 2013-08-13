@@ -4,7 +4,7 @@ html, body, #container, .teube-add {
 }
 
 .nav {
-	margin: $base-line-height/2 0;
+	margin: $base-line-height/2 0 (($base-line-height/2)+$base-line-height);
 	padding: $base-line-height/4;
 	text-align: center;
 	background: rgba(white, 0.5);

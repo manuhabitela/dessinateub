@@ -92,3 +92,7 @@
 	background: $red;
 	border-color: rgba($red, 0.8);
 }
+
+.transition {
+	@include transition(all 0.5s);
+}

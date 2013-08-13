@@ -12,24 +12,29 @@
 	color: white;
 }
 
-.teube-preview__img {
+.teube-preview__img-wrapper {
+	position: relative;
+	z-index: 10;
 	background: white;
-	background-clip: padding-box;
-	width: 100%;
+	border: 4px solid rgba($blue, 0.4);
+
 	overflow: hidden;
-	-webkit-mask-image: -webkit-radial-gradient(circle, white, black);
-	&, img {
-		width: 100%;
+	border-radius: $teube-preview-size/2;
+	width: 100%;
+
+	div {
+		overflow: hidden;
+		-webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+	}
+	div, img {
 		border-radius: $teube-preview-size/2;
-		@include transition(all 0.25s);
 	}
 	img {
+		width: 100%;
+		@extend .transition;
 		@include transform(scale(1.2));
 		@include transform-origin(center center);
 	}
-	position: relative;
-	z-index: 10;
-	border: 4px solid rgba($blue, 0.4);
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		border-color: $blue;
@@ -50,7 +55,7 @@
 	text-align: center;
 	background-color: #85bad5;
 	border: 0;
-	@include transition(all 0.25s);
+	@extend .transition;
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		background-color: $blue;
@@ -61,15 +66,19 @@
 
 .teube-preview__comment-count,
 .teube-preview__rating {
-	@include transition(opacity 0.25s);
+	@extend .transition;
+	@include transform(scale(1.2));
+	background: rgba(white, 0.8);
+	border-radius: 50px;
 	opacity: 0;
-	position: relative;
 	z-index: 30;
 	position: absolute;
 	bottom: $base-line-height*1.5;
+	padding: $base-line-height/8 $base-line-height/4;
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		opacity: 1;
+		@include transform(scale(1));
 	}
 }
 

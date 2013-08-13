@@ -1,7 +1,9 @@
 <div class="teube-preview">
 	<a class="teube-preview__link" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)) ?>">
-		<div class="teube-preview__img">
-			<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
+		<div class="teube-preview__img-wrapper">
+			<div>
+				<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
+			</div>
 		</div>
 		<p class="teube-preview__title"><?php echo $teube->name ?></p>
 	</a>
