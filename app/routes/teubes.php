@@ -15,21 +15,26 @@ function listTeubes() {
 		$page = 1;
 
 	switch ($sort) {
-		case 'anciennes': $order = "created ASC"; break;
-		case 'belles': $order = "rating DESC"; break;
-		case 'moches': $order = "rating ASC"; break;
-		case 'kamoulox': $order = "comments_count DESC"; break;
+		case 'anciennes': $field = "created"; $order = "ASC"; break;
+		case 'belles': $field = "w_rating"; $order = "DESC"; break;
+		case 'moches': $field = "w_rating"; $order = "ASC"; break;
+		case 'kamoulox': $field = "comments_count"; $order = "DESC"; break;
 		case 'nouvelles':
-		default: $order = "created DESC"; break;
+		default: $field = "created"; $order = "DESC"; break;
 	}
 
-	if ($page === 1 && $order === "created DESC" && CURRENT !== "/")
+	if ($page === 1 && $field === "created" && $order === "DESC" && CURRENT !== "/")
 		$app->redirect('/');
 
 	$itemsNb = 50;
 	$limit = ($page - 1)*$itemsNb;
 
-	$teubes = R::findAll('teube', ' ORDER BY '.$order.' LIMIT '.$limit.','.$itemsNb);
+	$teubes = R::findAll('teube', '
+		ORDER BY
+			CASE WHEN '.$field.' IS NULL THEN 1 ELSE 0 END,
+			'.$field.' '.$order.'
+		LIMIT '.$limit.','.$itemsNb
+	);
 	$app->render('list.php', array('page' => 'list', 'teubes' => $teubes));
 }
 $app->get('/mater', 'listTeubes')->name('teubes');
