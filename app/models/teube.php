@@ -5,14 +5,11 @@ class Model_Teube extends RedBean_SimpleModel
 	public function open() {
 		if (!file_exists($this->getDrawingPath()))
 			$this->createDrawingFile();
-		if ($this->rating)
-			$this->rating = round($this->rating, 1);
 	}
 
 	public function update() {
-		if (empty($this->id)) {
+		if (empty($this->id))
 			$this->created = date('Y-m-d H:i:s');
-		}
 	}
 
 	public function after_update() {
@@ -26,6 +23,26 @@ class Model_Teube extends RedBean_SimpleModel
 	public function getVotes() {
 		$votes = R::find('voteub', 'teube_id = ? AND active = 1 ORDER BY created DESC', array($this->id));
 		return $votes;
+	}
+
+	public function updateRatings() {
+		$teubeVotes = $this->getVotes();
+		$teubeVotesCount = count($teubeVotes);
+		$voteValues = array();
+		foreach ($teubeVotes as $vote)
+			$voteValues[]= $vote->value;
+		$this->avg_rating = array_sum($voteValues)/$teubeVotesCount;
+
+		//http://masanjin.net/blog/bayesian-average
+		$allTeubesAvgRating = R::getCell('SELECT AVG(avg_rating) FROM teube WHERE avg_rating IS NOT NULL');
+		if (empty($allTeubesAvgRating)) $allTeubesAvgRating = 3;
+
+		$minVotesNumber = R::getCell('SELECT COUNT(id) FROM voteub WHERE active = 1');
+		$minVotesNumber = empty($minVotesNumber) || ceil($minVotesNumber/10) < 5 ? 5 : ceil($minVotesNumber/10);
+		$this->w_rating = ($teubeVotesCount / ($teubeVotesCount + $minVotesNumber)) * $this->avg_rating + ($minVotesNumber / ($teubeVotesCount+$minVotesNumber)) * $allTeubesAvgRating;
+
+		$this->ratings_count = $teubeVotesCount;
+		R::store($this);
 	}
 
 	public function getUserVote($fingerprint = false) {
