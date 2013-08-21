@@ -5,7 +5,7 @@
 
 	<?php if (!empty($teubes)): ?>
 
-	<div class="teubes-list__items-wrapper">
+	<div class="teubes-list__items-wrapper cf">
 		<?php foreach ($teubes as $teube): ?>
 		<div class="teubes-list__item">
 			<?php include(__DIR__ . '/elements/teube-preview.php'); ?>

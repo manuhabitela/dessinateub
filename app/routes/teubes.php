@@ -51,7 +51,7 @@ function listTeubes() {
 	if ($page === 1 && $field === "created" && $order === "DESC" && CURRENT !== "/")
 		$app->redirect('/');
 
-	$itemsNb = 50;
+	$itemsNb = 15;
 	$limit = ($page - 1)*$itemsNb;
 
 	$teubes = R::findAll('teube', '

@@ -9,20 +9,28 @@
 
 .teubes-list__pagination {
 	margin: $base-line-height/2 0;
+	text-align: center;
+}
+
+
+.teubes-list__pagination-link,
+.teubes-list__pagination-count {
+	display: inline-block;
+	vertical-align: middle;
 }
 
 .teubes-list__pagination-link {
-
+	font-size: $base-font-size*3;
+	margin: 0 $base-line-height/2;
+	border-bottom: 1px solid transparent;
 }
 
 span.teubes-list__pagination-link {
 	@include hidden;
 }
 
-.teubes-list__pagination-link--prev {
-	float: left;
-}
-
-.teubes-list__pagination-link--next {
-	float: right;
+a.teubes-list__pagination-link:hover,
+a.teubes-list__pagination-link:focus {
+	text-decoration: none;
+	border-color: $link-color;
 }
