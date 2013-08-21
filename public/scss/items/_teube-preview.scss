@@ -59,16 +59,16 @@
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		background-color: $blue;
-		border: 2px solid darken(rgba($blue, 0.8), 1%);
 		bottom: $base-line-height/-4;
 	}
 }
 
 .teube-preview__comment-count,
+.teube-preview__date,
 .teube-preview__rating {
 	@extend .transition;
 	@include transform(scale(1.2));
-	background: rgba(white, 0.8);
+	background: rgba(white, 0.9);
 	border-radius: 50px;
 	opacity: 0;
 	z-index: 30;
@@ -79,6 +79,17 @@
 	.teube-preview:hover & {
 		opacity: 1;
 		@include transform(scale(1));
+	}
+}
+
+.teube-preview__date {
+	bottom: $base-line-height*-1.5;
+	left: 0;
+	right: 0;
+	background: none;
+	text-align: right;
+	&:before {
+		padding-right: 4px;
 	}
 }
 

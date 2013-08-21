@@ -13,4 +13,7 @@
 	<?php else: ?>
 	<span data-icon-before="s" class="teube-preview__rating" title="Aucune note pour le moment !" data-rating="NA"> -</span>
 	<?php endif ?>
+	<?php $teubeTimestamp = strtotime($teube->created); ?>
+	<?php $teubeDate = date("d/m/Y à H:i", $teubeTimestamp); ?>
+	<span data-icon-before="c" class="teube-preview__date" data-timestamp="<?php echo $teubeTimestamp ?>" title="Le <?php echo $teubeDate ?>"><?php echo strstr($teubeDate, 'à', true); ?></span>
 </div>

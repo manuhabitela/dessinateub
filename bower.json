@@ -1,6 +1,7 @@
 {
 	"name": "jaiunegrosseteu.be",
 	"dependencies": {
-		"drawingboard.js": "*"
+		"drawingboard.js": "*",
+		"moment": "*"
 	}
 }
