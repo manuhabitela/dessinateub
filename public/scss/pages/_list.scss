@@ -1,19 +1,5 @@
-.teubes-list-sorter {
-	p {
-		display: inline-block;
-	}
-	ul {
-		display: inline-block;
-		list-style-type: none;
-		padding: 0;
-	}
-	li {
-		display: inline;
-		position: relative;
-	}
-	a {
-
-	}
+.teubes-list__title {
+	margin: $base-line-height/2 0;
 }
 
 .teubes-list__item {

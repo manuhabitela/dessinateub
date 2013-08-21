@@ -1,11 +1,12 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
 <div class="teubes-list cf">
-<?php foreach ($teubes as $teube): ?>
+	<h2 class="teubes-list__title teu"><?php echo $title ?></h2>
+	<?php foreach ($teubes as $teube): ?>
 	<div class="teubes-list__item">
 		<?php include(__DIR__ . '/elements/teube-preview.php'); ?>
 	</div>
-<?php endforeach ?>
+	<?php endforeach ?>
 </div>
 
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/foot.php'); ?>

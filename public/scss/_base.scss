@@ -24,6 +24,17 @@ body {
 	background: rgba($blue, 0.2);
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin: $base-line-height/2 0;
+	color: $rose;
+	font-weight: normal;
+	background: rgba(white, 0.5);
+	padding: $base-line-height/4 $base-line-height/2;
+	border-radius: 25px;
+	border: 2px solid rgba(white, 0.25);
+	text-align: center;
+}
+
 a {
 	color: $link-color;
 }
@@ -42,11 +53,6 @@ a:focus {
 
 a:active, a:hover {
 	outline: 0;
-}
-
-h1 {
-	font-size: 2em;
-	margin: 0.67em 0;
 }
 
 abbr[title] {
@@ -72,7 +78,6 @@ button, select {
 }
 
 input[type=text] {
-	font-size: x-large;
 	padding: $base-line-height/4 $base-line-height/2;
 }
 
