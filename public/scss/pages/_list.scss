@@ -6,3 +6,23 @@
 	float: left;
 	margin-bottom: $base-line-height/2;
 }
+
+.teubes-list__pagination {
+	margin: $base-line-height/2 0;
+}
+
+.teubes-list__pagination-link {
+
+}
+
+span.teubes-list__pagination-link {
+	@include hidden;
+}
+
+.teubes-list__pagination-link--prev {
+	float: left;
+}
+
+.teubes-list__pagination-link--next {
+	float: right;
+}

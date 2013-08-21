@@ -15,12 +15,37 @@ function listTeubes() {
 		$page = 1;
 
 	switch ($sort) {
-		case 'anciennes': $field = "created"; $order = "ASC"; $title = "Les plus anciennes teubs"; break;
-		case 'belles': $field = "w_rating"; $order = "DESC"; $title = "Les teubs préférées de la communauté"; break;
-		case 'moches': $field = "w_rating"; $order = "ASC"; $title = "Les plus moches"; break;
-		case 'kamoulox': $field = "comments_count"; $order = "DESC"; $title = "Les teubs dont on débat le plus"; break;
+		case 'anciennes':
+			$field = "created";
+			$order = "ASC";
+			$title = "Les plus anciennes teubs";
+			$nav = array('Plus anciennes', 'Plus récentes');
+			break;
+		case 'belles':
+			$field = "w_rating";
+			$order = "DESC";
+			$title = "Les teubs préférées de la communauté";
+			$nav = array('Mieux notées', 'Moins bien notées');
+			break;
+		case 'moches':
+			$field = "w_rating";
+			$order = "ASC";
+			$title = "Les plus moches";
+			$nav = array('Moins bien notées', 'Mieux notées');
+			break;
+		case 'kamoulox':
+			$field = "comments_count";
+			$order = "DESC";
+			$title = "Les teubs dont on débat le plus";
+			$nav = array('Plus commentées', 'Moins commentées');
+			break;
 		case 'nouvelles':
-		default: $field = "created"; $order = "DESC"; $title = "Les dernières créations"; break;
+		default:
+			$field = "created";
+			$order = "DESC";
+			$title = "Les dernières créations";
+			$nav = array('Plus récentes', 'Plus anciennes');
+			break;
 	}
 
 	if ($page === 1 && $field === "created" && $order === "DESC" && CURRENT !== "/")
@@ -35,7 +60,14 @@ function listTeubes() {
 			'.$field.' '.$order.'
 		LIMIT '.$limit.','.$itemsNb
 	);
-	$app->render('list.php', array('page' => 'list', 'teubes' => $teubes, 'title' => $title));
+	$app->render('list.php', array(
+		'page' => 'list',
+		'teubes' => $teubes,
+		'title' => $title,
+		'pageNb' => $page,
+		'nav' => $nav,
+		'fullList' => count($teubes) == $itemsNb
+	));
 }
 $app->get('/mater', 'listTeubes')->name('teubes');
 
