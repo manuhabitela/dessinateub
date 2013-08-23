@@ -15,5 +15,5 @@
 	<?php endif ?>
 	<?php $teubeTimestamp = strtotime($teube->created); ?>
 	<?php $teubeDate = date("d/m/Y à H:i", $teubeTimestamp); ?>
-	<span data-icon-before="c" class="teube-preview__date" data-timestamp="<?php echo $teubeTimestamp ?>" title="Le <?php echo $teubeDate ?>"><?php echo strstr($teubeDate, 'à', true); ?></span>
+	<span data-icon-before="c" class="teube-preview__date" data-timestamp="<?php echo $teubeTimestamp*1000 ?>" title="Le <?php echo $teubeDate ?>"><?php echo strstr($teubeDate, 'à', true); ?></span>
 </div>

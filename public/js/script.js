@@ -14,6 +14,13 @@
 		item.innerHTML = item.innerHTML.replace(/teub(s|)/, 'teu<span class="pointbe">.</span>b<span class="pointbe">e</span>$1');
 	});
 
+	//momentjs : transformation de toutes les dates en indication relative à aujourd'hui ("il y a 3 jours")
+	moment.lang('fr');
+	$('[data-timestamp]').each(function(key, item) {
+		var $item = $(item);
+		$item.html( moment(($item.attr('data-timestamp'))*1).fromNow() );
+	});
+
 	//ajout d'une classe current sur tous les liens concernant la page actuelle
 	//ouais, la flemme de faire ça côté serveur
 	$('a').each(function(key, item) {
