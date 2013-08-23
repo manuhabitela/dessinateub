@@ -14,6 +14,7 @@
 
 .teube-preview__img-wrapper {
 	position: relative;
+	line-height: 0;
 	z-index: 10;
 	background: white;
 	border: 4px solid rgba($blue, 0.4);
@@ -40,7 +41,7 @@
 	.teube-preview:hover & {
 		border-color: $blue;
 		img {
-			@include transform(scale(1));
+			@include transform(scale(1.05));
 		}
 	}
 }
@@ -65,24 +66,40 @@
 	}
 }
 
-.teube-preview__comment-count,
-.teube-preview__date,
-.teube-preview__rating {
-	@extend .transition;
-	@include transform(scale(1.2));
-	background: rgba(white, 0.9);
-	border-radius: 50px;
-	opacity: 0;
-	z-index: 30;
+.teube-preview__info-wrapper,
+.teube-preview__date {
 	position: absolute;
 	bottom: $base-line-height*1.5;
-	padding: $base-line-height/8 $base-line-height/4;
+	opacity: 0;
+	@extend .transition;
+	@include transform(scale(1.2));
+	z-index: 30;
 	.teube-preview--active &,
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		opacity: 1;
-		@include transform(scale(1));
+		@include transform(scale(1.05));
 	}
+}
+
+.teube-preview__info-wrapper {
+	left: 0;
+	right: 0;
+	text-align: center;
+	> div {
+		margin: 0 auto;
+		display: inline-block;
+		text-align: center;
+		background: rgba(white, 0.9);
+		border-radius: 50px;
+	}
+}
+
+.teube-preview__comment-count,
+.teube-preview__date,
+.teube-preview__rating {
+	padding: $base-line-height/8 $base-line-height/4;
+	display: inline-block;
 }
 
 .teube-preview__date {
@@ -97,10 +114,8 @@
 }
 
 .teube-preview__comment-count {
-	right: 55%;
 }
 
 .teube-preview__rating {
-	left: 55%;
 	color: $rose;
 }
