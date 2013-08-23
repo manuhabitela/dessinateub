@@ -121,11 +121,13 @@
 			$(this).closest('.teube-list__item').addClass('hidden');
 		});
 
-		$('.teubes-list-sorter a').each(function(key, item) {
-			var $item = $(item);
-			if (isCurrentURL($item.attr('href')))
-				$item.parent('li').addClass('hidden');
+		$('.teubes-list').on('focus', '.teube-preview__link, .teube-preview__comment-count', function(e) {
+			$(this).closest('.teube-preview').addClass('teube-preview--active');
 		});
+		$('.teubes-list').on('blur', '.teube-preview__link, .teube-preview__comment-count', function(e) {
+			$(this).closest('.teube-preview').removeClass('teube-preview--active');
+		});
+
 		(function () {
 			var s = document.createElement('script'); s.async = true; s.type = 'text/javascript';
 			s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
