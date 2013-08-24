@@ -14,45 +14,49 @@ function listTeubes() {
 	if (empty($page) || !is_numeric($page) || $page <= 0)
 		$page = 1;
 
+	$itemsNb = 15;
+	$limit = ($page - 1)*$itemsNb;
+
+	$teu = getTeubes($sort, $limit, $itemsNb);
+
+	$app->render('list.php', array(
+		'page' => 'list',
+		'teubes' => $teu["teubes"],
+		'title' => $teu["title"],
+		'pageNb' => $page,
+		'fullList' => count($teu['teubes']) == $itemsNb
+	));
+}
+
+function getTeubes($sort, $limit, $itemsNb) {
 	switch ($sort) {
 		case 'anciennes':
 			$field = "created";
 			$order = "ASC";
 			$title = "Les plus anciennes teubs";
-			$nav = array('Plus anciennes', 'Plus récentes');
 			break;
 		case 'belles':
 			$field = "w_rating";
 			$order = "DESC";
 			$title = "Les teubs préférées de la communauté";
-			$nav = array('Mieux notées', 'Moins bien notées');
 			break;
 		case 'moches':
 			$field = "w_rating";
 			$order = "ASC";
 			$title = "Les plus moches";
-			$nav = array('Moins bien notées', 'Mieux notées');
 			break;
 		case 'kamoulox':
 			$field = "comments_count";
 			$order = "DESC";
 			$title = "Les teubs dont on débat le plus";
-			$nav = array('Plus commentées', 'Moins commentées');
 			break;
 		case 'nouvelles':
 		default:
 			$field = "created";
 			$order = "DESC";
 			$title = "Les dernières créations";
-			$nav = array('Plus récentes', 'Plus anciennes');
 			break;
 	}
-
-	if ($page === 1 && $field === "created" && $order === "DESC" && CURRENT !== "/")
-		$app->redirect('/');
-
-	$itemsNb = 15;
-	$limit = ($page - 1)*$itemsNb;
 
 	$teubes = R::findAll('teube', '
 		ORDER BY
@@ -60,14 +64,8 @@ function listTeubes() {
 			'.$field.' '.$order.'
 		LIMIT '.$limit.','.$itemsNb
 	);
-	$app->render('list.php', array(
-		'page' => 'list',
-		'teubes' => $teubes,
-		'title' => $title,
-		'pageNb' => $page,
-		'nav' => $nav,
-		'fullList' => count($teubes) == $itemsNb
-	));
+
+	return array('title' => $title, 'teubes' => $teubes, 'sort' => $sort);
 }
 $app->get('/mater', 'listTeubes')->name('teubes');
 

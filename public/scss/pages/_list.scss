@@ -2,6 +2,12 @@
 	margin: $base-line-height/2 0;
 }
 
+.teubes-list__see-more {
+	display: block;
+	margin: $base-line-height/2 0;
+	float: right;
+}
+
 .teubes-list__item {
 	float: left;
 	margin-bottom: $base-line-height/2;

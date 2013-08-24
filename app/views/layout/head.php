@@ -26,8 +26,9 @@
 
 		<ul class="nav">
 			<li><h1 class="nav__title teu">Dessine et regarde les plus belles teubs de l'interwebz</h1></li>
+			<li><a href="<?php echo $app->urlFor('home'); ?>">Accueil</a></li>
 			<li>
-				<a href="<?php echo $app->urlFor('home'); ?>">Les dernières créations</a>
+				<a href="/mater?ordre=nouvelles">Les dernières créations</a>
 				<div class="dropdown">
 					<a href="/mater?ordre=anciennes">Les plus anciennes</a>
 				</div>
@@ -38,7 +39,6 @@
 					<a href="/mater?ordre=moches">Les moins bien notées</a>
 				</div>
 			</li>
-			<li><a href="/mater?ordre=kamoulox">Les plus commentées</a></li>
 			<li><a href="<?php echo $app->urlFor('draw'); ?>" class="button">Dessiner</a></li>
 			<li><a href="<?php echo $app->urlFor('random'); ?>">J'ai de la chance</a></li>
 		</ul>
