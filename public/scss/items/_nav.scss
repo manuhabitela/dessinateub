@@ -1,0 +1,69 @@
+.nav {
+	margin: $base-line-height/2 0;
+	padding: $base-line-height/4;
+	text-align: center;
+	background: rgba(white, 0.5);
+	border: 2px solid rgba(white, 0.25);
+	border-left: 0;
+	border-right: 0;
+	position: relative;
+	z-index: 100;
+	.nav__title {
+		position: absolute;
+		top: $base-line-height/4;
+		bottom: $base-line-height/4;
+		left: $base-line-height/4;
+		font-size: .8em;
+		font-weight: normal;
+		line-height: 1.4;
+		opacity: 0.9;
+		width: 170px;
+		color: rgba(darken($rose, 20%), 0.6);
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+	}
+	li {
+		display: inline-block;
+		margin: 0 $base-line-height;
+		text-align: center;
+		position: relative;
+		&:first-child {
+			position: static;
+		}
+	}
+	a {
+		display: block;
+		&.current {
+			text-decoration: underline;
+		}
+		&.button, & {
+			margin: 0;
+		}
+		&:hover + .dropdown {
+			display: block;
+		}
+	}
+	.dropdown {
+		display: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		padding-top: $base-line-height;
+		&:hover {
+			display: block;
+		}
+		a {
+			@extend %base-button;
+			margin: 0;
+			white-space: normal;
+			background: rgba(white, 0.9);
+		}
+	}
+
+	@include respond-to(not-large) {
+		padding-left: 200px;
+		text-align: left;
+	}
+}
