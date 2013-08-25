@@ -103,10 +103,11 @@ $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 $app->post('/etjelemontre', function() use ($app) {
 	$teube = R::dispense('teube');
 	$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+	$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
 	$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
 	$teube->votes = 0;
 	$teube->active = 0;
-	if (!empty($teube->name) && !empty($teube->image)) {
+	if (!empty($teube->name) && !empty($teube->artist) && !empty($teube->image)) {
 		$teubeId = R::store($teube);
 		if (isset($_SESSION['ids']))
 			$_SESSION['ids'][]= $teubeId;
@@ -115,7 +116,7 @@ $app->post('/etjelemontre', function() use ($app) {
 		$app->flash('success', "Teub ajoutée ! Tu peux la modifier ou la supprimer pendant encore quelques minutes.");
 	}
 	else {
-		$app->flash('error', "Erreur : êtes-vous sûr d'avoir bien dessiné et nommé votre teub ?");
+		$app->flash('error', "Erreur : t'es sûr d'avoir bien dessiné, nommé et signé ta teub ?");
 		$app->redirect($app->request()->getReferrer());
 	}
 	$app->redirect('/regarder/'.$teube->id);
@@ -166,6 +167,7 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 	$userVote = $teube->getUserVote();
 	$app->render('view.php', array('page' => 'view', 'teube' => $teube, 'isEditable' => $isEditable));
 })->name('regarder');
+
 
 /**
  * RANDOM
