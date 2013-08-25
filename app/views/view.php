@@ -25,6 +25,9 @@
 		</p>
 
 		<div class="teube-view__vote-container">
+			<?php if (isset($userVote)): ?>
+			<span class="teube-view__user-vote">votre note : <span><?php echo $userVote->value ?></span></span>
+			<?php endif ?>
 			<form action="#" class="teube-view__vote cf">
 				<input type="hidden" name="teube-id" value="<?php echo $teube->id ?>">
 				<fieldset>
@@ -35,6 +38,7 @@
 					<input type="radio" id="teube-vote-1" name="teube-vote" value="1" /><label for="teube-vote-1" title="Non. NON.">1</label>
 				</fieldset>
 			</form>
+			<span class="teube-view__avg-vote">moyenne : <?php echo $teube->w_rating ?> avec <?php echo $teube->ratings_count.' '.Halp::pluralize('vote', $teube->ratings_count); ?></span>
 		</div>
 
 		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">

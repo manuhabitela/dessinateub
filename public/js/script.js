@@ -108,8 +108,10 @@
 			data: {
 				fingerprint: new Fingerprint().get()
 			},
-			success: function(e) {
-
+			success: function(data, status) {
+				if (status === "success" && data && data.vote) {
+					$('.teube-view__user-vote > span').text(data.vote);
+				}
 			}
 		});
 	}

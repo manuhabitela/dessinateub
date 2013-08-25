@@ -165,7 +165,7 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 	$teube = R::load('teube', $slug);
 	$isEditable = (!empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids']));
 	$userVote = $teube->getUserVote();
-	$app->render('view.php', array('page' => 'view', 'teube' => $teube, 'isEditable' => $isEditable));
+	$app->render('view.php', array('page' => 'view', 'teube' => $teube, 'userVote' => $userVote, 'isEditable' => $isEditable));
 })->name('regarder');
 
 
