@@ -29,6 +29,16 @@ html, body, #container, .teube-add {
 	}
 }
 
+.flash {
+	.page--draw &,
+	.page--view & {
+		width: $board-width;
+		margin: 0 auto;
+		white-space: normal;
+		text-align: center;
+	}
+}
+
 .credits {
 	margin-top: 150px;
 	font-family: sans-serif;

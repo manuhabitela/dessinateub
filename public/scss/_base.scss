@@ -35,7 +35,8 @@ h1, h2, h3, h4, h5, h6 {
 	background: rgba(white, 0.5);
 	padding: $base-line-height/4 $base-line-height/2;
 	border-radius: 25px;
-	border: 2px solid rgba(white, 0.25);
+	// border: 2px solid rgba(white, 0.25);
+	border: 2px solid $rose;
 	text-align: center;
 }
 

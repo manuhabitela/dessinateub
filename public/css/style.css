@@ -13,7 +13,7 @@ body { margin: 0; background: rgba(103, 169, 203, 0.2); }
 
 p { margin: 0.65625em 0; }
 
-h1, h2, h3, h4, h5, h6 { margin: 0.65625em 0; color: #fe9aa3; font-weight: normal; background: rgba(255, 255, 255, 0.5); padding: 0.32813em 0.65625em; border-radius: 25px; border: 2px solid rgba(255, 255, 255, 0.25); text-align: center; }
+h1, h2, h3, h4, h5, h6 { margin: 0.65625em 0; color: #fe9aa3; font-weight: normal; background: rgba(255, 255, 255, 0.5); padding: 0.32813em 0.65625em; border-radius: 25px; border: 2px solid #fe9aa3; text-align: center; }
 
 a { color: #2cc26b; }
 
@@ -237,6 +237,8 @@ html, body, #container, .teube-add { margin: 0; padding: 0; }
 
 .justdoit { text-align: center; }
 .justdoit a { font-size: 3em; line-height: 3.9375em; }
+
+.page--draw .flash, .page--view .flash { width: 600px; margin: 0 auto; white-space: normal; text-align: center; }
 
 .credits { margin-top: 150px; font-family: sans-serif; font-size: small; opacity: 0.9; text-align: center; }
 .credits a { font-weight: bold; }
