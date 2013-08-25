@@ -74,17 +74,20 @@
 	&:hover, &:focus {
 		@extend .condom--long;
 	}
+	&:active {
+		@extend .condom--rocco;
+	}
 }
 
-.facebook {
+.condom--facebook {
 	@include condom(#3b5998);
 }
 
-.twitter {
+.condom--twitter {
 	@include condom(#00aced);
 }
 
-.facebook, .twitter {
+.condom--facebook, .condom--twitter {
 	display: inline-block;
 }
 

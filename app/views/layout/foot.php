@@ -5,7 +5,7 @@
 		<?php endif ?>
 		</div>
 
-		<p class="credits teu">
+		<p class="cf credits teu">
 			Fait avec amour par <a href="http://manu.habite.la" target="_blank">Leimi</a>.
 		</p>
 

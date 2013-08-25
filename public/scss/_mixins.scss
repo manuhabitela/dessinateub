@@ -5,7 +5,8 @@
 	@extend %base-button;
 	background: $bg;
 	border: 2px solid darken(rgba($bg, 0.8), 1%);
-	&, &:visited {
+	color: $color;
+	&:visited {
 		color: $color;
 	}
 	&:focus, &:hover {
@@ -18,10 +19,7 @@
 	}
 }
 
-@mixin condom($bg: $rose, $color: white, $border: false) {
-	@if $border == false {
-		$border: adjust-hue($bg, 030deg);
-	}
+@mixin condom($bg: $rose, $color: white) {
 	@extend %base-condom;
 	color: $color;
 	&:visited {
@@ -29,14 +27,14 @@
 	}
 	&, &:after {
 		background: $bg;
-		border: 2px solid $border;
+		border: 2px solid darken(rgba($bg, 0.8), 1%);
 	}
 	&:after {
 		border-left: none;
 	}
 	&:focus, &:hover {
 		&, &:after {
-			border-color: lighten($border, 25%);
+			border-color: darken(rgba($bg, 0.8), 5%);
 			text-decoration: none;
 		}
 	}

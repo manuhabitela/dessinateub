@@ -24,6 +24,10 @@ body {
 	background: rgba($blue, 0.2);
 }
 
+p {
+	margin: $base-line-height/2 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	margin: $base-line-height/2 0;
 	color: $rose;
@@ -75,10 +79,6 @@ button, input {
 
 button, select {
 	text-transform: none;
-}
-
-input[type=text] {
-	padding: $base-line-height/4 $base-line-height/2;
 }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
