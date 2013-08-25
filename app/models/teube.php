@@ -31,14 +31,16 @@ class Model_Teube extends RedBean_SimpleModel
 		$teubeVotes = $this->getVotes();
 		$teubeVotesCount = count($teubeVotes);
 		$voteValues = array();
+		if (!$teubeVotesCount)
+			return false;
 		foreach ($teubeVotes as $vote)
 			$voteValues[]= $vote->value;
 		$this->avg_rating = array_sum($voteValues)/$teubeVotesCount;
 
 		//http://masanjin.net/blog/bayesian-average
-		// $allTeubesAvgRating = R::getCell('SELECT AVG(avg_rating) FROM teube WHERE avg_rating IS NOT NULL');
-		// if (empty($allTeubesAvgRating)) $allTeubesAvgRating = 3;
-		$allTeubesAvgRating = 3;
+		$allTeubesAvgRating = R::getCell('SELECT AVG(avg_rating) FROM teube WHERE avg_rating IS NOT NULL');
+		if (empty($allTeubesAvgRating)) $allTeubesAvgRating = 3;
+		// $allTeubesAvgRating = 3;
 
 		$minVotesNumber = R::getCell('SELECT COUNT(id) FROM voteub WHERE active = 1');
 		$minVotesNumber = empty($minVotesNumber) || ceil($minVotesNumber/10) < 5 ? 5 : ceil($minVotesNumber/10);

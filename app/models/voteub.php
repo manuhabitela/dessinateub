@@ -11,7 +11,7 @@ class Model_Voteub extends RedBean_SimpleModel
 	}
 
 	public function after_update() {
-		//$this->disableDuplicateVotes();
+		$this->disableDuplicateVotes();
 		$this->teube->updateRatings();
 	}
 

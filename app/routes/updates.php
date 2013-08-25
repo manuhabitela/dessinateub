@@ -13,4 +13,11 @@ $app->get('/update-comments', function() use($app) {
 			R::store($teube);
 		}
 	}
-}); ?>
+});
+
+$app->get('/update-votes', function() use($app) {
+	$teubes = R::findAll('teube');
+	foreach ($teubes as $teube) {
+		$teube->updateRatings();
+	}
+});
