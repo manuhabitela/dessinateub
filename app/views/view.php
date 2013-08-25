@@ -43,7 +43,7 @@
 	<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
 
 	<div class="teube-view__share-container">
-		<span class="teu">Partager sur </span>
+		<span class="teu">Partager sur&nbsp;</span>
 		<!-- <a class="twitter teube-button" href="https://twitter.com/intent/tweet?text=" target="_blank">Twitter</a> -->
 		<a class="condom--twitter condom--expandable teube-view__share-link" href="#" target="_blank">Twitter</a>
 		<!-- <a class="facebook teube-button" href="http://www.facebook.com/sharer/sharer.php?u=&amp;t=jaiunegrosseteu.be" target="_blank">Facebook</a> -->

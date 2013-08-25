@@ -14,7 +14,8 @@
 		$app->render('home.php', array(
 			'nouvelles' => $nouvelles,
 			'belles' => array_merge($belles, array("title" => "Les plus belles")),
-			'moches' => $moches
+			'moches' => $moches,
+			'page' => 'list'
 		));
 	})->name('home');
 
