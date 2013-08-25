@@ -1,0 +1,47 @@
+.teube-drawing {
+	width: $board-width;
+	margin: 0 auto;
+}
+
+.teube-drawing__board {
+	width: $board-width;
+	height: $board-height;
+	.drawing-board-canvas {
+		cursor: image-url('curseube.png'), pointer;
+	}
+}
+
+.teube-drawing__field {
+	position: relative;
+	margin: $base-line-height/4 0;
+	font-size: $base-font-size*1.5;
+	width: 100%;
+	font-weight: normal;
+	label, input {
+		display: block;
+		padding: $base-line-height/4 $base-line-height/2;
+	}
+	label {
+		position: absolute;
+		top: 0;
+		right: 100%;
+		width: 300px;
+		text-align: right;
+		opacity: 0;
+		@extend .transition;
+	}
+	input {
+		width: 100%;
+		&:hover + label,
+		&:focus + label {
+			opacity: 1;
+		}
+	}
+}
+
+.teube-drawing__submit {
+	text-align: center;
+	button {
+		font-size: $base-font-size*2;
+	}
+}

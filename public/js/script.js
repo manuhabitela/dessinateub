@@ -58,8 +58,8 @@
 	 */
 
 	if (html.hasClass('page--draw')) {
-		$('.teube--draw').on('submit', function(e) {
-			var img = teuboard.getFullImg();
+		$('.teube-drawing').on('submit', function(e) {
+			var img = teuboard.getImg();
 			var imgInput = (teuboard.blankCanvas == img) ? '' : img;
 			$(this).find('input[name=image]').val( imgInput );
 			teuboard.clearWebStorage();
