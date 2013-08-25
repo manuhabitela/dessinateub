@@ -1,0 +1,110 @@
+.teube-view {
+	position: relative;
+}
+
+.teube-view__content {
+	width: $board-width;
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+}
+
+.disqus-container {
+	margin: $base-line-height/2 0;
+	padding: $base-line-height;
+	background: white;
+	background: rgba(white, 0.5);
+}
+
+.teube-view__share-container {
+}
+
+.teube-view__share-link {
+	margin: $base-line-height/2 $base-line-height/2 $base-line-height/2 0;
+}
+
+$vote-size: 32px;
+.teube-view__vote-container {
+	width: $vote-size*5;
+	margin: 0 auto;
+}
+
+.teube-view__vote {
+	padding: 0;
+	margin: 0 0 $base-line-height/2;
+	list-style-type: none;
+	li {
+		float: left;
+		display: block;
+		width: $vote-size;
+		height: $vote-size;
+		border-right: 1px solid yellow;
+		background: green;
+		font-size: 0;
+	}
+}
+
+//LEA ON T'AIME http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/
+.teube-view__vote {
+
+	fieldset {
+		border-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&, legend {
+		float: left;
+	}
+
+	/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+	   follow these rules. Every browser that supports :checked also supports :not(), so
+	   it doesn’t make the test unnecessarily selective */
+	&:not(:checked) {
+		input {
+			position: absolute;
+			top: -9999px;
+			clip: rect(0,0,0,0);
+		}
+
+		label {
+			float: right;
+			width: $vote-size;
+			padding: 0;
+			overflow: hidden;
+			white-space: nowrap;
+			cursor: pointer;
+			font-size: 200%;
+			line-height: 1.2;
+			color: #ccc;
+		}
+
+		label:before {
+			content: '★ ';
+		}
+
+		label:hover,
+		label:hover ~ label {
+			color: gold;
+		}
+
+	}
+
+	input:checked ~ label {
+		color: #f70;
+	}
+
+	input:checked + label:hover,
+	input:checked + label:hover ~ label,
+	input:checked ~ label:hover,
+	input:checked ~ label:hover ~ label,
+	label:hover ~ input:checked ~ label {
+		color: #ea0;
+	}
+
+	label:active {
+		position: relative;
+		top: 2px;
+		left: 2px;
+	}
+}

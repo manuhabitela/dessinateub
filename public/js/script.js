@@ -46,8 +46,6 @@
 			size: 5,
 			errorMessage: "<p>Votre navigateur est obsolète : mettez-le à jour pour pouvoir dessiner des teubs.</p>"
 		};
-		if (html.hasClass('page--view'))
-			teubopts.webStorage = false;
 		teuboard = new DrawingBoard.Board('teuboard', teubopts);
 	}
 
@@ -73,17 +71,16 @@
 	 */
 
 	if (html.hasClass('page--view')) {
-		var existingImg = $('.teube--view') ? $('.teube--view').attr('data-url') : null;
-		window.disqus_identifier = $('.teube--view') ? 'teube-' + $('.teube--view').attr('data-id') : null;
-		if (existingImg)
-			teuboard.setImg(existingImg);
+		window.disqus_identifier = $('.teube-view') ? 'teube-' + $('.teube-view').attr('data-id') : null;
 
-		$('.teube__delete-link').on('click', function(e) {
+		$('.teube-view__delete-link').on('click', function(e) {
 			if (confirm("T'es sûr ?"))
 				teuboard.clearWebStorage();
 			else
 				e.preventDefault();
 		});
+
+		$('input[name="teube-vote"][value="' + $('.teube-view').attr('data-rating') +'"]').attr('checked', 'checked');
 
 		$('#teube-url')
 			.on('click', function(e) {
@@ -94,9 +91,9 @@
 				$(this).prev('.teu').removeClass('active');
 			});
 
-		$('.teube__vote input[name="teube-vote"]').on('change', function(e) {
+		$('.teube-view__vote input[name="teube-vote"]').on('change', function(e) {
 			$.ajax({
-				url: '/a-voter/' + $('.teube__vote input[name="teube-id"]').val(),
+				url: '/a-voter/' + $('.teube-view__vote input[name="teube-id"]').val(),
 				method: 'POST',
 				data: {
 					value: $(this).val(),
@@ -106,7 +103,7 @@
 		});
 
 		$.ajax({
-			url: '/ancien-vote/' + $('.teube__vote input[name="teube-id"]').val(),
+			url: '/ancien-vote/' + $('.teube-view__vote input[name="teube-id"]').val(),
 			method: 'GET',
 			data: {
 				fingerprint: new Fingerprint().get()
