@@ -90,7 +90,7 @@ $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 		$teube = R::load('teube', $slug);
 	else {
 		$app->flash('info', "Impossible de modifier cette teub");
-		$app->redirect('/etjelemontre');
+		$app->redirect($app->request()->getReferrer());
 	}
 	$app->render('draw.php', array('page' => 'draw', 'teube' => $teube));
 })->name('draw-edit');
@@ -114,12 +114,12 @@ $app->post('/etjelemontre', function() use ($app) {
 		else
 			$_SESSION['ids'] = array($teubeId);
 		$app->flash('success', "Teub ajoutée ! Tu peux la modifier ou la supprimer pendant encore quelques minutes.");
+		$app->redirect($app->urlFor('regarder', array('slug' => $teube->id)));
 	}
 	else {
 		$app->flash('error', "Erreur : t'es sûr d'avoir bien dessiné, nommé et signé ta teub ?");
 		$app->redirect($app->request()->getReferrer());
 	}
-	$app->redirect('/regarder/'.$teube->id);
 })->name('draw-post');
 
 
@@ -129,15 +129,16 @@ $app->post('/etjelemontre', function() use ($app) {
 $app->put('/etjelemontre/:slug', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
-	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids'])) {
+	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids'])) {
 		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+		$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
 		$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
 		R::store($teube);
-		$app->flash('success', "Teube modifiée !");
+		$app->flash('success', "Teub modifiée !");
 	} else {
-		$app->flash('info', "Impossible de modifier cette teube");
-		$app->redirect('/etjelemontre');
+		$app->flash('info', "Impossible de modifier cette teub");
 	}
+	$app->redirect($app->urlFor('regarder', array('slug' => $teube->id)));
 })->name('draw-put');
 
 
@@ -147,13 +148,13 @@ $app->put('/etjelemontre/:slug', function($slug) use($app) {
 $app->delete('/etjelemontre/:slug', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
-	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids'])) {
+	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids'])) {
 		R::trash($teube);
 		$app->flash('success', "Teub supprimée !");
 	} else {
 		$app->flash('info', "Impossible de supprimer cette teub");
 	}
-	$app->redirect('/etjelemontre');
+	$app->redirect('home');
 })->name('draw-delete');
 
 
@@ -174,7 +175,7 @@ $app->get('/regarder/:slug', function($slug) use($app) {
  */
 $app->get('/balancebalancebalancebalancetoi', function() use($app) {
 	$max = R::getCell('SELECT id FROM teube ORDER BY id DESC limit 1');
-	$app->redirect('/regarder/'. mt_rand(1, $max));
+	$app->redirect($app->urlFor('regarder', array('slug' => mt_rand(1, $max))));
 })->name('random');
 
 

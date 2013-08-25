@@ -1,6 +1,11 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<form class="teube-drawing" action="<?php echo $app->urlFor('draw-post'); ?>" method="post">
+<?php $formAction = !empty($teube) ? $app->urlFor('draw-put', array('slug' => $teube->id)) : $app->urlFor('draw-post'); ?>
+<form class="teube-drawing" action="<?php echo $formAction; ?>" method="post" <?php echo !empty($teube) ? 'data-url="'.Halp::drawing($teube, true).'"' : ''; ?>>
+	<?php if (!empty($teube)): ?>
+		<input type="hidden" name="_METHOD" value="PUT"/>
+	<?php endif ?>
+
 	<h2>Dessiner</h2>
 
 	<div id="teuboard" class="teube-drawing__board">
@@ -8,12 +13,12 @@
 	</div>
 
 	<div class="teube-drawing__field teube-drawing__field-name">
-		<input type="text" id="teube-name-input" name="name" required placeholder="Comment s'appelle cette teub ?">
+		<input value="<?php echo !empty($teube->name) ? $teube->name : '' ?>" type="text" id="teube-name-input" name="name" required placeholder="Comment s'appelle cette teub ?">
 		<label for="teube-name-input" class="teu">Nom de l'œuvre</label>
 	</div>
 
 	<div class="teube-drawing__field teube-drawing__field-artist">
-		<input type="text" id="teube-artist-input" name="artist" required placeholder="Qui es-tu ?">
+		<input value="<?php echo !empty($teube->artist) ? $teube->artist : '' ?>" type="text" id="teube-artist-input" name="artist" required placeholder="Qui es-tu ?">
 		<label for="teube-artist-input" class="teu">Signature de l'artiste</label>
 	</div>
 
