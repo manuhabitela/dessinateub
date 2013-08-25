@@ -5,7 +5,7 @@
 				<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
 			</div>
 		</div>
-		<p class="teube-preview__title"><?php echo $teube->name ?></p>
+		<p class="teube-preview__title" title="<?php echo $teube->name.($teube->artist ? " par ".$teube->artist : '') ?>"><?php echo $teube->name ?></p>
 	</a>
 	<div class="teube-preview__info-wrapper">
 		<div>

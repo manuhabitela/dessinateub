@@ -57,6 +57,9 @@
 	text-align: center;
 	background-color: #85bad5;
 	border: 0;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	@extend .transition;
 	.teube-preview--active &,
 	.teube-preview:focus &,
