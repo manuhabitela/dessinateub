@@ -10,6 +10,8 @@ module.exports = function(grunt) {
 				src: [
 					'public/components/jquery/jquery.js',
 					'public/components/drawingboard.js/dist/drawingboard.js',
+					'public/components/moment/moment.js',
+					'public/components/moment/min/lang/fr.js',
 					'public/js/fingerprint.js',
 					'public/js/script.js'
 				],
