@@ -136,7 +136,7 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 .teube-preview--active .teube-preview__img-wrapper, .teube-preview:focus .teube-preview__img-wrapper, .teube-preview:hover .teube-preview__img-wrapper { border-color: #67a9cb; }
 .teube-preview--active .teube-preview__img-wrapper img, .teube-preview:focus .teube-preview__img-wrapper img, .teube-preview:hover .teube-preview__img-wrapper img { -webkit-transform: scale(1.05); -moz-transform: scale(1.05); -ms-transform: scale(1.05); -o-transform: scale(1.05); transform: scale(1.05); }
 
-.teube-preview__title { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; background-color: #85bad5; border: 0; }
+.teube-preview__title { position: absolute; margin: 0; left: 0; right: 0; bottom: 10%; z-index: 20; text-align: center; background-color: #85bad5; border: 0; overflow: hidden; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
 .teube-preview--active .teube-preview__title, .teube-preview:focus .teube-preview__title, .teube-preview:hover .teube-preview__title { background-color: #67a9cb; bottom: -0.32813em; }
 
 .teube-preview__info-wrapper, .teube-preview__date { position: absolute; bottom: 1.96875em; opacity: 0; -webkit-transform: scale(1.2); -moz-transform: scale(1.2); -ms-transform: scale(1.2); -o-transform: scale(1.2); transform: scale(1.2); z-index: 30; }
@@ -179,18 +179,27 @@ body, button, select, input, textarea, label { color: #222222; font-family: "Che
 .teube-drawing__submit { text-align: center; }
 .teube-drawing__submit button { font-size: 2em; }
 
-.teube-view { position: relative; }
-
-.teube-view__content { width: 600px; margin: 0 auto; display: block; text-align: center; }
+.teube-view { position: relative; width: 600px; margin: 0 auto; display: block; text-align: center; }
 
 .disqus-container { margin: 0.65625em 0; padding: 1.3125em; background: white; background: rgba(255, 255, 255, 0.5); }
 
+.teube-view__name { position: relative; }
+
+.teube-view__user-actions { position: absolute; top: 0; right: 0; font-size: 0.7em; }
+.teube-view__user-actions > * { display: inline-block; }
+.teube-view__user-actions .button { margin-top: 0; margin-bottom: 0; }
+
+.teube-view__drawing { background: white; }
+
 .teube-view__share-link { margin: 0.65625em 0.65625em 0.65625em 0; }
 
-.teube-view__vote-container { width: 160px; margin: 0 auto; }
+.teube-view__vote-container { margin: 0 auto; }
 
-.teube-view__vote { padding: 0; margin: 0 0 0.65625em; list-style-type: none; }
+.teube-view__user-vote, .teube-view__avg-vote { float: left; }
+
+.teube-view__vote { width: 160px; padding: 0; margin: 0 0 0.65625em; list-style-type: none; }
 .teube-view__vote li { float: left; display: block; width: 32px; height: 32px; border-right: 1px solid yellow; background: green; font-size: 0; }
+.teube-view__vote > * { display: inline-block; vertical-align: middle; }
 
 .teube-view__vote { /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t follow these rules. Every browser that supports :checked also supports :not(), so it doesn’t make the test unnecessarily selective */ }
 .teube-view__vote fieldset { border-style: none; padding: 0; margin: 0; }

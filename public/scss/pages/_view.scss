@@ -1,8 +1,5 @@
 .teube-view {
 	position: relative;
-}
-
-.teube-view__content {
 	width: $board-width;
 	margin: 0 auto;
 	display: block;
@@ -14,6 +11,24 @@
 	padding: $base-line-height;
 	background: white;
 	background: rgba(white, 0.5);
+}
+
+.teube-view__name {
+	position: relative;
+}
+
+.teube-view__user-actions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: $base-font-size*.7;
+	> * {
+		display: inline-block;
+	}
+	.button {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
 }
 
 .teube-view__drawing {
