@@ -24,48 +24,57 @@ function listTeubes() {
 		'teubes' => $teu["teubes"],
 		'title' => $teu["title"],
 		'pageNb' => $page,
+		'sort' => !empty($sort) ? $sort : null,
 		'fullList' => count($teu['teubes']) == $itemsNb
 	));
 }
 
-function getTeubes($sort, $limit, $itemsNb) {
+function getSortData($sort) {
 	switch ($sort) {
 		case 'anciennes':
 			$field = "created";
-			$order = "ASC";
+			$direction = "ASC";
 			$title = "Les plus anciennes teubs";
 			break;
 		case 'belles':
 			$field = "w_rating";
-			$order = "DESC";
+			$direction = "DESC";
 			$title = "Les teubs préférées de la communauté";
 			break;
 		case 'moches':
 			$field = "w_rating";
-			$order = "ASC";
+			$direction = "ASC";
 			$title = "Les plus moches";
 			break;
 		case 'kamoulox':
 			$field = "comments_count";
-			$order = "DESC";
+			$direction = "DESC";
 			$title = "Les teubs dont on débat le plus";
 			break;
 		case 'nouvelles':
 		default:
 			$field = "created";
-			$order = "DESC";
+			$direction = "DESC";
 			$title = "Les dernières créations";
 			break;
 	}
+	return array('field' => $field, 'direction' => $direction, 'title' => $title, 'sort' => $sort);
+}
+
+function getTeubes($sort, $limit, $itemsNb) {
+	$sortData = getSortData($sort);
 
 	$teubes = R::findAll('teube', '
 		ORDER BY
-			CASE WHEN '.$field.' IS NULL THEN 1 ELSE 0 END,
-			'.$field.' '.$order.'
+			CASE WHEN '.$sortData['field'].' IS NULL THEN 1 ELSE 0 END,
+			'.$sortData['field'].' '.$sortData['direction'].'
 		LIMIT '.$limit.','.$itemsNb
 	);
 
-	return array('title' => $title, 'teubes' => $teubes, 'sort' => $sort);
+	foreach ($teubes as $teube)
+		$teube->w_rating = round($teube->w_rating, 2);
+
+	return array('title' => $sortData['title'], 'teubes' => $teubes, 'sort' => $sort);
 }
 $app->get('/mater', 'listTeubes')->name('teubes');
 
@@ -166,7 +175,21 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 	$teube = R::load('teube', $slug);
 	$isEditable = (!empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids']));
 	$userVote = $teube->getUserVote();
-	$app->render('view.php', array('page' => 'view', 'teube' => $teube, 'userVote' => $userVote, 'isEditable' => $isEditable));
+
+	//liens de navigation changeant suivant l'ordre voulu
+	$sort = filter_input(INPUT_GET, 'ordre', FILTER_SANITIZE_STRING);
+	if (!empty($sort)) {
+		$sortData = getSortData($sort);
+		$nextTeube = $teube->getSibling($sortData['field'], 'prev');
+		$prevTeube = $teube->getSibling($sortData['field'], 'next');
+	}
+
+	$teube->w_rating = round($teube->w_rating, 2);
+
+	$data = array('page' => 'view', 'teube' => $teube, 'userVote' => $userVote, 'isEditable' => $isEditable);
+	if (!empty($sortData))
+		$data = array_merge($data, array('prevTeube' => $prevTeube, 'sort' => $sort, 'nextTeube' => $nextTeube));
+	$app->render('view.php', $data);
 })->name('regarder');
 
 

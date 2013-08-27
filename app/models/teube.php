@@ -27,6 +27,22 @@ class Model_Teube extends RedBean_SimpleModel
 		return $votes;
 	}
 
+	public function getSibling($field = 'id', $direction = 'next') {
+		$query = "";
+		//c'est pas terrible mais c'est déjà ça...
+		//en faisant comme ça on choppe pas les items qui ont une valeur égale
+		//mais si on prend les trucs avec valeur égale ça peut tourner en rond facilement ensuite, donc tant pis
+		//pour l'instant on laisse comme ça
+		if ($direction === "next")
+			$query = $field.' = (SELECT MIN('.$field.') FROM teube WHERE '.$field.' > ?) AND id <> ?';
+		elseif ($direction === "prev")
+			$query = $field.' = (SELECT MAX('.$field.') FROM teube WHERE '.$field.' < ?) AND id <> ?';
+		else
+			return null;
+		$teu = R::findOne('teube', $query, array($this->{$field}, $this->id));
+		return $teu && $teu->id ? $teu : null;
+	}
+
 	public function report() {
 		if (empty($this->reports))
 			$this->reports = 0;

@@ -31,8 +31,29 @@
 	}
 }
 
+.teube-view__drawing-container {
+	position: relative;
+}
+
 .teube-view__drawing {
 	background: white;
+}
+
+.teube-view__navigation-link {
+	position: absolute;
+	top: 50%;
+	margin-top: -$base-line-height/2;
+	bottom: 0;
+}
+
+.teube-view__navigation-link--prev {
+	right: 100%;
+	padding-right: $base-line-height/2;
+}
+
+.teube-view__navigation-link--next {
+	left: 100%;
+	padding-left: $base-line-height/2;
 }
 
 .teube-view__share-container {

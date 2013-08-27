@@ -40,7 +40,17 @@
 		<span class="teube-view__avg-vote">moyenne : <?php echo $teube->w_rating ?> avec <?php echo $teube->ratings_count.' '.Halp::pluralize('vote', $teube->ratings_count); ?></span>
 	</div>
 
-	<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
+	<div class="teube-view__drawing-container">
+		<?php if (!empty($prevTeube)): ?>
+			<a data-icon-before="l" href="<?php echo $app->urlFor('regarder', array('slug' => $prevTeube->id)).(!empty($sort) ? "?ordre=".$sort : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--prev" title="Teub précédente"></a>
+		<?php endif ?>
+
+		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
+
+		<?php if (!empty($nextTeube)): ?>
+			<a data-icon-before="r" href="<?php echo $app->urlFor('regarder', array('slug' => $nextTeube->id)).(!empty($sort) ? "?ordre=".$sort : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--next" title="Teub suivante"></a>
+		<?php endif ?>
+	</div>
 
 	<div class="teube-view__share-container">
 		<span class="teu">Partager sur&nbsp;</span>
