@@ -18,5 +18,7 @@
 		<?php else: foreach ($js as $script): ?>
 		<script src="<?php echo $script ?>?v=<?php echo $t ?>"></script>
 		<?php endforeach; endif; ?>
+
+		<?php include(__DIR__ . '/../elements/piwik.php'); ?>
 	</body>
 </html>
