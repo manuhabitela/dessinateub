@@ -91,15 +91,6 @@
 
 		$('input[name="teube-vote"][value="' + $('.teube-view').attr('data-rating') +'"]').attr('checked', 'checked');
 
-		$('#teube-url')
-			.on('click', function(e) {
-				$(this).select();
-				$(this).prev('.teu').addClass('active');
-			})
-			.on('blur', function(e) {
-				$(this).prev('.teu').removeClass('active');
-			});
-
 		$('.teube-view__vote input[name="teube-vote"]').on('change', function(e) {
 			$.ajax({
 				url: '/a-voter/' + $('.teube-view__vote input[name="teube-id"]').val(),

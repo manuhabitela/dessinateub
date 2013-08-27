@@ -114,7 +114,6 @@ $app->post('/etjelemontre', function() use ($app) {
 	$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 	$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
 	$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
-	$teube->votes = 0;
 	$teube->active = 0;
 	if (!empty($teube->name) && !empty($teube->artist) && !empty($teube->image)) {
 		$teubeId = R::store($teube);
