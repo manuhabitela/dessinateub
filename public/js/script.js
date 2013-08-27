@@ -83,6 +83,12 @@
 				e.preventDefault();
 		});
 
+		$('.teube-view__report-form').on('submit', function(e) {
+			if (!confirm(["En validant ceci, tu vas notifier l'administrateur que cette teub a un problème.\n" +
+			"Le \"problème\" étant qu'elle peut être vraiment dégueulasse, atteinte d'un gros bug, etc.\n\nEs-tu sûr de vouloir continuer ?"].join('')))
+				e.preventDefault();
+		});
+
 		$('input[name="teube-vote"][value="' + $('.teube-view').attr('data-rating') +'"]').attr('checked', 'checked');
 
 		$('#teube-url')

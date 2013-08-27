@@ -9,3 +9,5 @@
 	define('APP_PIWIK_ID', '1');
 
 	define('PROD', false);
+
+	include __DIR__.'/app.private.php';

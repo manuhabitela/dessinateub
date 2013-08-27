@@ -50,6 +50,10 @@
 		<a class="condom--facebook condom--expandable teube-view__share-link" href="#" target="_blank">Facebook</a>
 	</div>
 
+	<form class="teube-view__report-form" action="<?php echo $app->urlFor('abus', array('slug' => $teube->id)) ?>" method="post">
+		<button data-icon-before="w" class="teube-view__report-button">Signaler un abus ou un problème</button>
+	</form>
+
 	<div class="disqus-container">
 		<div id="disqus_thread">
 

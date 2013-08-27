@@ -27,6 +27,18 @@ class Model_Teube extends RedBean_SimpleModel
 		return $votes;
 	}
 
+	public function report() {
+		if (empty($this->reports))
+			$this->reports = 0;
+		$this->reports++;
+		if ($this->reports > 5) {
+			$message = "La teube ".$this->name." (n°".$this->id.") créée le ".date("d/m/Y", strtotime($this->created))." par ".$this->artist." a été signalée pour la ".$this->reports.($this->reports > 1 ? "ème" : "ère")." fois";
+			$message .= "\n\nhttp://jaiunegrosseteu.be/regarder/".$this->id;
+			mail(APP_ADMIN_MAIL, "jaiunegrosseteu.be : ".$this->name." signalée", $message, 'From:bot@jaiunegrosseteu.be');
+		}
+		return R::store($this);
+	}
+
 	public function updateRatings() {
 		$teubeVotes = $this->getVotes();
 		$teubeVotesCount = count($teubeVotes);

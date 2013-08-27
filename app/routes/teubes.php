@@ -171,6 +171,18 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 
 
 /**
+ * SIGNALER UN ABUS
+ */
+$app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$teube = R::load('teube', $slug);
+	if ($teube->id)
+		$teube->report();
+	$app->flash('success', "Merci, on va voir ce qu'on fait d'elle.");
+	$app->redirect($app->request()->getReferrer());
+})->name('abus');
+
+/**
  * RANDOM
  */
 $app->get('/balancebalancebalancebalancetoi', function() use($app) {

@@ -136,3 +136,15 @@ $vote-size: 32px;
 		left: 2px;
 	}
 }
+
+.teube-view__report-button {
+	color: $link-color;
+	border: none;
+	background: none;
+	&:before {
+		padding-right: 4px;
+	}
+	&:hover, &:focus {
+		text-decoration: underline;
+	}
+}
