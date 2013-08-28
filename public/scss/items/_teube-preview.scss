@@ -98,7 +98,7 @@
 	}
 }
 
-.teube-preview__comment-count,
+.teube-preview__views,
 .teube-preview__date,
 .teube-preview__rating {
 	padding: $base-line-height/8 $base-line-height/4;
@@ -116,9 +116,10 @@
 	}
 }
 
-.teube-preview__comment-count {
+.teube-preview__views {
 }
 
+.teube-preview__views,
 .teube-preview__rating {
 	color: $rose;
 }

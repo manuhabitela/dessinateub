@@ -26,7 +26,7 @@ class Halp {
 		return $url;
 	}
 
-	public function pluralize($word, $count) {
-		return $word . ($count > 1 ? 's' : '');
+	public function pluralize($count, $word) {
+		return $count.' '.$word.($count > 1 ? 's' : '');
 	}
 }

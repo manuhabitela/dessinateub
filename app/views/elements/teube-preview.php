@@ -9,9 +9,9 @@
 	</a>
 	<div class="teube-preview__info-wrapper">
 		<div>
-			<a data-icon-after="b" class="teube-preview__comment-count" title="Nombre de commentaires" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)) ?>#disqus_thread" data-disqus-identifier="teube-<?php echo $teube->id ?>"></a>
+			<span data-icon-before="e" class="teube-preview__views" title="<?php echo Halp::pluralize($teube->views, 'vue') ?>"> <?php echo $teube->views ? $teube->views : 0 ?></span>
 			<?php if (!empty($teube->w_rating)): ?>
-			<span data-icon-before="s" class="teube-preview__rating" title="<?php echo $teube->ratings_count.' '.Halp::pluralize('vote', $teube->ratings_count); ?>"> <?php echo $teube->w_rating ?></span>
+			<span data-icon-before="s" class="teube-preview__rating" title="<?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?>"> <?php echo $teube->w_rating ?></span>
 			<?php else: ?>
 			<span data-icon-before="s" class="teube-preview__rating" title="Aucune note pour le moment !" data-rating="NA"> -</span>
 			<?php endif ?>

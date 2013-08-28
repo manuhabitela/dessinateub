@@ -1,5 +1,8 @@
 <script>
   var _paq = _paq || [];
+  <?php if (!empty($page) && trim($page) === 'page--view' && !empty($teube) && !empty($teube->id)): ?>
+  _paq.push(['setCustomVariable', 1, "teubeView", "<?php echo $teube->id ?>", "page"]);
+  <?php endif; ?>
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {

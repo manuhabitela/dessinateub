@@ -23,7 +23,7 @@
 		<span class="teube-view__date" data-timestamp="<?php echo $teubeTimestamp*1000 ?>" title="Le <?php echo $teubeDate ?>">le <?php echo strstr($teubeDate, 'à', true); ?></span>
 	</p>
 
-	<div class="teube-view__vote-container">
+	<div class="teube-view__vote-container cf">
 		<?php if (isset($userVote)): ?>
 		<span class="teube-view__user-vote">votre note : <span><?php echo $userVote->value ?></span></span>
 		<?php endif ?>
@@ -37,7 +37,7 @@
 				<input type="radio" id="teube-vote-1" name="teube-vote" value="1" /><label for="teube-vote-1" title="Non. NON.">1</label>
 			</fieldset>
 		</form>
-		<span class="teube-view__avg-vote">moyenne : <?php echo $teube->w_rating ?> avec <?php echo $teube->ratings_count.' '.Halp::pluralize('vote', $teube->ratings_count); ?></span>
+		<span class="teube-view__avg-vote">moyenne : <?php echo $teube->w_rating ?> avec <?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?></span>
 	</div>
 
 	<div class="teube-view__drawing-container">

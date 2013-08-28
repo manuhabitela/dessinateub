@@ -21,3 +21,18 @@ $app->get('/update-votes', function() use($app) {
 		$teube->updateRatings();
 	}
 });
+
+$app->get('/update-pageviews/:slug', function($slug) use($app) {
+	$id = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$teube = R::load('teube', $id);
+	if (empty($teube->id))
+		return false;
+	$teube->updatePageViews();
+});
+
+$app->get('/update-pageviews', function() use($app) {
+	$teubes = R::findAll('teube');
+	foreach ($teubes as $teube) {
+		$teube->updatePageViews();
+	}
+});

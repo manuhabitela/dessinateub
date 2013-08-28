@@ -75,6 +75,7 @@
 
 	if (html.hasClass('page--view')) {
 		window.disqus_identifier = $('.teube-view') ? 'teube-' + $('.teube-view').attr('data-id') : null;
+		var teubeId = $('.teube-view').attr('data-id');
 
 		$('.teube-view__delete-link').on('click', function(e) {
 			if (confirm("T'es sûr ?"))
@@ -93,7 +94,7 @@
 
 		$('.teube-view__vote input[name="teube-vote"]').on('change', function(e) {
 			$.ajax({
-				url: '/a-voter/' + $('.teube-view__vote input[name="teube-id"]').val(),
+				url: '/a-voter/' + teubeId,
 				method: 'POST',
 				data: {
 					value: $(this).val(),
@@ -103,7 +104,7 @@
 		});
 
 		$.ajax({
-			url: '/ancien-vote/' + $('.teube-view__vote input[name="teube-id"]').val(),
+			url: '/ancien-vote/' + teubeId,
 			method: 'GET',
 			data: {
 				fingerprint: new Fingerprint().get()
@@ -114,6 +115,8 @@
 				}
 			}
 		});
+
+		$.ajax({ url: '/update-pageviews/' + teubeId, method: 'GET' });
 	}
 
 

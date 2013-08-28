@@ -7,6 +7,8 @@ class Model_Teube extends RedBean_SimpleModel
 			$this->createDrawingFile();
 		if ($this->w_rating)
 			$this->w_rating = round($this->w_rating, 2);
+		if (empty($this->views))
+			$this->views = 0;
 	}
 
 	public function update() {
@@ -53,6 +55,16 @@ class Model_Teube extends RedBean_SimpleModel
 			mail(APP_ADMIN_MAIL, "jaiunegrosseteu.be : ".$this->name." signalée", $message, 'From:bot@jaiunegrosseteu.be');
 		}
 		return R::store($this);
+	}
+
+	public function updatePageViews() {
+		$piwikXMLFile = file_get_contents("http://".APP_PIWIK_SERVER."/index.php?module=API&method=CustomVariables.getCustomVariables&idSite=".APP_PIWIK_ID."&period=year&date=2013-09-01&format=xml&token_auth=".APP_PIWIK_API."&segment=customVariablePageName1==teubeView;customVariablePageValue1==".$this->id);
+		if ($piwikXMLFile) {
+			$piwikXML = simplexml_load_string($piwikXMLFile);
+			$this->views = (int) $piwikXML->row->nb_actions;
+			return R::store($this);
+		}
+		return false;
 	}
 
 	public function updateRatings() {
