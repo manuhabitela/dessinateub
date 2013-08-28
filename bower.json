@@ -2,6 +2,7 @@
 	"name": "jaiunegrosseteu.be",
 	"dependencies": {
 		"drawingboard.js": "*",
-		"moment": "*"
+		"moment": "*",
+		"jquery": "1.*"
 	}
 }

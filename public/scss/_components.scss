@@ -9,27 +9,29 @@
 
 %base-condom {
 	@extend %base-button;
-	border-left-width: 4px;
-	padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
-	border-radius: 0 $base-line-height $base-line-height 0;
-	z-index: 5;
-	&:after {
-		content: ' ';
-		position: absolute;
-		right: -$base-line-height/3;
-		top: $base-line-height/2 - em(1px);
-		width: $base-line-height/3;
-		height: $base-line-height/2;
-		border-radius: 0 $base-line-height/4 $base-line-height/4 0;
-		border-left: none;
-		z-index: 10;
+	html.borderradius & {
+		border-left-width: 4px;
+		padding: $base-line-height/4 $base-line-height $base-line-height/4 $base-line-height/2;
+		border-radius: 0 $base-line-height $base-line-height 0;
+		z-index: 5;
+		&:after {
+			content: ' ';
+			position: absolute;
+			right: -$base-line-height/3;
+			top: $base-line-height/2 - em(1px);
+			width: $base-line-height/3;
+			height: $base-line-height/2;
+			border-radius: 0 $base-line-height/4 $base-line-height/4 0;
+			border-left: none;
+			z-index: 10;
+		}
+		-webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
+		@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
 	}
-	-webkit-transition: padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
-	@include transition(padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
 }
 
 %data-icon {
-	font-family: 'fontawesome';
+	font-family: 'icons';
 	speak: none;
 	font-weight: normal;
 	font-variant: normal;
@@ -61,13 +63,17 @@
 }
 
 .condom--long {
-	-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
-	@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
-	padding-right: $base-line-height*3;
+	html.borderradius & {
+		-webkit-transition: padding 1s cubic-bezier(0.68, 0, 0.265, 1);
+		@include transition(padding 1s cubic-bezier(0.68, -1.55, 0.265, 3.55));
+		padding-right: $base-line-height*3;
+	}
 }
 
 .condom--rocco {
-	padding-right: $base-line-height*4;
+	html.borderradius & {
+		padding-right: $base-line-height*4;
+	}
 }
 
 .condom--expandable {

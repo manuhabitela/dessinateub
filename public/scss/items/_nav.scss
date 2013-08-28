@@ -2,7 +2,9 @@
 	margin: $base-line-height/2 0;
 	padding: $base-line-height/4;
 	text-align: center;
+	background: $blued-white;
 	background: rgba(white, 0.5);
+	border: 2px solid $blued-white;
 	border: 2px solid rgba(white, 0.25);
 	border-left: 0;
 	border-right: 0;
@@ -16,8 +18,9 @@
 		font-size: .8em;
 		font-weight: normal;
 		line-height: 1.4;
-		opacity: 0.9;
+		@include opacity(0.9);
 		width: 170px;
+		color: $rose;
 		color: rgba(darken($rose, 20%), 0.6);
 		margin: 0;
 		padding: 0;
@@ -58,6 +61,7 @@
 			@extend %base-button;
 			margin: 0;
 			white-space: normal;
+			background: $blued-white;
 			background: rgba(white, 0.9);
 		}
 	}

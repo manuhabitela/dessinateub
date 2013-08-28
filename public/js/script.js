@@ -7,7 +7,7 @@
 	 */
 	window.disqus_shortname = 'jaiunegrosseteu';
 
-	var html = $('html');
+	var $html = $('html');
 
 	//transformation de toutes les "teubs" en "teu.bes" au survol de la souris
 	$('.teu').each(function(key, item) {
@@ -47,6 +47,9 @@
 			errorMessage: "<p>Votre navigateur est obsolète : mettez-le à jour pour pouvoir dessiner des teubs.</p>"
 		};
 		teuboard = new DrawingBoard.Board('teuboard', teubopts);
+		if (!Modernizr.canvas) {
+			teuboard.$el.css('height', 'auto');
+		}
 	}
 
 
@@ -55,7 +58,7 @@
 	 * PAGE DE CREATION/EDITION
 	 */
 
-	if (html.hasClass('page--draw')) {
+	if ($html.hasClass('page--draw')) {
 		$drawing = $('.teube-drawing');
 		if ($drawing.attr('data-url'))
 			teuboard.setImg( $drawing.attr('data-url') );
@@ -73,7 +76,7 @@
 	 * PAGE DE VUE
 	 */
 
-	if (html.hasClass('page--view')) {
+	if ($html.hasClass('page--view')) {
 		window.disqus_identifier = $('.teube-view') ? 'teube-' + $('.teube-view').attr('data-id') : null;
 		var teubeId = $('.teube-view').attr('data-id');
 
@@ -125,7 +128,7 @@
 	 * PAGE DE LISTE
 	 */
 
-	if (html.hasClass('page--list')) {
+	if ($html.hasClass('page--list')) {
 		$('.teube-list__item img').on('error', function(e) {
 			$(this).closest('.teube-list__item').addClass('hidden');
 		});

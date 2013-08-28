@@ -27,14 +27,14 @@
 		right: 100%;
 		width: 300px;
 		text-align: right;
-		opacity: 0;
+		@include opacity(0);
 		@extend .transition;
 	}
 	input {
 		width: 100%;
 		&:hover + label,
 		&:focus + label {
-			opacity: 1;
+			@include opacity(1);
 		}
 	}
 }

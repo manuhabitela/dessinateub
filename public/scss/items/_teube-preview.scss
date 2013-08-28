@@ -17,6 +17,7 @@
 	line-height: 0;
 	z-index: 10;
 	background: white;
+	border: 4px solid lighten($blue, 20%);
 	border: 4px solid rgba($blue, 0.4);
 
 	overflow: hidden;
@@ -73,14 +74,14 @@
 .teube-preview__date {
 	position: absolute;
 	bottom: $base-line-height*1.5;
-	opacity: 0;
+	@include opacity(0);
 	@extend .transition;
 	@include transform(scale(1.2));
 	z-index: 30;
 	.teube-preview--active &,
 	.teube-preview:focus &,
 	.teube-preview:hover & {
-		opacity: 1;
+		@include opacity(1);
 		@include transform(scale(1.05));
 	}
 }
@@ -93,6 +94,7 @@
 		margin: 0 auto;
 		display: inline-block;
 		text-align: center;
+		background: white;
 		background: rgba(white, 0.9);
 		border-radius: 50px;
 	}

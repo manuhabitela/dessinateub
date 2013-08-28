@@ -11,7 +11,10 @@
 		<meta name="description" content="<?php echo !empty($description) ? $description : APP_TITLE ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+		<!--[if gt IE 8]><!-->
 		<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+		<!--<![endif]-->
+
 		<!-- dev : /css/style.css -->
 		<?php $css = PROD ? '/css/style.min.css?v=957465612021901' : '/css/style.css?v='.time() ?>
 		<link rel="stylesheet" href="<?php echo $css ?>">

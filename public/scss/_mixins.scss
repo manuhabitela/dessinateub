@@ -4,12 +4,14 @@
 @mixin button($bg: $rose, $color: white) {
 	@extend %base-button;
 	background: $bg;
+	border: 2px solid darken($bg, 3%);
 	border: 2px solid darken(rgba($bg, 0.8), 1%);
 	color: $color;
 	&:visited {
 		color: $color;
 	}
 	&:focus, &:hover {
+		border-color: darken($bg, 6%);
 		border-color: darken(rgba($bg, 0.8), 5%);
 		text-decoration: none;
 	}
@@ -27,6 +29,7 @@
 	}
 	&, &:after {
 		background: $bg;
+		border: 2px solid darken($bg, 3%);
 		border: 2px solid darken(rgba($bg, 0.8), 1%);
 	}
 	&:after {
@@ -34,6 +37,7 @@
 	}
 	&:focus, &:hover {
 		&, &:after {
+			border-color: darken($bg, 6%);
 			border-color: darken(rgba($bg, 0.8), 5%);
 			text-decoration: none;
 		}

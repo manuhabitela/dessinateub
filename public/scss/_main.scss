@@ -8,15 +8,20 @@ html, body, #container {
 	margin: 0 auto;
 }
 
+.obsolete-browser {
+	margin: $base-line-height auto;
+	text-align: center;
+}
+
 .teu {
 	.pointbe {
 		@include transition-property(letter-spacing opacity);
 		@include transition-duration(0.25s);
 		letter-spacing: -1em;
-		opacity: 0.01;
+		@include opacity(0.01);
 	}
 	&:hover .pointbe, &:focus .pointbe, &.active .pointbe {
-		opacity: 1;
+		@include opacity(1);
 		letter-spacing: normal;
 	}
 }
@@ -43,7 +48,7 @@ html, body, #container {
 	margin-top: 150px;
 	font-family: sans-serif;
 	font-size: small;
-	opacity: 0.9;
+	@include opacity(0.9);
 	text-align: center;
 	a {
 		font-weight: bold;

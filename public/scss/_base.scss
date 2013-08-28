@@ -21,7 +21,7 @@ html {
 
 body {
 	margin: 0;
-	background: rgba($blue, 0.2);
+	background: lighten($blue, 32%);
 }
 
 p {
@@ -32,10 +32,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin: $base-line-height/2 0;
 	color: $rose;
 	font-weight: normal;
-	background: rgba(white, 0.5);
+	background: $blued-white;
+	background: rgba(white, 0.6);
 	padding: $base-line-height/4 $base-line-height/2;
 	border-radius: 25px;
-	// border: 2px solid rgba(white, 0.25);
 	border: 2px solid $rose;
 	text-align: center;
 }
