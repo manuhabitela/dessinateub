@@ -1,5 +1,5 @@
 <div class="teube-preview">
-	<a class="teube-preview__link" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)).(!empty($sort) ? "?ordre=".$sort : '') ?>">
+	<a class="teube-preview__link" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)).(!empty($sort) ? "?voisines=".$sort.( isset($teube->list_position) ? "&pos=".$teube->list_position : '') : '') ?>">
 		<div class="teube-preview__img-wrapper">
 			<div>
 				<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">

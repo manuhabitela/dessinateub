@@ -71,11 +71,47 @@ function getTeubes($sort, $limit, $itemsNb) {
 		LIMIT '.$limit.','.$itemsNb
 	);
 
-	foreach ($teubes as $teube)
+	$i = 0;
+	foreach ($teubes as $teube) {
 		$teube->w_rating = round($teube->w_rating, 2);
+		$teube->list_position = $limit + $i;
+		$i++;
+	}
 
 	return array('title' => $sortData['title'], 'teubes' => $teubes, 'sort' => $sort);
 }
+
+function getSiblings($sortData, $pos = null) {
+	if (!is_numeric($pos))
+		return false;
+
+	$prev = $pos > 0;
+	$pos = $prev ? $pos - 1 : 0;
+	$limit = $prev ? 3 : 2;
+
+	$teubes = R::findAll('teube', '
+		ORDER BY
+			CASE WHEN '.$sortData['field'].' IS NULL THEN 1 ELSE 0 END,
+			'.$sortData['field'].' '.$sortData['direction'].'
+		LIMIT '.$pos.','.$limit
+	);
+	if (empty($teubes))
+		return array();
+
+	$teubesArray = array();
+	foreach ($teubes as $teube)
+		$teubesArray[]= $teube;
+	$siblings = array();
+	$siblings['prev'] = ($prev && !empty($teubesArray[0])) ? $teubesArray[0] : null;
+	if ($prev && !empty($teubesArray[2]))
+		$siblings['next'] = $teubesArray[2];
+	elseif ($prev)
+		$siblings['next'] = null;
+	else
+		$siblings['next'] = $teubesArray[1];
+	return $siblings;
+}
+
 $app->get('/mater', 'listTeubes')->name('teubes');
 
 
@@ -176,18 +212,20 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 	$userVote = $teube->getUserVote();
 
 	//liens de navigation changeant suivant l'ordre voulu
-	$sort = filter_input(INPUT_GET, 'ordre', FILTER_SANITIZE_STRING);
-	if (!empty($sort)) {
+	$sort = filter_input(INPUT_GET, 'voisines', FILTER_SANITIZE_STRING);
+	$position = filter_input(INPUT_GET, 'pos', FILTER_SANITIZE_NUMBER_INT);
+	if (!empty($sort) && $position !== false) {
 		$sortData = getSortData($sort);
-		$nextTeube = $teube->getSibling($sortData['field'], 'prev');
-		$prevTeube = $teube->getSibling($sortData['field'], 'next');
+		$otherTeubes = getSiblings($sortData, $position);
+		$prevTeube = $otherTeubes['prev'];
+		$nextTeube = $otherTeubes['next'];
 	}
 
 	$teube->w_rating = round($teube->w_rating, 2);
 
 	$data = array('page' => 'view', 'teube' => $teube, 'userVote' => $userVote, 'isEditable' => $isEditable);
 	if (!empty($sortData))
-		$data = array_merge($data, array('prevTeube' => $prevTeube, 'sort' => $sort, 'nextTeube' => $nextTeube));
+		$data = array_merge($data, array('prevTeube' => $prevTeube, 'sort' => $sort, 'position' => $position, 'nextTeube' => $nextTeube));
 	$app->render('view.php', $data);
 })->name('regarder');
 
