@@ -18,7 +18,7 @@
 	<p class="teube-view__info">
 		<?php $teubeTimestamp = strtotime($teube->created); ?>
 		<?php $teubeDate = date("d/m/Y à H:i", $teubeTimestamp); ?>
-		Œuvre réalisée
+		Œuvre vue <?php echo ++$teube->views ?> fois réalisée
 		par <span class="teube-view__artist"><?php echo $teube->artist ? $teube->artist : 'un inconnu' ?></span>
 		<span class="teube-view__date" data-timestamp="<?php echo $teubeTimestamp*1000 ?>" title="Le <?php echo $teubeDate ?>">le <?php echo strstr($teubeDate, 'à', true); ?></span>
 	</p>
