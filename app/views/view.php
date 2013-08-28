@@ -18,15 +18,12 @@
 	<p class="teube-view__info">
 		<?php $teubeTimestamp = strtotime($teube->created); ?>
 		<?php $teubeDate = date("d/m/Y à H:i", $teubeTimestamp); ?>
-		Œuvre vue <?php echo ++$teube->views ?> fois réalisée
+		Œuvre vue <span class="teube-view__views"><?php echo ++$teube->views ?> fois</span> réalisée
 		par <span class="teube-view__artist"><?php echo $teube->artist ? $teube->artist : 'un inconnu' ?></span>
 		<span class="teube-view__date" data-timestamp="<?php echo $teubeTimestamp*1000 ?>" title="Le <?php echo $teubeDate ?>">le <?php echo strstr($teubeDate, 'à', true); ?></span>
 	</p>
 
 	<div class="teube-view__vote-container cf">
-		<?php if (isset($userVote)): ?>
-		<span class="teube-view__user-vote">votre note : <span><?php echo $userVote->value ?></span></span>
-		<?php endif ?>
 		<form action="#" class="teube-view__vote cf">
 			<input type="hidden" name="teube-id" value="<?php echo $teube->id ?>">
 			<fieldset>
@@ -37,7 +34,10 @@
 				<input type="radio" id="teube-vote-1" name="teube-vote" value="1" /><label for="teube-vote-1" title="Non. NON.">1</label>
 			</fieldset>
 		</form>
-		<span class="teube-view__avg-vote">moyenne : <?php echo $teube->w_rating ?> avec <?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?></span>
+		<span class="teube-view__avg-vote"><span class="help" title="La note moyenne est ajustée en fonction du nombre de participants">moyenne</span> : <?php echo $teube->w_rating ?> (<?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?>)</span>
+		<?php if (isset($userVote)): ?>
+		<span class="teube-view__user-vote">votre note : <span><?php echo $userVote->value ?></span></span>
+		<?php endif ?>
 	</div>
 
 	<div class="teube-view__drawing-container">

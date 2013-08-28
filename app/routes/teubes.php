@@ -137,6 +137,7 @@ $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 		$app->flash('info', "Impossible de modifier cette teub");
 		$app->redirect($app->request()->getReferrer());
 	}
+	$teube->w_rating = round($teube->w_rating, 2);
 	$app->render('draw.php', array('page' => 'draw', 'teube' => $teube));
 })->name('draw-edit');
 

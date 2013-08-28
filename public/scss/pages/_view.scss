@@ -31,6 +31,13 @@
 	}
 }
 
+.teube-view__info {
+	.teube-view__views,
+	.teube-view__artist {
+		color: darken($rose, 5%);
+	}
+}
+
 .teube-view__drawing-container {
 	position: relative;
 }
@@ -65,18 +72,24 @@
 
 $vote-size: 32px;
 .teube-view__vote-container {
-	margin: 0 auto;
+	margin: $base-line-height/2 auto;
+}
+
+.teube-view__user-vote,
+.teube-view__avg-vote {
+	line-height: 40px;
 }
 
 .teube-view__user-vote,
 .teube-view__avg-vote {
 	float: left;
+	margin-left: $base-line-height;
 }
 
 .teube-view__vote {
 	width: $vote-size*5;
 	padding: 0;
-	margin: 0 0 $base-line-height/2;
+	margin: 0;
 	list-style-type: none;
 	li {
 		float: left;
@@ -124,7 +137,7 @@ $vote-size: 32px;
 			white-space: nowrap;
 			cursor: pointer;
 			font-size: 200%;
-			line-height: 1.2;
+			line-height: 40px;
 			color: #ccc;
 		}
 
