@@ -18,10 +18,11 @@ class Model_Voteub extends RedBean_SimpleModel
 	public function disableDuplicateVotes() {
 		return R::exec(
 			'UPDATE voteub SET active = 0 WHERE
+				teube_id = ? AND
 				ip = ? AND
 				(ua = ? OR fingerprint = ?) AND
 				id != ?',
-			array($this->ip, $this->ua, $this->fingerprint, $this->id)
+			array($this->teube_id, $this->ip, $this->ua, $this->fingerprint, $this->id)
 		);
 	}
 }
