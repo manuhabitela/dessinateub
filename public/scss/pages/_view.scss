@@ -4,6 +4,10 @@
 	margin: 0 auto;
 	display: block;
 	text-align: center;
+	@include respond-to(small) {
+		width: auto;
+		max-width: 100%;
+	}
 }
 
 .disqus-container {
@@ -44,6 +48,8 @@
 
 .teube-view__drawing {
 	background: white;
+	width: auto;
+	max-width: 100%;
 }
 
 .teube-view__navigation-link {
@@ -51,19 +57,39 @@
 	top: 50%;
 	margin-top: -$base-line-height/2;
 	bottom: 0;
+	@include respond-to(small) {
+		position: relative;
+		top: auto;
+		bottom: auto;
+		margin: $base-line-height/2;
+		padding: 0 !important;
+	}
 }
 
 .teube-view__navigation-link--prev {
 	right: 100%;
 	padding-right: $base-line-height/2;
+	@include respond-to(small) {
+		right: auto;
+		float: left;
+	}
 }
 
 .teube-view__navigation-link--next {
 	left: 100%;
 	padding-left: $base-line-height/2;
+	@include respond-to(small) {
+		left: auto;
+		float: right;
+	}
 }
 
 .teube-view__share-container {
+	@include respond-to(small) {
+		 > span:first-child {
+		 	@include hidden;
+		 }
+	}
 }
 
 .teube-view__share-link {

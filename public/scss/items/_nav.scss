@@ -26,6 +26,13 @@
 		padding: 0;
 		border: 0;
 		background: none;
+		@include respond-to(small) {
+			width: auto;
+			position: relative;
+			top: auto;
+			bottom: auto;
+			left: auto;
+		}
 	}
 	li {
 		display: inline-block;
@@ -34,6 +41,10 @@
 		position: relative;
 		&:first-child {
 			position: static;
+		}
+		@include respond-to(small) {
+			margin-top: $base-line-height/6;
+			margin-bottom: $base-line-height/6;
 		}
 	}
 	a {
@@ -69,5 +80,10 @@
 	@include respond-to(not-large) {
 		padding-left: 200px;
 		text-align: left;
+	}
+
+	@include respond-to(small) {
+		padding-left: 0;
+		text-align: center;
 	}
 }

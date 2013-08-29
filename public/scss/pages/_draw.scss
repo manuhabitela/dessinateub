@@ -29,6 +29,14 @@
 		text-align: right;
 		@include opacity(0);
 		@extend .transition;
+
+		@include respond-to(small) {
+			position: relative;
+			top: auto;
+			right: auto;
+			text-align: left;
+			@include opacity(1);
+		}
 	}
 	input {
 		width: 100%;

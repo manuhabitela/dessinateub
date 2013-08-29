@@ -6,11 +6,10 @@
 	<?php if (!empty($teubes)): ?>
 
 	<div class="teubes-list__items-wrapper cf">
-		<?php foreach ($teubes as $teube): ?>
-		<div class="teubes-list__item">
+		<?php foreach ($teubes as $teube): ?><!-- commentaires spécial display: inline-block, yolo
+     --><div class="teubes-list__item">
 			<?php include(__DIR__ . '/elements/teube-preview.php'); ?>
-		</div>
-		<?php endforeach ?>
+		</div><?php endforeach ?>
 	</div>
 
 	<?php include(__DIR__ . '/elements/teube-pagination.php'); ?>

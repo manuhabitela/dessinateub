@@ -8,8 +8,12 @@
 	float: right;
 }
 
+.teubes-list__items-wrapper {
+	text-align: center;
+}
+
 .teubes-list__item {
-	float: left;
+	display: inline-block;
 	margin-bottom: $base-line-height/2;
 }
 

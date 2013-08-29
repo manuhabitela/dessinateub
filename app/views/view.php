@@ -40,12 +40,12 @@
 		<?php endif ?>
 	</div>
 
-	<div class="teube-view__drawing-container">
+	<div class="teube-view__drawing-container cf">
+		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
+
 		<?php if (!empty($prevTeube)): ?>
 			<a data-icon-before="l" href="<?php echo $app->urlFor('regarder', array('slug' => $prevTeube->id)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position-1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--prev" title="Teub précédente"></a>
 		<?php endif ?>
-
-		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
 
 		<?php if (!empty($nextTeube)): ?>
 			<a data-icon-before="r" href="<?php echo $app->urlFor('regarder', array('slug' => $nextTeube->id)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position+1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--next" title="Teub suivante"></a>

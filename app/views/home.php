@@ -7,11 +7,10 @@ $sort = $list['sort']; ?>
 	<h2 class="teubes-list__title teu"><?php echo $list["title"] ?></h2>
 
 	<div class="teubes-list__items-wrapper cf">
-		<?php foreach ($list["teubes"] as $teube): ?>
-		<div class="teubes-list__item">
+		<?php foreach ($list["teubes"] as $teube): ?><!-- commentaires spécial display: inline-block, yolo
+     --><div class="teubes-list__item">
 			<?php include(__DIR__ . '/elements/teube-preview.php'); ?>
-		</div>
-		<?php endforeach ?>
+		</div><?php endforeach ?>
 	</div>
 
 	<a href="/mater?ordre=<?php echo $list['sort'] ?>" class="teubes-list__see-more" data-icon-after="r">Voir toutes <?php echo lcfirst($list["title"]) ?>&nbsp;</a>

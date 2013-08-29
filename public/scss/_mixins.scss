@@ -45,7 +45,7 @@
 }
 
 @mixin respond-to($media) {
-	$break-small: 640px;
+	$break-small: $board-width;
 	$break-large: 1200px;
 	$break-small-height: 780px;
 	@if $media == small {

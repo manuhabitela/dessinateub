@@ -83,6 +83,11 @@
 	&:active {
 		@extend .condom--rocco;
 	}
+	@include respond-to(small) {
+		&:hover, &:focus, &:active {
+			padding-right: $base-line-height !important;
+		}
+	}
 }
 
 .condom--facebook {

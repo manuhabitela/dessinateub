@@ -38,6 +38,10 @@ html, body, #container {
 	.page--draw &,
 	.page--view & {
 		width: $board-width;
+		@include respond-to(small) {
+			width: auto;
+			max-width: 100%;
+		}
 		margin: 0 auto;
 		white-space: normal;
 		text-align: center;
