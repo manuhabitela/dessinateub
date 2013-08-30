@@ -10,7 +10,7 @@
 		</p>
 
 		<!-- dev : /js/script.js -->
-		<?php $js = PROD ? '/js/script.min.js?v=58797562341' :
+		<?php $js = PROD ? '/dist/scripts.min.js?v='.APP_VERSION :
 			array('/components/jquery/jquery.min.js', '/components/drawingboard.js/dist/drawingboard.js', '/components/moment/moment.js', '/components/moment/min/lang/fr.js', '/components/color-thief/js/color-thief.js', '/js/fingerprint.js', '/js/script.js');
 		$t = time();
 		if (is_string($js)): ?>

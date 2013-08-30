@@ -18,9 +18,11 @@
 		<!--<![endif]-->
 
 		<!-- dev : /css/style.css -->
-		<?php $css = PROD ? '/css/style.min.css?v=957465612021901' : '/css/style.css?v='.time() ?>
+		<?php $css = PROD ? '/dist/styles.min.css?v='.APP_VERSION : '/css/style.css?v='.time() ?>
 		<link rel="stylesheet" href="<?php echo $css ?>">
+		<?php if (!PROD): ?>
 		<link rel="stylesheet" href="/components/drawingboard.js/dist/drawingboard.css">
+		<?php endif ?>
 		<script src="/js/modernizr.custom.js"></script>
 	</head>
 	<body>
