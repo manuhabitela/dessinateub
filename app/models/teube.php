@@ -55,7 +55,7 @@ class Model_Teube extends RedBean_SimpleModel
 		$this->reports++;
 		if ($this->reports > 5) {
 			$message = "La teube ".$this->name." (n°".$this->id.") créée le ".date("d/m/Y", strtotime($this->created))." par ".$this->artist." a été signalée pour la ".$this->reports.($this->reports > 1 ? "ème" : "ère")." fois";
-			$message .= "\n\nhttp://jaiunegrosseteu.be/regarder/".$this->id;
+			$message .= "\n\nhttp://jaiunegrosseteu.be/de-".$this->id."-cm";
 			mail(APP_ADMIN_MAIL, "jaiunegrosseteu.be : ".$this->name." signalée", $message, 'From:bot@jaiunegrosseteu.be');
 		}
 		return R::store($this);

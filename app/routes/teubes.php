@@ -207,7 +207,7 @@ $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
 /**
  * VUE
  */
-$app->get('/regarder/:slug', function($slug) use($app) {
+$app->get('/de-:slug-cm', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
 	if (empty($teube->id) || empty($teube->active)) {
