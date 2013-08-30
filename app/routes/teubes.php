@@ -210,6 +210,10 @@ $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
 $app->get('/regarder/:slug', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
+	if (empty($teube->id) || empty($teube->active)) {
+		$app->flash('error', "Erreur : impossible de visualiser cette teub");
+		$app->redirect($app->request()->getReferrer());
+	}
 	$isEditable = (!empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids']));
 	$userVote = $teube->getUserVote();
 
