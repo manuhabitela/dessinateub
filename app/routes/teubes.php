@@ -191,7 +191,7 @@ $app->put('/etjelemontre/:slug', function($slug) use($app) {
 /**
  * SUPPRESSION
  */
-$app->delete('/etjelemontre/:slug', function($slug) use($app) {
+$app->post('/etjelemontreplus/:slug', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
 	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids'])) {
@@ -200,7 +200,7 @@ $app->delete('/etjelemontre/:slug', function($slug) use($app) {
 	} else {
 		$app->flash('info', "Impossible de supprimer cette teub");
 	}
-	$app->redirect('home');
+	$app->redirect($app->urlFor('home'));
 })->name('draw-delete');
 
 

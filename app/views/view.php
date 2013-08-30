@@ -8,7 +8,6 @@
 		<div class="teube-view__user-actions">
 			<a data-icon-before="p" class="teube-view__edit-link button" href="<?php echo $app->urlFor('draw-edit', array('slug' => $teube->id)) ?>" title="Modifier cette teub"></a>
 			<form action="<?php echo $app->urlFor('draw-delete', array('slug' => $teube->id)) ?>" method="post">
-				<input type="hidden" name="_METHOD" value="DELETE">
 				<button data-icon-before="t" class="teube-view__delete-link button" title="Supprimer cette teub"></button>
 			</form>
 		</div>
