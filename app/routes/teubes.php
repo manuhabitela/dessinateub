@@ -252,6 +252,9 @@ $app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
  * RANDOM
  */
 $app->get('/balancebalancebalancebalancetoi', function() use($app) {
-	$max = R::getCell('SELECT id FROM teube WHERE active = 1 ORDER BY id DESC limit 1');
-	$app->redirect($app->urlFor('regarder', array('slug' => mt_rand(1, $max))));
+	$rand = R::getCell('SELECT id FROM teube WHERE active = 1 ORDER BY RAND() limit 1');
+	if (!empty($rand))
+		$app->redirect($app->urlFor('regarder', array('slug' => $rand)));
+	else
+		$app->redirect($app->urlFor('home'));
 })->name('random');
