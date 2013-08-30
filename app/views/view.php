@@ -1,13 +1,13 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<div class="teube-view" data-id="<?php echo $teube->id ?>" data-color="<?php echo !empty($teube->color) ? $teube->color : '' ?>" data-url="<?php echo Halp::drawing($teube, true) ?>" data-rating="<?php echo round($teube->w_rating) ?>">
+<div class="teube-view" data-id="<?php echo $teube->id ?>" data-slug="<?php echo $teube->slug*100 ?>" data-color="<?php echo !empty($teube->color) ? $teube->color : '' ?>" data-url="<?php echo Halp::drawing($teube, true) ?>" data-rating="<?php echo round($teube->w_rating) ?>">
 
 	<h2 class="teube-view__name">
 		<?php echo $teube->name ?>
 		<?php if ($isEditable): ?>
 		<div class="teube-view__user-actions">
-			<a data-icon-before="p" class="teube-view__edit-link button" href="<?php echo $app->urlFor('draw-edit', array('slug' => $teube->id)) ?>" title="Modifier cette teub"></a>
-			<form action="<?php echo $app->urlFor('draw-delete', array('slug' => $teube->id)) ?>" method="post">
+			<a data-icon-before="p" class="teube-view__edit-link button" href="<?php echo $app->urlFor('draw-edit', array('slug' => $teube->slug)) ?>" title="Modifier cette teub"></a>
+			<form action="<?php echo $app->urlFor('draw-delete', array('slug' => $teube->slug)) ?>" method="post">
 				<button data-icon-before="t" class="teube-view__delete-link button" title="Supprimer cette teub"></button>
 			</form>
 		</div>
@@ -43,11 +43,11 @@
 		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
 
 		<?php if (!empty($prevTeube)): ?>
-			<a data-icon-before="l" href="<?php echo $app->urlFor('regarder', array('slug' => $prevTeube->id)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position-1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--prev" title="Teub précédente"></a>
+			<a data-icon-before="l" href="<?php echo $app->urlFor('regarder', array('slug' => $prevTeube->slug)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position-1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--prev" title="Teub précédente"></a>
 		<?php endif ?>
 
 		<?php if (!empty($nextTeube)): ?>
-			<a data-icon-before="r" href="<?php echo $app->urlFor('regarder', array('slug' => $nextTeube->id)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position+1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--next" title="Teub suivante"></a>
+			<a data-icon-before="r" href="<?php echo $app->urlFor('regarder', array('slug' => $nextTeube->slug)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position+1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--next" title="Teub suivante"></a>
 		<?php endif ?>
 	</div>
 
@@ -59,7 +59,7 @@
 		<a class="condom--facebook condom--expandable teube-view__share-link" href="#" target="_blank">Facebook</a>
 	</div>
 
-	<form class="teube-view__report-form" action="<?php echo $app->urlFor('abus', array('slug' => $teube->id)) ?>" method="post">
+	<form class="teube-view__report-form" action="<?php echo $app->urlFor('abus', array('slug' => $teube->slug)) ?>" method="post">
 		<button data-icon-before="w" class="teube-view__report-button">Signaler un abus ou un problème</button>
 	</form>
 

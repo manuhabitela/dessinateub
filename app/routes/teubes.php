@@ -23,9 +23,9 @@ $app->get('/etjelemontre', function() use ($app) {
  */
 $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 	$teube = null;
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	if (is_numeric($slug) && !empty($_SESSION['ids']) && in_array($slug, $_SESSION['ids']))
-		$teube = R::load('teube', $slug);
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	if (is_numeric($slug) && !empty($_SESSION['slugs']) && in_array($slug, $_SESSION['slugs']))
+		$teube = getTeube($slug);
 	else {
 		$app->flash('info', "Impossible de modifier cette teub");
 		$app->redirect($app->request()->getReferrer());
@@ -46,12 +46,13 @@ $app->post('/etjelemontre', function() use ($app) {
 	$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
 	if (!empty($teube->name) && !empty($teube->artist) && !empty($teube->image)) {
 		$teubeId = R::store($teube);
-		if (isset($_SESSION['ids']))
-			$_SESSION['ids'][]= $teubeId;
+		$savedTeube = R::load('teube', $teubeId);
+		if (isset($_SESSION['slugs']))
+			$_SESSION['slugs'][]= $savedTeube->slug;
 		else
-			$_SESSION['ids'] = array($teubeId);
+			$_SESSION['slugs'] = array($savedTeube->slug);
 		$app->flash('success', "Teub ajoutée ! Tu peux la modifier ou la supprimer pendant encore quelques minutes.");
-		$app->redirect($app->urlFor('regarder', array('slug' => $teube->id)));
+		$app->redirect($app->urlFor('regarder', array('slug' => $savedTeube->slug)));
 	}
 	else {
 		$app->flash('error', "Erreur : t'es sûr d'avoir bien dessiné, nommé et signé ta teub ?");
@@ -64,9 +65,9 @@ $app->post('/etjelemontre', function() use ($app) {
  * EDITION (PUT)
  */
 $app->put('/etjelemontre/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	$teube = R::load('teube', $slug);
-	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids'])) {
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	$teube = getTeube($slug);
+	if (!empty($teube) && !empty($_SESSION['slugs']) && in_array($teube->slug, $_SESSION['slugs'])) {
 		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 		$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
 		$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
@@ -75,7 +76,7 @@ $app->put('/etjelemontre/:slug', function($slug) use($app) {
 	} else {
 		$app->flash('info', "Impossible de modifier cette teub");
 	}
-	$app->redirect($app->urlFor('regarder', array('slug' => $teube->id)));
+	$app->redirect($app->urlFor('regarder', array('slug' => $teube->slug)));
 })->name('draw-put');
 
 
@@ -83,9 +84,9 @@ $app->put('/etjelemontre/:slug', function($slug) use($app) {
  * SUPPRESSION
  */
 $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	$teube = R::load('teube', $slug);
-	if (!empty($teube->id) && !empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids'])) {
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	$teube = getTeube($slug);
+	if (!empty($teube) && !empty($_SESSION['slugs']) && in_array($teube->slug, $_SESSION['slugs'])) {
 		R::trash($teube);
 		$app->flash('success', "Teub supprimée !");
 	} else {
@@ -99,13 +100,13 @@ $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
  * VUE
  */
 $app->get('/de-:slug-cm', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	$teube = R::load('teube', $slug);
-	if (empty($teube->id) || empty($teube->active)) {
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	$teube = getTeube($slug);
+	if (empty($teube) || empty($teube->active)) {
 		$app->flash('error', "Erreur : impossible de visualiser cette teub");
 		$app->redirect($app->request()->getReferrer());
 	}
-	$isEditable = (!empty($_SESSION['ids']) && in_array($teube->id, $_SESSION['ids']));
+	$isEditable = (!empty($_SESSION['slugs']) && in_array($teube->slug, $_SESSION['slugs']));
 	$userVote = $teube->getUserVote();
 
 	//liens de navigation changeant suivant l'ordre voulu
@@ -131,9 +132,9 @@ $app->get('/de-:slug-cm', function($slug) use($app) {
  * SIGNALER UN ABUS
  */
 $app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	$teube = R::load('teube', $slug);
-	if (!empty($teube->id))
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	$teube = getTeube($slug);
+	if (!empty($teube))
 		$teube->report();
 	$app->flash('success', "Merci, on va voir ce qu'on fait d'elle.");
 	$app->redirect($app->request()->getReferrer());
@@ -143,7 +144,7 @@ $app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
  * RANDOM
  */
 $app->get('/balancebalancebalancebalancetoi', function() use($app) {
-	$rand = R::getCell('SELECT id FROM teube WHERE active = 1 ORDER BY RAND() limit 1');
+	$rand = R::getCell('SELECT slug FROM teube WHERE active = 1 ORDER BY RAND() limit 1');
 	if (!empty($rand))
 		$app->redirect($app->urlFor('regarder', array('slug' => $rand)));
 	else

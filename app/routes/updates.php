@@ -1,6 +1,7 @@
 <?php
 use RedBean_Facade as R;
 
+//surement obsolète
 $app->get('/update-comments', function() use($app) {
 	$posts = json_decode(file_get_contents("http://disqus.com/api/3.0/threads/list.json?api_key=" . APP_DISQUS_API . "&forum=" . APP_DISQUS_NAME), true);
 	foreach ($posts['response'] as $post) {
@@ -23,19 +24,19 @@ $app->get('/update-votes', function() use($app) {
 });
 
 $app->post('/update-color/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
 	$color = filter_input(INPUT_POST, 'color', FILTER_SANITIZE_STRING);
-	$teube = R::load('teube', $slug);
-	if ($teube->id && empty($teube->color)) {
+	$teube = getTeube($slug);
+	if (!empty($teube) && empty($teube->color)) {
 		$teube->color = $color;
 		R::store($teube);
 	}
 });
 
 $app->get('/update-pageviews/:slug', function($slug) use($app) {
-	$id = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	$teube = R::load('teube', $id);
-	if (empty($teube->id))
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	$teube = getTeube($slug);
+	if (empty($teube))
 		return false;
 	$teube->updatePageViews();
 });

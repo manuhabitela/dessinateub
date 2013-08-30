@@ -7,9 +7,9 @@ use RedBean_Facade as R;
 $app->post('/a-voter/:slug', function($slug) use ($app) {
 	$error = false;
 
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-	$teube = R::load('teube', $slug);
-	if (empty($teube->id))
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
+	$teube = getTeube($slug);
+	if (empty($teube))
 		$error = true;
 	else {
 
@@ -25,7 +25,7 @@ $app->post('/a-voter/:slug', function($slug) use ($app) {
 			$error = true;
 		else {
 			$maxRand = mt_getrandmax();
-			$app->setCookie('vote_teub_'.$teube->id, mt_rand((int)$maxRand/6, $maxRand), time()+60*60*24*30, '/', 'jaiunegrosseteu.be');
+			$app->setCookie('vote_teub_'.$teube->slug, mt_rand((int)$maxRand/6, $maxRand), time()+60*60*24*30, '/', 'jaiunegrosseteu.be');
 		}
 
 	}
@@ -44,13 +44,13 @@ $app->post('/a-voter/:slug', function($slug) use ($app) {
  * RÉCUPÉRATION DU DERNIER VOTE DE L'UTILISATEUR ACTUEL POUR UNE TEU
  */
 $app->get('/ancien-vote/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
 
 	$res = $app->response();
 	$res['Content-Type'] = 'application/json';
 
-	$teube = R::load('teube', $slug);
-	if (empty($teube->id))
+	$teube = getTeube($slug);
+	if (empty($teube))
 		$nothing = true;
 	else {
 		$fingerprint = filter_input(INPUT_GET, 'fingerprint', FILTER_SANITIZE_NUMBER_INT);

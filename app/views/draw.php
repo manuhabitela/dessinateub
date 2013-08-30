@@ -1,6 +1,6 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<?php $formAction = !empty($teube) ? $app->urlFor('draw-put', array('slug' => $teube->id)) : $app->urlFor('draw-post'); ?>
+<?php $formAction = !empty($teube) ? $app->urlFor('draw-put', array('slug' => $teube->slug)) : $app->urlFor('draw-post'); ?>
 <form class="teube-drawing" action="<?php echo $formAction; ?>" method="post" <?php echo !empty($teube) ? 'data-url="'.Halp::drawing($teube, true).'"' : ''; ?>>
 	<?php if (!empty($teube)): ?>
 		<input type="hidden" name="_METHOD" value="PUT"/>
