@@ -1,6 +1,7 @@
 <?php
 	require dirname(__FILE__).'/../app/config/init.php';
 
+	require_once LIB_PATH.'/teubes.php';
 	require_once ROUTES_PATH.'/teubes.php';
 	require_once ROUTES_PATH.'/votes.php';
 	require_once ROUTES_PATH.'/updates.php';

@@ -3,8 +3,9 @@ session_cache_limiter(false);
 session_start();
 
 define('APP_PATH', __DIR__.'/..');
-define('ROUTES_PATH', APP_PATH.'/routes');
+define('LIB_PATH', APP_PATH.'/lib');
 define('MODELS_PATH', APP_PATH.'/models');
+define('ROUTES_PATH', APP_PATH.'/routes');
 define('WEBROOT_PATH', __DIR__.'/../../public');
 
 require APP_PATH.'/config/app.php';
