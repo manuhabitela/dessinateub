@@ -60,12 +60,16 @@
 
 	if ($html.hasClass('page--draw')) {
 		$drawing = $('.teube-drawing');
+
 		if ($drawing.attr('data-url'))
 			teuboard.setImg( $drawing.attr('data-url') );
+
 		$drawing.on('submit', function(e) {
 			var img = teuboard.getImg();
+
 			var imgInput = (teuboard.blankCanvas == img) ? '' : img;
 			$(this).find('input[name=image]').val( imgInput );
+
 			teuboard.clearWebStorage();
 		});
 	}
@@ -118,6 +122,15 @@
 				}
 			}
 		});
+
+		if ( !$('.teube-view').attr('data-color') ) {
+			$('.teube-view__drawing').on('load', function(e) {
+				var colorThief = new ColorThief();
+				var mainImgColor = colorThief.getColor($(this).get(0));
+				mainImgColor = "rgb(" + mainImgColor.join(',') + ")";
+				$.ajax({ url: '/update-color/' + teubeId, method: 'POST', data: { color: mainImgColor } });
+			});
+		}
 
 		$.ajax({ url: '/update-pageviews/' + teubeId, method: 'GET' });
 	}

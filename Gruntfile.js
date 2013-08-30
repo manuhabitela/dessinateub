@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 					'public/components/drawingboard.js/dist/drawingboard.js',
 					'public/components/moment/moment.js',
 					'public/components/moment/min/lang/fr.js',
+					'public/components/color-thief/js/color-thief.js',
 					'public/js/fingerprint.js',
 					'public/js/script.js'
 				],

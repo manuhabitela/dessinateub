@@ -22,6 +22,16 @@ $app->get('/update-votes', function() use($app) {
 	}
 });
 
+$app->post('/update-color/:slug', function($slug) use($app) {
+	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
+	$color = filter_input(INPUT_POST, 'color', FILTER_SANITIZE_STRING);
+	$teube = R::load('teube', $slug);
+	if ($teube->id && empty($teube->color)) {
+		$teube->color = $color;
+		R::store($teube);
+	}
+});
+
 $app->get('/update-pageviews/:slug', function($slug) use($app) {
 	$id = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $id);
