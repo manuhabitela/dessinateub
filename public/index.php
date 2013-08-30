@@ -15,7 +15,8 @@
 			'nouvelles' => $nouvelles,
 			'belles' => array_merge($belles, array("title" => "Les plus belles")),
 			'moches' => $moches,
-			'page' => 'list'
+			'page' => 'list',
+			'title' => 'jaiunegrosseteu.be'
 		));
 	})->name('home');
 

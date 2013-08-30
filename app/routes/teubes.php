@@ -122,7 +122,7 @@ $app->get('/mater', 'listTeubes')->name('teubes');
  *
  */
 $app->get('/etjelemontre', function() use ($app) {
-	$app->render('draw.php', array('page' => 'draw'));
+	$app->render('draw.php', array('page' => 'draw', 'title' => 'Dessiner une teub'));
 })->name('draw');
 
 
@@ -140,7 +140,7 @@ $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 		$app->redirect($app->request()->getReferrer());
 	}
 	$teube->w_rating = round($teube->w_rating, 2);
-	$app->render('draw.php', array('page' => 'draw', 'teube' => $teube));
+	$app->render('draw.php', array('page' => 'draw', 'teube' => $teube, 'title' => $teube->name.' - Modification'));
 })->name('draw-edit');
 
 
@@ -229,7 +229,7 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 
 	$teube->w_rating = round($teube->w_rating, 2);
 
-	$data = array('page' => 'view', 'teube' => $teube, 'userVote' => $userVote, 'isEditable' => $isEditable);
+	$data = array('page' => 'view', 'teube' => $teube, 'title' => $teube->name.(!empty($teube->artist) ? ' par '.$teube->artist : ''), 'userVote' => $userVote, 'isEditable' => $isEditable);
 	if (!empty($sortData))
 		$data = array_merge($data, array('prevTeube' => $prevTeube, 'sort' => $sort, 'position' => $position, 'nextTeube' => $nextTeube));
 	$app->render('view.php', $data);
