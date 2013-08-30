@@ -15,6 +15,7 @@ class Model_Teube extends RedBean_SimpleModel
 		if (empty($this->id)) {
 			$this->created = date('Y-m-d H:i:s');
 			$this->active = 1;
+			$this->generateUniqueSlug();
 		}
 	}
 
@@ -55,7 +56,7 @@ class Model_Teube extends RedBean_SimpleModel
 		$this->reports++;
 		if ($this->reports > 5) {
 			$message = "La teube ".$this->name." (n°".$this->id.") créée le ".date("d/m/Y", strtotime($this->created))." par ".$this->artist." a été signalée pour la ".$this->reports.($this->reports > 1 ? "ème" : "ère")." fois";
-			$message .= "\n\nhttp://jaiunegrosseteu.be/de-".$this->id."-cm";
+			$message .= "\n\nhttp://jaiunegrosseteu.be/de-".$this->slug."-cm";
 			mail(APP_ADMIN_MAIL, "jaiunegrosseteu.be : ".$this->name." signalée", $message, 'From:bot@jaiunegrosseteu.be');
 		}
 		return R::store($this);
@@ -100,6 +101,18 @@ class Model_Teube extends RedBean_SimpleModel
 		if ($fingerprint) $bindings[]= $fingerprint;
 		$vote = R::findOne('voteub', $query, $bindings);
 		return !empty($vote->id) ? $vote : null;
+	}
+
+	public function generateUniqueSlug($store = false, $force = false) {
+		if (!empty($this->slug) && !$force)
+			return false;
+		$existing = R::getCol('SELECT slug FROM teube');
+		$rand = mt_rand(1, 9999);
+		while (in_array($rand, $existing))
+			$rand = mt_rand(1, 9999);
+		$this->slug = $rand/100;
+		if ($store)
+			R::store($this);
 	}
 
 	public function getDrawingPath($thumb = '') {
