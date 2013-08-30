@@ -2,7 +2,7 @@
 	<a class="teube-preview__link" href="<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->id)).(!empty($sort) ? "?voisines=".$sort.( isset($teube->list_position) ? "&pos=".$teube->list_position : '') : '') ?>">
 		<div class="teube-preview__img-wrapper" <?php if (!empty($teube->color)): ?> style="border-color: <?php echo $teube->color ?>; background-color: <?php echo $teube->color ?>" <?php endif ?>>
 			<div>
-				<img src="<?php echo Halp::drawing($teube) ?>" alt="<?php echo $teube->name ?>">
+				<img src="<?php echo Halp::drawing($teube, false, true) ?>" alt="<?php echo $teube->name ?>">
 			</div>
 		</div>
 		<p class="teube-preview__title" title="<?php echo $teube->name.($teube->artist ? " par ".$teube->artist : '') ?>"><?php echo $teube->name ?></p>

@@ -5,6 +5,8 @@ class Model_Teube extends RedBean_SimpleModel
 	public function open() {
 		if (!file_exists($this->getDrawingPath()))
 			$this->createDrawingFile();
+		if (!file_exists($this->getDrawingPath('preview')))
+			$this->createThumbnail();
 		if (empty($this->views))
 			$this->views = 0;
 	}
@@ -17,11 +19,13 @@ class Model_Teube extends RedBean_SimpleModel
 	}
 
 	public function after_update() {
-		$this->createDrawingFile();
+		if ($this->createDrawingFile())
+			$this->createThumbnail();
 	}
 
 	public function delete() {
 		$this->deleteDrawingFile();
+		$this->deleteThumbnail();
 	}
 
 	public function getVotes() {
@@ -98,8 +102,8 @@ class Model_Teube extends RedBean_SimpleModel
 		return !empty($vote->id) ? $vote : null;
 	}
 
-	public function getDrawingPath() {
-		return WEBROOT_PATH.'/drawings/'.$this->id.'.png';
+	public function getDrawingPath($thumb = '') {
+		return WEBROOT_PATH.'/drawings/'.$this->id.'.'.$thumb.'.png';
 	}
 
 	public function createDrawingFile() {
@@ -110,7 +114,18 @@ class Model_Teube extends RedBean_SimpleModel
 		return file_put_contents($this->getDrawingPath(), $data);
 	}
 
+	public function createThumbnail() {
+		if (!file_exists($this->getDrawingPath())) return false;
+		$thumb = new PHPThumb\GD($this->getDrawingPath());
+		$thumb->adaptiveResize(200, 200);
+		$thumb->save($this->getDrawingPath('preview'));
+	}
+
 	public function deleteDrawingFile() {
 		return unlink($this->getDrawingPath());
+	}
+
+	public function deleleThumbnail() {
+		return unlink($this->getDrawingPath('preview'));
 	}
 }
