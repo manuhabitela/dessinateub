@@ -10,8 +10,10 @@ class Model_Teube extends RedBean_SimpleModel
 	}
 
 	public function update() {
-		if (empty($this->id))
+		if (empty($this->id)) {
 			$this->created = date('Y-m-d H:i:s');
+			$this->active = 1;
+		}
 	}
 
 	public function after_update() {
@@ -34,9 +36,9 @@ class Model_Teube extends RedBean_SimpleModel
 		//mais si on prend les trucs avec valeur égale ça peut tourner en rond facilement ensuite, donc tant pis
 		//pour l'instant on laisse comme ça
 		if ($direction === "next")
-			$query = $field.' = (SELECT MIN('.$field.') FROM teube WHERE '.$field.' > ?) AND id <> ?';
+			$query = $field.' = (SELECT MIN('.$field.') FROM teube WHERE active = 1 AND '.$field.' > ?) AND id <> ? AND active = 1';
 		elseif ($direction === "prev")
-			$query = $field.' = (SELECT MAX('.$field.') FROM teube WHERE '.$field.' < ?) AND id <> ?';
+			$query = $field.' = (SELECT MAX('.$field.') FROM teube WHERE active = 1 AND '.$field.' < ?) AND id <> ? AND active = 1';
 		else
 			return null;
 		$teu = R::findOne('teube', $query, array($this->{$field}, $this->id));
@@ -76,7 +78,7 @@ class Model_Teube extends RedBean_SimpleModel
 		$this->avg_rating = array_sum($voteValues)/$teubeVotesCount;
 
 		//http://masanjin.net/blog/bayesian-average
-		$allTeubesAvgRating = R::getCell('SELECT AVG(avg_rating) FROM teube WHERE avg_rating IS NOT NULL');
+		$allTeubesAvgRating = R::getCell('SELECT AVG(avg_rating) FROM teube WHERE active = 1 AND avg_rating IS NOT NULL');
 		if (empty($allTeubesAvgRating)) $allTeubesAvgRating = 3;
 		// $allTeubesAvgRating = 3;
 

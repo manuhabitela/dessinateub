@@ -65,6 +65,7 @@ function getTeubes($sort, $limit, $itemsNb) {
 	$sortData = getSortData($sort);
 
 	$teubes = R::findAll('teube', '
+		ACTIVE = 1
 		ORDER BY
 			CASE WHEN '.$sortData['field'].' IS NULL THEN 1 ELSE 0 END,
 			'.$sortData['field'].' '.$sortData['direction'].'
@@ -90,6 +91,7 @@ function getSiblings($sortData, $pos = null) {
 	$limit = $prev ? 3 : 2;
 
 	$teubes = R::findAll('teube', '
+		ACTIVE = 1
 		ORDER BY
 			CASE WHEN '.$sortData['field'].' IS NULL THEN 1 ELSE 0 END,
 			'.$sortData['field'].' '.$sortData['direction'].'
@@ -151,7 +153,6 @@ $app->post('/etjelemontre', function() use ($app) {
 	$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 	$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
 	$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
-	$teube->active = 0;
 	if (!empty($teube->name) && !empty($teube->artist) && !empty($teube->image)) {
 		$teubeId = R::store($teube);
 		if (isset($_SESSION['ids']))
@@ -237,7 +238,7 @@ $app->get('/regarder/:slug', function($slug) use($app) {
 $app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
 	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
 	$teube = R::load('teube', $slug);
-	if ($teube->id)
+	if (!empty($teube->id))
 		$teube->report();
 	$app->flash('success', "Merci, on va voir ce qu'on fait d'elle.");
 	$app->redirect($app->request()->getReferrer());
@@ -247,6 +248,6 @@ $app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
  * RANDOM
  */
 $app->get('/balancebalancebalancebalancetoi', function() use($app) {
-	$max = R::getCell('SELECT id FROM teube ORDER BY id DESC limit 1');
+	$max = R::getCell('SELECT id FROM teube WHERE active = 1 ORDER BY id DESC limit 1');
 	$app->redirect($app->urlFor('regarder', array('slug' => mt_rand(1, $max))));
 })->name('random');
