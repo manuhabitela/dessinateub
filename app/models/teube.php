@@ -138,7 +138,7 @@ class Model_Teube extends RedBean_SimpleModel
 		return unlink($this->getDrawingPath());
 	}
 
-	public function deleleThumbnail() {
+	public function deleteThumbnail() {
 		return unlink($this->getDrawingPath('preview'));
 	}
 }
