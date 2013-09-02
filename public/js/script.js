@@ -9,6 +9,15 @@
 
 	var $html = $('html');
 
+	//browser sniffing à cause d'un bug de webkit sur les border-radius/scale/clipping toussa
+	var badBrowser =
+		(!!detect.os.ios && parseInt(detect.os.version, 10) < 6) ||
+		(!!detect.browser.chrome && parseInt(detect.browser.version, 10) < 24) ||
+		(!!detect.browser.safari) ||
+		(!!detect.os.android);
+	if (badBrowser)	$html.addClass('OOOLD');
+	if (!badBrowser) $html.addClass('COOOL');
+
 	//transformation de toutes les "teubs" en "teu.bes" au survol de la souris
 	$('.teu').each(function(key, item) {
 		item.innerHTML = item.innerHTML.replace(/teub(s|)/, 'teu<span class="pointbe">.</span>b<span class="pointbe">e</span>$1');

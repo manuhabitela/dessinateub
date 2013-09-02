@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 					'public/components/moment/min/lang/fr.js',
 					'public/components/color-thief/js/color-thief.js',
 					'public/js/fingerprint.js',
+					'public/js/detect.js',
 					'public/js/script.js'
 				],
 				dest: 'public/dist/scripts.js'

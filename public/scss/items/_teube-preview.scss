@@ -1,7 +1,7 @@
 .teube-preview {
 	width: $teube-preview-size;
 	height: $teube-preview-size;
-	margin: $base-line-height/2;
+	margin: $base-line-height/2 $base-line-height/2 ($base-line-height/2 + $base-line-height);
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	position: relative;
@@ -25,7 +25,7 @@
 
 	div {
 		overflow: hidden;
-		-webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+		// -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
 	}
 	div, img {
 		border-radius: $teube-preview-size/2;
@@ -34,15 +34,19 @@
 		width: 100%;
 		background: white;
 		@extend .transition;
-		@include transform(scale(1.2));
-		@include transform-origin(center center);
+		.COOOL & {
+			@include transform(scale(1.2));
+			@include transform-origin(center center 0);
+		}
 	}
 	.teube-preview--active &,
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		border-color: $blue;
 		img {
-			@include transform(scale(1.05));
+			.COOOL & {
+				@include transform(none);
+			}
 		}
 	}
 }
@@ -61,12 +65,29 @@
 	overflow: hidden;
 	-ms-text-overflow: ellipsis;
 	text-overflow: ellipsis;
-	@extend .transition;
 	.teube-preview--active &,
 	.teube-preview:focus &,
 	.teube-preview:hover & {
 		background-color: $blue;
-		bottom: $base-line-height/-4;
+	}
+	bottom: $base-line-height/-4;
+}
+
+.teube-preview__title,
+.teube-preview__info-wrapper,
+.teube-preview__date {
+	@extend .transition;
+	@include opacity(1);
+	.COOOL & {
+		@include transform(scale(1));
+		@include transform-origin(center center 0);
+	}
+	.COOOL .teube-preview--active &,
+	.COOOL .teube-preview:focus &,
+	.COOOL .teube-preview:hover & {
+		pointer-events: none;
+		@include opacity(0);
+		@include transform(scale(0.8));
 	}
 }
 
@@ -74,16 +95,7 @@
 .teube-preview__date {
 	position: absolute;
 	bottom: $base-line-height*1.5;
-	@include opacity(0);
-	@extend .transition;
-	@include transform(scale(1.2));
 	z-index: 30;
-	.teube-preview--active &,
-	.teube-preview:focus &,
-	.teube-preview:hover & {
-		@include opacity(1);
-		@include transform(scale(1.05));
-	}
 }
 
 .teube-preview__info-wrapper {
