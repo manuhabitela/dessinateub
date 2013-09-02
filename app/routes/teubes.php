@@ -23,9 +23,8 @@ $app->get('/etjelemontre', function() use ($app) {
  */
 $app->get('/etjelemontre/:slug', function($slug) use ($app) {
 	$teube = null;
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	if (is_numeric($slug) && !empty($_SESSION['slugs']) && in_array($slug, $_SESSION['slugs']))
-		$teube = getTeube($slug);
+	if (!empty($_SESSION['slugs']) && in_array($slug, $_SESSION['slugs']))
+		$teube = getTeubeBySlug($slug);
 	else {
 		$app->flash('info', "Impossible de modifier cette teub");
 		$app->redirect($app->request()->getReferrer());
@@ -65,8 +64,7 @@ $app->post('/etjelemontre', function() use ($app) {
  * EDITION (PUT)
  */
 $app->put('/etjelemontre/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (!empty($teube) && !empty($_SESSION['slugs']) && in_array($teube->slug, $_SESSION['slugs'])) {
 		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 		$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
@@ -84,8 +82,7 @@ $app->put('/etjelemontre/:slug', function($slug) use($app) {
  * SUPPRESSION
  */
 $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (!empty($teube) && !empty($_SESSION['slugs']) && in_array($teube->slug, $_SESSION['slugs'])) {
 		R::trash($teube);
 		$app->flash('success', "Teub supprimée !");
@@ -100,8 +97,7 @@ $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
  * VUE
  */
 $app->get('/de-:slug-cm', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (empty($teube) || empty($teube->active)) {
 		$app->flash('error', "Erreur : impossible de visualiser cette teub");
 		$app->redirect($app->request()->getReferrer());
@@ -132,8 +128,7 @@ $app->get('/de-:slug-cm', function($slug) use($app) {
  * SIGNALER UN ABUS
  */
 $app->post('/NANMAISCAVAPAS/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (!empty($teube))
 		$teube->report();
 	$app->flash('success', "Merci, on va voir ce qu'on fait d'elle.");

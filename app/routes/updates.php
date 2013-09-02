@@ -24,9 +24,8 @@ $app->get('/update-votes', function() use($app) {
 });
 
 $app->post('/update-color/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
 	$color = filter_input(INPUT_POST, 'color', FILTER_SANITIZE_STRING);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (!empty($teube) && empty($teube->color)) {
 		$teube->color = $color;
 		R::store($teube);
@@ -34,8 +33,7 @@ $app->post('/update-color/:slug', function($slug) use($app) {
 });
 
 $app->get('/update-pageviews/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (empty($teube))
 		return false;
 	$teube->updatePageViews();

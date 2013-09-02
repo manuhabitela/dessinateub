@@ -1,6 +1,6 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<div class="teube-view" data-id="<?php echo $teube->id ?>" data-slug="<?php echo $teube->slug*100 ?>" data-color="<?php echo !empty($teube->color) ? $teube->color : '' ?>" data-url="<?php echo Halp::drawing($teube, true) ?>" data-rating="<?php echo round($teube->w_rating) ?>">
+<div class="teube-view" data-id="<?php echo $teube->id ?>" data-slug="<?php echo $teube->slug ?>" data-color="<?php echo !empty($teube->color) ? $teube->color : '' ?>" data-url="<?php echo Halp::drawing($teube, true) ?>" data-rating="<?php echo round($teube->w_rating) ?>">
 
 	<h2 class="teube-view__name">
 		<?php echo $teube->name ?>
@@ -33,7 +33,7 @@
 				<input type="radio" id="teube-vote-1" name="teube-vote" value="1" /><label for="teube-vote-1" title="Non. NON.">1</label>
 			</fieldset>
 		</form>
-		<span class="teube-view__avg-vote"><span class="help" title="La note moyenne est ajustée en fonction du nombre de participants">moyenne</span> : <?php echo $teube->w_rating ?> (<?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?>)</span>
+		<span class="teube-view__avg-vote"><span class="help" title="La note moyenne est ajustée en fonction du nombre de votes sur tout le site">moyenne</span> : <?php echo $teube->w_rating ?> (<?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?>)</span>
 		<?php if (isset($userVote)): ?>
 		<span class="teube-view__user-vote">votre note : <span><?php echo $userVote->value ?></span></span>
 		<?php endif ?>

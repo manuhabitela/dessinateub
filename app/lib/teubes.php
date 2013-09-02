@@ -110,7 +110,9 @@ function getSiblings($sortData, $pos = null) {
 	return $siblings;
 }
 
-function getTeube($slug) {
-	$slug = $slug/100;
+function getTeubeBySlug($slug, $direct = false) {
+	if (!$direct)
+		$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	if (!$slug) return null;
 	return R::findOne('teube', ' slug = ? ', array($slug));
 }

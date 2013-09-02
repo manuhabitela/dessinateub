@@ -7,8 +7,7 @@ use RedBean_Facade as R;
 $app->post('/a-voter/:slug', function($slug) use ($app) {
 	$error = false;
 
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (empty($teube))
 		$error = true;
 	else {
@@ -44,12 +43,10 @@ $app->post('/a-voter/:slug', function($slug) use ($app) {
  * RÉCUPÉRATION DU DERNIER VOTE DE L'UTILISATEUR ACTUEL POUR UNE TEU
  */
 $app->get('/ancien-vote/:slug', function($slug) use($app) {
-	$slug = filter_var($slug, FILTER_SANITIZE_NUMBER_FLOAT);
-
 	$res = $app->response();
 	$res['Content-Type'] = 'application/json';
 
-	$teube = getTeube($slug);
+	$teube = getTeubeBySlug($slug);
 	if (empty($teube))
 		$nothing = true;
 	else {
