@@ -134,7 +134,7 @@ html.borderradius .condom--rocco, html.borderradius .condom--expandable:active {
 .teube-preview__link { display: block; color: white; }
 
 .teube-preview__img-wrapper { position: relative; line-height: 0; z-index: 10; border: 4px solid #b3d4e5; border: 4px solid rgba(103, 169, 203, 0.4); overflow: hidden; border-radius: 100px; width: 100%; }
-.teube-preview__img-wrapper div { overflow: hidden; }
+.teube-preview__img-wrapper div { overflow: hidden; -webkit-mask-image: url('../img/preview_mask.png?1378137274'); }
 .teube-preview__img-wrapper div, .teube-preview__img-wrapper img { border-radius: 100px; }
 .teube-preview__img-wrapper img { width: 100%; background: white; }
 .COOOL .teube-preview__img-wrapper img { -webkit-transform: scale(1.2); -moz-transform: scale(1.2); -ms-transform: scale(1.2); -o-transform: scale(1.2); transform: scale(1.2); -webkit-transform-origin: center center 0 50%; -moz-transform-origin: center center 0 50%; -ms-transform-origin: center center 0 50%; -o-transform-origin: center center 0 50%; transform-origin: center center 0 50%; }

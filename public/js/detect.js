@@ -15,6 +15,7 @@ window.detect = {};
       bb10 = ua.match(/(BB10).*Version\/([\d.]+)/),
       rimtabletos = ua.match(/(RIM\sTablet\sOS)\s([\d.]+)/),
       playbook = ua.match(/PlayBook/),
+      opera = ua.match(/Opera/),
       chrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/),
       firefox = ua.match(/Firefox\/([\d.]+)/),
       safari = webkit && ua.match(/Safari/) && !chrome
@@ -42,6 +43,7 @@ window.detect = {};
     if (chrome) browser.chrome = true, browser.version = chrome[1]
     if (firefox) browser.firefox = true, browser.version = firefox[1]
     if (safari) browser.safari = true
+    if (opera) browser.opera = true
 
     os.tablet = !!(ipad || playbook || (android && !ua.match(/Mobile/)) || (firefox && ua.match(/Tablet/)))
     os.phone  = !!(!os.tablet && (android || iphone || webos || blackberry || bb10 ||

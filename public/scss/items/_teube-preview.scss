@@ -25,7 +25,7 @@
 
 	div {
 		overflow: hidden;
-		// -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+		-webkit-mask-image: image-url("preview_mask.png");
 	}
 	div, img {
 		border-radius: $teube-preview-size/2;
