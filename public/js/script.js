@@ -107,13 +107,25 @@
 
 		$('input[name="teube-vote"][value="' + $('.teube-view').attr('data-rating') +'"]').attr('checked', 'checked');
 
-		$('.teube-view__vote input[name="teube-vote"]').on('change', function(e) {
+		$('.teube-view__vote input[name="teube-vote"]').on('click', function(e) {
 			$.ajax({
 				url: '/a-voter/' + teubeSlug,
 				method: 'POST',
 				data: {
 					value: $(this).val(),
 					fingerprint: new Fingerprint().get()
+				},
+				success: function(data, status) {
+					if (status === "success" && data) {
+						if (data.rating)
+							$('.teube-view__avg-vote-value').text(data.rating);
+						if (data.count)
+							$('.teube-view__avg-vote-count').text(data.count + ' vote' + (data.count > 1 ? 's' : ''));
+						if (data.userVote) {
+							$('.teube-view__user-vote').removeClass('hidden');
+							$('.teube-view__user-vote-value').text(data.userVote);
+						}
+					}
 				}
 			});
 		});
@@ -125,9 +137,8 @@
 				fingerprint: new Fingerprint().get()
 			},
 			success: function(data, status) {
-				if (status === "success" && data && data.vote) {
-					$('.teube-view__user-vote > span').text(data.vote);
-				}
+				if (status === "success" && data && data.vote)
+					$('.teube-view__user-vote-value').text(data.vote);
 			}
 		});
 

@@ -29,12 +29,16 @@ $app->post('/a-voter/:slug', function($slug) use ($app) {
 
 	}
 
+	if (!$error) {
+		$teube = getTeubeBySlug($slug);
+	}
+
 
 	$res = $app->response();
 	$res['Content-Type'] = 'application/json';
 	$response = $error ?
 		array('message' => 'Erreur lors du vote...', 'status' => 'error') :
-		array('message' => 'A voté !', 'status' => 'success');
+		array('message' => 'A voté !', 'rating' => round($teube->w_rating, 2), 'count' => $teube->ratings_count, 'userVote' => $vote->value, 'status' => 'success');
 	echo json_encode($response);
 })->name('a-voter');
 
