@@ -117,7 +117,7 @@ class Model_Teube extends RedBean_SimpleModel
 	}
 
 	public function getDrawingPath($thumb = '') {
-		return WEBROOT_PATH.'/drawings/'.$this->id.'.'.$thumb.'.png';
+		return APP_STATIC_PATH.'/drawings/'.$this->id.(!empty($thumb) ? '.'.$thumb : '').'.png';
 	}
 
 	public function createDrawingFile() {

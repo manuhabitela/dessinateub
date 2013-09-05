@@ -8,9 +8,7 @@ class Halp {
 	 * @return string chemin ou data URI de l'image
 	 */
 	public static function drawing($teube, $dataURIFallback = false, $preview = false) {
-		$file = "/drawings/".$teube->id.($preview ? '.preview' : '').".png";
-		if ($dataURIFallback && !file_exists(WEBROOT_PATH.$file) && !empty($teube->image))
-			$file = $teube->image;
+		$file = "http://stateuic.habite.la/drawings/".$teube->id.($preview ? '.preview' : '').".png";
 		return $file;
 	}
 
