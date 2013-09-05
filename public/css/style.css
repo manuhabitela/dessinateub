@@ -1,6 +1,4 @@
 @charset "UTF-8";
-@font-face { font-family: 'icons'; src: url("../fonts/icons.eot"); src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff") format("woff"), url("../fonts/icons.ttf") format("truetype"), url("../fonts/icons.svg#icons") format("svg"); font-weight: normal; font-style: normal; }
-
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 audio, canvas, video { display: inline-block; }
@@ -134,7 +132,7 @@ html.borderradius .condom--rocco, html.borderradius .condom--expandable:active {
 .teube-preview__link { display: block; color: white; }
 
 .teube-preview__img-wrapper { position: relative; line-height: 0; z-index: 10; border: 4px solid #b3d4e5; border: 4px solid rgba(103, 169, 203, 0.4); overflow: hidden; border-radius: 100px; width: 100%; }
-.teube-preview__img-wrapper div { overflow: hidden; -webkit-mask-image: url('../img/preview_mask.png?1378137274'); }
+.teube-preview__img-wrapper div { overflow: hidden; -webkit-mask-image: url("http://stateuic.habite.la/img/preview_mask.png"); }
 .teube-preview__img-wrapper div, .teube-preview__img-wrapper img { border-radius: 100px; }
 .teube-preview__img-wrapper img { width: 100%; background: white; }
 .COOOL .teube-preview__img-wrapper img { -webkit-transform: scale(1.2); -moz-transform: scale(1.2); -ms-transform: scale(1.2); -o-transform: scale(1.2); transform: scale(1.2); -webkit-transform-origin: center center 0 50%; -moz-transform-origin: center center 0 50%; -ms-transform-origin: center center 0 50%; -o-transform-origin: center center 0 50%; transform-origin: center center 0 50%; }
@@ -179,7 +177,7 @@ html.borderradius .condom--rocco, html.borderradius .condom--expandable:active {
 .teube-drawing { width: 600px; margin: 0 auto; }
 
 .teube-drawing__board { width: 600px; height: 600px; }
-.teube-drawing__board .drawing-board-canvas { cursor: url('../img/curseube.png?1364427261'), pointer; }
+.teube-drawing__board .drawing-board-canvas { cursor: url("http://stateuic.habite.la/img/curseube.png"), pointer; }
 
 .teube-drawing__field { position: relative; margin: 0.32813em 0; font-size: 1.5em; width: 100%; font-weight: normal; }
 .teube-drawing__field label, .teube-drawing__field input { display: block; padding: 0.32813em 0.65625em; }

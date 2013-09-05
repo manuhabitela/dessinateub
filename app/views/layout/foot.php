@@ -10,7 +10,7 @@
 		</p>
 
 		<!-- dev : /js/script.js -->
-		<?php $js = PROD ? '/dist/scripts.min.js?v='.APP_VERSION :
+		<?php $js = PROD ? 'http://stateuic.habite.la/js/scripts.'.APP_VERSION.'.min.js' :
 			array('/components/jquery/jquery.min.js', '/components/drawingboard.js/dist/drawingboard.js', '/components/moment/moment.js', '/components/moment/min/lang/fr.js', '/components/color-thief/js/color-thief.js', '/js/fingerprint.js', '/js/detect.js', '/js/script.js');
 		$t = time();
 		if (is_string($js)): ?>

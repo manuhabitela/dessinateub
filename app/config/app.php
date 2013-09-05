@@ -8,8 +8,8 @@
 	define('APP_PIWIK_SERVER', 'piwik.habite.la');
 	define('APP_PIWIK_ID', '1');
 
-	define('PROD', false);
+	define('PROD', true);
 
-	define('APP_VERSION', 1);
+	define('APP_VERSION', "1.0.5");
 
 	include __DIR__.'/app.private.php';

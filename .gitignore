@@ -20,4 +20,4 @@ sftp-config.json
 
 node_modules
 
-public/dist
+public/dist/sftp-config.json

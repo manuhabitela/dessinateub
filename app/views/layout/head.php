@@ -20,13 +20,14 @@
 		<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
 		<!--<![endif]-->
 
+		<link rel="stylesheet" href="/dist/css/fonts.<?php echo APP_VERSION ?>.min.css">
 		<!-- dev : /css/style.css -->
-		<?php $css = PROD ? '/dist/styles.min.css?v='.APP_VERSION : '/css/style.css?v='.time() ?>
+		<?php $css = PROD ? 'http://stateuic.habite.la/css/styles.'.APP_VERSION.'.min.css' : '/css/style.css?v='.time() ?>
 		<link rel="stylesheet" href="<?php echo $css ?>">
 		<?php if (!PROD): ?>
 		<link rel="stylesheet" href="/components/drawingboard.js/dist/drawingboard.css">
 		<?php endif ?>
-		<script src="/js/modernizr.custom.js"></script>
+		<script src="http://stateuic.habite.la/js/modernizr.custom.js"></script>
 	</head>
 	<body>
 

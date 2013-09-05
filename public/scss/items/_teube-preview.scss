@@ -25,7 +25,7 @@
 
 	div {
 		overflow: hidden;
-		-webkit-mask-image: image-url("preview_mask.png");
+		-webkit-mask-image: url("http://stateuic.habite.la/img/preview_mask.png");
 	}
 	div, img {
 		border-radius: $teube-preview-size/2;
