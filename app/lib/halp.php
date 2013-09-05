@@ -7,8 +7,8 @@ class Halp {
 	 * @param  boolean $dataURIFallback si aucune image est trouvée on peut choisir de retourner l'image encodée en base64 contenu dans la $teube
 	 * @return string chemin ou data URI de l'image
 	 */
-	public static function drawing($teube, $dataURIFallback = false, $preview = false) {
-		$file = "http://stateuic.habite.la/drawings/".$teube->id.($preview ? '.preview' : '').".png";
+	public static function drawing($teube, $suffix = '') {
+		$file = "http://stateuic.habite.la/drawings/".$teube->id.(!empty($suffix) ? '.'.$suffix : '').('.'.$teube->modified_count).".png";
 		return $file;
 	}
 

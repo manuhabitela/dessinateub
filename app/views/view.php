@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="teube-view__drawing-container cf">
-		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube, true) ?>">
+		<img class="teube-view__drawing" src="<?php echo Halp::drawing($teube) ?>">
 
 		<?php if (!empty($prevTeube)): ?>
 			<a data-icon-before="l" href="<?php echo $app->urlFor('regarder', array('slug' => $prevTeube->slug)).(!empty($sort) ? "?voisines=".$sort.( isset($position) ? "&pos=".($position-1) : '') : '') ?>" class="teube-view__navigation-link teube-view__navigation-link--prev" title="Teub précédente"></a>

@@ -3,10 +3,6 @@ use RedBean_Facade as R;
 class Model_Teube extends RedBean_SimpleModel
 {
 	public function open() {
-		if (!file_exists($this->getDrawingPath()))
-			$this->createDrawingFile();
-		if (!file_exists($this->getDrawingPath('preview')))
-			$this->createThumbnail();
 		if (empty($this->views))
 			$this->views = 0;
 	}
@@ -14,19 +10,29 @@ class Model_Teube extends RedBean_SimpleModel
 	public function update() {
 		if (empty($this->id)) {
 			$this->created = date('Y-m-d H:i:s');
+			$this->modified = date('Y-m-d H:i:s');
+			$this->modified_count = 0;
 			$this->active = 1;
 			$this->generateUniqueSlug();
 		}
 	}
 
 	public function after_update() {
-		if ($this->createDrawingFile())
-			$this->createThumbnail();
+		if (!file_exists($this->getDrawingPath())) {
+			if ($this->createTmpDrawingFile()) {
+				$this->createDrawingFile();
+				$this->createThumbnail();
+				// suppression des fichiers temporaires/anciens
+				//$this->deleteDrawingFiles(true);
+
+				$this->image = null;
+				R::store($this);
+			}
+		}
 	}
 
 	public function delete() {
-		$this->deleteDrawingFile();
-		$this->deleteThumbnail();
+		$this->deleteDrawingFiles();
 	}
 
 	public function getVotes() {
@@ -116,16 +122,29 @@ class Model_Teube extends RedBean_SimpleModel
 			R::store($this);
 	}
 
-	public function getDrawingPath($thumb = '') {
-		return APP_STATIC_PATH.'/drawings/'.$this->id.(!empty($thumb) ? '.'.$thumb : '').'.png';
+	public function getDrawingPath($suffix = '', $count = null) {
+		if ($count === null) $count = $this->modified_count;
+		return APP_STATIC_PATH.'/drawings/'.$this->id.(!empty($suffix) ? '.'.$suffix : '').('.'.$count).'.png';
 	}
 
-	public function createDrawingFile() {
+	public function getImageURI() {
+		if (empty($this->image))
+			$this->image = 'data:image/png;base64,'.base64_encode(file_get_contents($this->getDrawingPath()));
+	}
+
+	public function createTmpDrawingFile() {
 		if (empty($this->image)) return false;
 		//http://j-query.blogspot.fr/2011/02/save-base64-encoded-canvas-image-to-png.html
 		$img = str_replace(' ', '+', str_replace('data:image/png;base64,', '', $this->image));
 		$data = base64_decode($img);
 		return file_put_contents($this->getDrawingPath(), $data);
+	}
+
+	public function createDrawingFile() {
+		if (!file_exists($this->getDrawingPath('tmp'))) return false;
+		$drawing = new PHPThumb\GD($this->getDrawingPath('tmp'));
+		$drawing->resize(600, 600);
+		$drawing->save($this->getDrawingPath());
 	}
 
 	public function createThumbnail() {
@@ -135,11 +154,23 @@ class Model_Teube extends RedBean_SimpleModel
 		$thumb->save($this->getDrawingPath('preview'));
 	}
 
-	public function deleteDrawingFile() {
-		return unlink($this->getDrawingPath());
+	public function deleteDrawingFiles($old = false) {
+		$count = $old && $this->modified_count > 0 ? $this->modified_count -1 : null;
+		if ($old && $count === null)
+			return false;
+		$this->deleteDrawingFile('tmp', $count);
+		$this->deleteDrawingFile('preview', $count);
+		$this->deleteDrawingFile('', $count);
 	}
 
-	public function deleteThumbnail() {
-		return unlink($this->getDrawingPath('preview'));
+	public function deleteDrawingFile($suffix = '', $count = null) {
+		if ($count === null) $count = $this->modified_count;
+		$i = 0;
+		while ($i <= $count) {
+			if (file_exists($this->getDrawingPath($suffix, $i)))
+				unlink($this->getDrawingPath($suffix, $i));
+			$i++;
+		}
+		return true;
 	}
 }
