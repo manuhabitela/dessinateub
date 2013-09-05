@@ -14,6 +14,10 @@ class Model_Teube extends RedBean_SimpleModel
 			$this->modified_count = 0;
 			$this->active = 1;
 			$this->generateUniqueSlug();
+
+			$message = "La teube \"".$this->name."\" vient d'être ajoutée par ".$this->artist.".";
+			$message .= "\n\nhttp://jaiunegrosseteu.be/de-".$this->slug."-cm";
+			mail(APP_ADMIN_MAIL, "jaiunegrosseteu.be : nouvelle teube ! \"".$this->name."\"", $message, 'From:bot@jaiunegrosseteu.be');
 		}
 	}
 
