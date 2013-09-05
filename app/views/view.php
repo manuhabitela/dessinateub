@@ -1,6 +1,6 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<div class="teube-view" data-id="<?php echo $teube->id ?>" data-slug="<?php echo $teube->slug ?>" data-color="<?php echo !empty($teube->color) ? $teube->color : '' ?>" data-url="<?php echo Halp::drawing($teube, true) ?>" data-rating="<?php echo round($teube->w_rating) ?>">
+<div class="teube-view" data-id="<?php echo $teube->id ?>" data-slug="<?php echo $teube->slug ?>" data-color="<?php echo !empty($teube->color) ? $teube->color : '' ?>" data-image="<?php echo $teube->image ?>" data-rating="<?php echo round($teube->w_rating) ?>">
 
 	<h2 class="teube-view__name">
 		<?php echo $teube->name ?>

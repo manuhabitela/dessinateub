@@ -1,6 +1,5 @@
 //méthode rache mothafucka
-(function() {
-
+$(document).ready(function() {
 
 	/**
 	 * GLOBAL
@@ -69,8 +68,8 @@
 	if ($html.hasClass('page--draw')) {
 		$drawing = $('.teube-drawing');
 
-		if ($drawing.attr('data-url'))
-			teuboard.setImg( $drawing.attr('data-url') );
+		if ($drawing.attr('data-image'))
+			teuboard.setImg( $drawing.attr('data-image') );
 
 		$drawing.on('submit', function(e) {
 			var img = teuboard.getImg();
@@ -91,6 +90,7 @@
 	if ($html.hasClass('page--view')) {
 		window.disqus_identifier = $('.teube-view') ? 'teube-' + $('.teube-view').attr('data-id') : null;
 		var teubeSlug = $('.teube-view').attr('data-slug');
+		var teubeImage = $('.teube-view').attr('data-image');
 
 		$('.teube-view__delete-link').on('click', function(e) {
 			if (confirm("T'es sûr ?"))
@@ -142,13 +142,18 @@
 			}
 		});
 
-		if ( !$('.teube-view').attr('data-color') ) {
-			$('.teube-view__drawing').on('load', function(e) {
+		if ( !$('.teube-view').attr('data-color') || !$('.teube-view').attr('data-color').length ) {
+			//obligé de créer une nouvelle image pour ne pas avoir le pb de cross origin à la con avec canvas
+			var dummyImg = new Image();
+			dummyImg.width = $('.teube-view__drawing').width();
+			dummyImg.height = $('.teube-view__drawing').height();
+			dummyImg.onload = function() {
 				var colorThief = new ColorThief();
-				var mainImgColor = colorThief.getColor($(this).get(0));
+				var mainImgColor = colorThief.getColor(dummyImg);
 				mainImgColor = "rgb(" + mainImgColor.join(',') + ")";
-				$.ajax({ url: '/update-color/' + teubeId, method: 'POST', data: { color: mainImgColor } });
-			});
+				$.ajax({ url: '/update-color/' + teubeSlug, method: 'POST', data: { color: mainImgColor } });
+			};
+			dummyImg.src = teubeImage;
 		}
 
 		$.ajax({ url: '/update-pageviews/' + teubeSlug, method: 'GET' });
@@ -187,4 +192,4 @@
 		return (url.toLowerCase() === (window.location.pathname + window.location.search).toLowerCase()) ||
 				(url.toLowerCase() === window.location.href.toLowerCase());
 	}
-})();
+});

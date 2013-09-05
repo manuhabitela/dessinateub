@@ -69,6 +69,7 @@ $app->put('/etjelemontre/:slug', function($slug) use($app) {
 		$teube->name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 		$teube->artist = filter_input(INPUT_POST, 'artist', FILTER_SANITIZE_STRING);
 		$teube->image = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_URL);
+		$teube->color = ''; //remise à jour côté JS
 		R::store($teube);
 		$app->flash('success', "Teub modifiée !");
 	} else {
