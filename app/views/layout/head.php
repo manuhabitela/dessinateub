@@ -9,7 +9,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><?php echo (!empty($title) ? $title.'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;' : ''). APP_TITLE  ?></title>
 		<meta name="description" content="<?php echo !empty($description) ? $description : APP_TITLE ?>">
+
+		<?php if (trim($page) !== "page--draw"): ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<?php endif ?>
 
 		<link rel="shortcut icon" type="image/png" href="img/curseube.png" />
 
