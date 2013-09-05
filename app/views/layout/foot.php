@@ -5,8 +5,8 @@
 		<?php endif ?>
 		</div>
 
-		<p class="cf credits teu">
-			Fait avec amour par <a href="http://manu.habite.la" target="_blank">Leimi</a>.
+		<p class="cf credits">
+			<span class="teu">Fait avec amour par <a href="http://manu.habite.la" target="_blank">Leimi</a></span> - <a target="_blank" href="http://twitter.com/twitteub">Twitteub</a>
 		</p>
 
 		<!-- dev : /js/script.js -->

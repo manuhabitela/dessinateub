@@ -51,10 +51,9 @@
 
 	<div class="teube-view__share-container">
 		<span class="teu">Partager sur&nbsp;</span>
-		<!-- <a class="twitter teube-button" href="https://twitter.com/intent/tweet?text=" target="_blank">Twitter</a> -->
-		<a class="condom--twitter condom--expandable teube-view__share-link" href="#" target="_blank">Twitter</a>
-		<!-- <a class="facebook teube-button" href="http://www.facebook.com/sharer/sharer.php?u=&amp;t=jaiunegrosseteu.be" target="_blank">Facebook</a> -->
-		<a class="condom--facebook condom--expandable teube-view__share-link" href="#" target="_blank">Facebook</a>
+		<a class="condom--twitter condom--expandable teube-view__share-link"
+			href="https://twitter.com/intent/tweet?via=twitteub&amp;text=<?php echo urlencode('"'.$teube->name.'" est une très belle teu.be ! '.HOST.$app->urlFor('regarder', array('slug' => $teube->slug))) ?>" target="_blank">Twitter</a>
+		<a class="condom--facebook condom--expandable teube-view__share-link" href="http://www.facebook.com/sharer/sharer.php?u=<?php echo HOST.$app->urlFor('regarder', array('slug' => $teube->slug)) ?>&amp;t=jaiunegrosseteu.be" target="_blank">Facebook</a>
 	</div>
 
 	<form class="teube-view__report-form" action="<?php echo $app->urlFor('abus', array('slug' => $teube->slug)) ?>" method="post">
