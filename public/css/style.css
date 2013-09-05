@@ -274,7 +274,9 @@ html, body, #container { margin: 0; padding: 0; }
 .teu:hover .pointbe, .teu:focus .pointbe, .teu.active .pointbe { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; letter-spacing: normal; }
 
 .justdoit { text-align: center; }
+@media only screen and (max-width: 600px) { .justdoit { padding-top: 5.25em; padding-bottom: 2.625em; } }
 .justdoit a { font-size: 3em; line-height: 3.9375em; }
+@media only screen and (max-width: 600px) { .justdoit a { white-space: normal; font-size: 1.5em; line-height: 1.96875em; } }
 
 .page--draw .flash, .page--view .flash { width: 600px; margin: 0 auto; white-space: normal; text-align: center; }
 @media only screen and (max-width: 600px) { .page--draw .flash, .page--view .flash { width: auto; max-width: 100%; } }

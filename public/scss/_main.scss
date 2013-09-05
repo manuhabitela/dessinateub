@@ -28,9 +28,18 @@ html, body, #container {
 
 .justdoit {
 	text-align: center;
+	@include respond-to(small) {
+		padding-top: $base-line-height*4;
+		padding-bottom: $base-line-height*2;
+	}
 	a {
 		font-size: $base-font-size*3;
 		line-height: $base-line-height*3;
+		@include respond-to(small) {
+			white-space: normal;
+			font-size: $base-font-size*1.5;
+			line-height: $base-line-height*1.5;
+		}
 	}
 }
 
