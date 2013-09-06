@@ -245,6 +245,7 @@ html.borderradius .condom--rocco, html.borderradius .condom--expandable:active {
 .teube-view__report-button:hover, .teube-view__report-button:focus { text-decoration: underline; }
 
 .teubes-list__title { margin: 0.65625em 0; }
+.teubes-list__title a { color: inherit; }
 
 .teubes-list__see-more { display: block; margin: 0.65625em 0; float: right; }
 

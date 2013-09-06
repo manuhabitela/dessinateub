@@ -99,7 +99,7 @@ class Model_Teube extends RedBean_SimpleModel
 
 		// $minVotesNumber = R::getCell('SELECT AVG(count) FROM (SELECT COUNT(*) as count FROM voteub WHERE active = 1 GROUP BY teube_id) as counts');
 		// $minVotesNumber = empty($minVotesNumber) || ceil($minVotesNumber/10) < 3 ? 3 : ceil($minVotesNumber/10);
-		$minVotesNumber = 1;
+		$minVotesNumber = 2;
 		$this->w_rating = (($teubeVotesCount / ($teubeVotesCount + $minVotesNumber)) * $this->avg_rating) + (($minVotesNumber / ($teubeVotesCount+$minVotesNumber)) * $allTeubesAvgRating);
 
 		$this->ratings_count = $teubeVotesCount;

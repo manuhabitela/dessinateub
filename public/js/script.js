@@ -1,5 +1,5 @@
 //méthode rache mothafucka
-$(document).ready(function() {
+;($(document).ready(function() {
 
 	/**
 	 * GLOBAL
@@ -154,7 +154,7 @@ $(document).ready(function() {
 				mainImgColor = "rgb(" + mainImgColor.join(',') + ")";
 				$.ajax({ url: '/update-color/' + teubeSlug, method: 'POST', data: { color: mainImgColor } });
 			};
-			dummyImg.src = teubeImage;
+			setTimeout(function() { dummyImg.src = teubeImage; }, 3000);
 		}
 
 		$.ajax({ url: '/update-pageviews/' + teubeSlug, method: 'GET' });
@@ -193,4 +193,4 @@ $(document).ready(function() {
 		return (url.toLowerCase() === (window.location.pathname + window.location.search).toLowerCase()) ||
 				(url.toLowerCase() === window.location.href.toLowerCase());
 	}
-});
+}))();

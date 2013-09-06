@@ -10,6 +10,6 @@
 
 	define('PROD', true);
 
-	define('APP_VERSION', "1.0.5");
+	define('APP_VERSION', "1.0.6");
 
 	include __DIR__.'/app.private.php';
