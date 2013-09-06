@@ -51,7 +51,8 @@ $(document).ready(function() {
 		var teubopts = {
 			color: "rgba(255, 191, 127, 1)",
 			size: 5,
-			errorMessage: "<p>Votre navigateur est obsolète : mettez-le à jour pour pouvoir dessiner des teubs.</p>"
+			errorMessage: "<p>Votre navigateur est obsolète : mettez-le à jour pour pouvoir dessiner des teubs.</p>",
+			enlargeYourContainer: true
 		};
 		teuboard = new DrawingBoard.Board('teuboard', teubopts);
 		if (!Modernizr.canvas) {
