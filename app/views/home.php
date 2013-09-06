@@ -4,7 +4,7 @@
 foreach ($teulists as $list):
 $sort = $list['sort']; ?>
 <div class="teubes-list cf">
-	<h2 class="teubes-list__title teu"><?php echo $list["title"] ?></h2>
+	<h2 class="teubes-list__title teu"><a href="/mater?ordre=<?php echo $list['sort'] ?>"><?php echo $list["title"] ?></a></h2>
 
 	<div class="teubes-list__items-wrapper cf">
 		<?php foreach ($list["teubes"] as $teube): ?><!-- commentaires spécial display: inline-block, yolo
