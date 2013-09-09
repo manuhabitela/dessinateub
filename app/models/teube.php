@@ -95,11 +95,9 @@ class Model_Teube extends RedBean_SimpleModel
 		//http://masanjin.net/blog/bayesian-average
 		$allTeubesAvgRating = R::getCell('SELECT AVG(avg_rating) FROM teube WHERE active = 1 AND avg_rating IS NOT NULL');
 		if (empty($allTeubesAvgRating)) $allTeubesAvgRating = 3;
-		// $allTeubesAvgRating = 3;
 
-		// $minVotesNumber = R::getCell('SELECT AVG(count) FROM (SELECT COUNT(*) as count FROM voteub WHERE active = 1 GROUP BY teube_id) as counts');
-		// $minVotesNumber = empty($minVotesNumber) || ceil($minVotesNumber/10) < 3 ? 3 : ceil($minVotesNumber/10);
-		$minVotesNumber = 2;
+		$minVotesNumber = R::getCell('SELECT AVG(count) FROM (SELECT COUNT(*) as count FROM voteub WHERE active = 1 GROUP BY teube_id) as counts');
+		$minVotesNumber = empty($minVotesNumber) || ceil($minVotesNumber/2) < 3 ? 3 : ceil($minVotesNumber/2);
 		$this->w_rating = (($teubeVotesCount / ($teubeVotesCount + $minVotesNumber)) * $this->avg_rating) + (($minVotesNumber / ($teubeVotesCount+$minVotesNumber)) * $allTeubesAvgRating);
 
 		$this->ratings_count = $teubeVotesCount;
@@ -111,7 +109,7 @@ class Model_Teube extends RedBean_SimpleModel
 		$bindings = array($this->id, $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
 		if ($fingerprint) $bindings[]= $fingerprint;
 		$vote = R::findOne('voteub', $query, $bindings);
-		return !empty($vote->id) ? $vote : null;
+		return !empty($vote) && !empty($vote->id) ? $vote : null;
 	}
 
 	public function generateUniqueSlug($store = false, $force = false) {
