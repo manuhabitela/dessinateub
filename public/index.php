@@ -9,13 +9,11 @@
 	require_once MODELS_PATH.'/voteub.php';
 
 	$app->get('/', function() use ($app) {
-		$nouvelles = getTeubes("nouvelles", 0, 5);
-		$belles = getTeubes("belles", 0, 5);
-		$moches = getTeubes("moches", 0, 5);
+		$nouvelles = getTeubes("nouvelles", 0, 10);
+		$belles = getTeubes("belles", 0, 10);
 		$app->render('home.php', array(
 			'nouvelles' => $nouvelles,
 			'belles' => array_merge($belles, array("title" => "Les plus belles")),
-			'moches' => $moches,
 			'page' => 'list',
 			'title' => 'jaiunegrosseteu.be'
 		));
