@@ -1,5 +1,5 @@
 //méthode rache mothafucka
-;($(document).ready(function() {
+$(document).ready(function() {
 
 	/**
 	 * GLOBAL
@@ -193,4 +193,4 @@
 		return (url.toLowerCase() === (window.location.pathname + window.location.search).toLowerCase()) ||
 				(url.toLowerCase() === window.location.href.toLowerCase());
 	}
-}))();
+});
