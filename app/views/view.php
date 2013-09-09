@@ -33,7 +33,7 @@
 				<input type="radio" id="teube-vote-1" name="teube-vote" value="1" /><label for="teube-vote-1" title="Non. NON.">1</label>
 			</fieldset>
 		</form>
-		<span class="teube-view__avg-vote"><span class="help" title="La note moyenne est ajustée en fonction du nombre de votes sur tout le site">moyenne</span> : <span class="teube-view__avg-vote-value"><?php echo $teube->w_rating ?></span> (<span class="teube-view__avg-vote-count"><?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?></span>)</span>
+		<span class="teube-view__avg-vote"><span class="help" title="La note moyenne est ajustée en fonction du nombre de votes sur cette teub et sur tout le site. Autrement dit si tu es tout seul à mettre 5/5 à la teub que tu viens de créer, ça marchera pas mon gars.">moyenne</span> : <span class="teube-view__avg-vote-value"><?php echo $teube->w_rating ?></span> (<span class="teube-view__avg-vote-count"><?php echo Halp::pluralize($teube->ratings_count, 'vote'); ?></span>)</span>
 		<span class="teube-view__user-vote <?php if (!isset($userVote)): ?>hidden<?php endif; ?>">votre note : <span class="teube-view__user-vote-value"><?php if (isset($userVote)) echo $userVote->value ?></span></span>
 	</div>
 
