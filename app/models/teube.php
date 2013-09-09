@@ -124,6 +124,13 @@ class Model_Teube extends RedBean_SimpleModel
 			R::store($this);
 	}
 
+	public function isDuplicate() {
+		$query = 'active = 1 AND name = ? AND artist = ? AND ua = ? AND ip = ? AND created >= ?';
+		$bindings = array($this->name, $this->artist, $this->ua, $this->ip, date('Y-m-d H:i:s', strtotime("-15 minutes")));
+		$existing = R::findOne('teube', $query, $bindings);
+		return !empty($existing);
+	}
+
 	public function getDrawingPath($suffix = '', $count = null) {
 		if ($count === null) $count = $this->modified_count;
 		return APP_STATIC_PATH.'/drawings/'.$this->id.(!empty($suffix) ? '.'.$suffix : '').('.'.$count).'.png';
