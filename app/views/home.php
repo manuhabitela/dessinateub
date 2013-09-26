@@ -1,6 +1,6 @@
 <?php if (!$app->request()->isAjax()) include(__DIR__ . '/layout/head.php'); ?>
 
-<?php $teulists = array($nouvelles, $belles);
+<?php $teulists = array($belles, $nouvelles);
 foreach ($teulists as $list):
 $sort = $list['sort']; ?>
 <div class="teubes-list cf">
