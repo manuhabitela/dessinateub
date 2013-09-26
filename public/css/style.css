@@ -186,6 +186,8 @@ html.borderradius .condom--rocco, html.borderradius .condom--expandable:active {
 .teube-drawing__field input { width: 100%; }
 .teube-drawing__field input:hover + label, .teube-drawing__field input:focus + label { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; }
 
+.teube-drawing__warning { font-size: 1.2em; line-height: 1.575em; text-align: center; margin: 1.3125em 0 0; }
+
 .teube-drawing__submit { text-align: center; }
 .teube-drawing__submit button { font-size: 2em; }
 

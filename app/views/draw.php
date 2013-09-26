@@ -24,6 +24,10 @@
 		<label for="teube-artist-input" class="teu no-small">Signature de l'artiste</label>
 	</div>
 
+	<p class="teube-drawing__warning teu" data-icon-before="w">
+		Si votre teub n'est autre qu'un brouillon fait en quelques secondes, sans âme ni but de vie, elle peut se faire <a href="https://www.youtube.com/watch?feature=player_detailpage&amp;v=pKWwf43y95g#t=80">atomiser la tête</a> par la modération à tout moment.
+	</p>
+
 	<div class="teube-drawing__submit">
 		<button class="teube-drawing__submit condom condom--expandable">Je valide</button>
 	</div>

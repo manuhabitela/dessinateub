@@ -47,6 +47,13 @@
 	}
 }
 
+.teube-drawing__warning {
+	font-size: $base-font-size*1.2;
+	line-height: $base-line-height*1.2;
+	text-align: center;
+	margin: $base-line-height 0 0;
+}
+
 .teube-drawing__submit {
 	text-align: center;
 	button {
