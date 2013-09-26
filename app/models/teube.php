@@ -116,10 +116,10 @@ class Model_Teube extends RedBean_SimpleModel
 		if (!empty($this->slug) && !$force)
 			return false;
 		$existing = R::getCol('SELECT slug FROM teube');
-		$rand = mt_rand(1, 9999);
+		$rand = (mt_rand(1, 9999))/100;
 		while (in_array($rand, $existing))
-			$rand = mt_rand(1, 9999);
-		$this->slug = $rand/100;
+			$rand = (mt_rand(1, 9999))/100;
+		$this->slug = $rand;
 		if ($store)
 			R::store($this);
 	}
