@@ -108,8 +108,12 @@ $app->post('/etjelemontreplus/:slug', function($slug) use($app) {
 $app->get('/de-:slug-cm', function($slug) use($app) {
 	$teube = getTeubeBySlug($slug);
 	if (empty($teube) || empty($teube->active)) {
-		$app->flash('error', "Erreur : impossible de visualiser cette teub");
-		$app->redirect($app->request()->getReferrer());
+		$message = "Erreur : cette teub n'existe pas.";
+		if (!empty($teube) && empty($teube->active))
+			$message = "Erreur : cette teub étant beaucoup trop moche, elle a dû quitter ce site à vie.";
+		$app->flash('error', $message);
+		$urlToRedirect = $app->request()->getReferrer() ? $app->request()->getReferrer() : $app->urlFor('home');
+		$app->redirect($urlToRedirect);
 	}
 	$isEditable = (!empty($_SESSION['slugs']) && in_array($teube->slug, $_SESSION['slugs']));
 	$userVote = $teube->getUserVote();
